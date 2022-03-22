@@ -25,13 +25,13 @@ export default function SignIn() {
     setFormData({ ...formData, [target.name]: target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const user = { ...formData };
 
     try {
-      const { data } = api.signin(user);
+      const { data } = await api.signin(user);
       signin(data);
       navigate("/home");
     } catch (error) {
