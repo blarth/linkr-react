@@ -25,20 +25,24 @@ export default function SignUp() {
     setFormData({ ...formData, [target.name]: target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const user = { ...formData };
 
     try {
-      api.createUser(user);
+      const answer = await api.createUser(user);
+      console.log("anser:");
+      console.log(answer);
       navigate("/");
     } catch (error) {
       console.log(error);
       Swal.fire({
-        icon: "error",
-        title: "Oops...",
+        title: "Oops :(",
         text: "Something went wrong, Try again!",
+        background: "#d66767",
+        confirmButtonColor: "#9f9adb",
+        color: "#fff",
       });
     }
   }
