@@ -32,6 +32,7 @@ export default function SignIn() {
 
     try {
       const { data } = api.signin(user);
+      console.log(data)
       signin(data);
       navigate("/home");
     } catch (error) {
