@@ -30,13 +30,27 @@ export default function SignUp() {
 
     const user = { ...formData };
 
+    if (
+      user.email == "" ||
+      user.password == "" ||
+      user.username == "" ||
+      user.image == ""
+    ) {
+      Swal.fire({
+        title: "Oops :(",
+        text: "All fields must be filled in",
+        background: "#d66767",
+        confirmButtonColor: "#9f9adb",
+        color: "#fff",
+      });
+      return;
+    }
+
     try {
-      const answer = await api.createUser(user);
-      console.log("anser:");
-      console.log(answer);
+      await api.createUser(user);
+
       navigate("/");
     } catch (error) {
-      console.log(error);
       Swal.fire({
         title: "Oops :(",
         text: "Something went wrong, Try again!",
@@ -88,7 +102,7 @@ export default function SignUp() {
           required
         />
         <Button type="submit"> Sign Up </Button>
-        <StyledLink to="/signup">First time? Create an account!</StyledLink>
+        <StyledLink to="/">First time? Create an account!</StyledLink>
       </Form>
     </Container>
   );
