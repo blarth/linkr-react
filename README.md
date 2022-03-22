@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Linktr ⛓️
+## Share and tag links!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### :computer: Tech used
+<p>
+	<img src="https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white"/>
+	<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white"/>
+	<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+	<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/>
+</p>
 
-## Available Scripts
+### Also nicely experienced on :telephone_receiver:
+<p>
+	<img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white"/>
+	<img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" />
+</p>
 
-In the project directory, you can run:
+## Overview
+A link sharing platform where users can share content they like and hashtag them
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ```Login, Signup & Logout```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+work in progress
 
-### `npm test`
+### ```Posting, Liking, Hashtagging```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+work in progress
 
-### `npm run build`
+### ```Updating & Deleting```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+work in progress
+### ```Filtering by user, hashtags```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+work in progress
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation 🛠️
+### Make sure you have the following tools installed before you begin:
+<p>
+	<a href="https://git-scm.com/"><img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"/></a>
+	<a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/></a>
+	<a href="https://www.npmjs.com/package/npm"><img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white"/></a>
+</p>
+<p>Not needed but recommended: <a href="https://code.visualstudio.com/">VSCode</a></p>
 
-### `npm run eject`
+#### In order to use all functions of this app, you also need to install the [backend API](https://github.com/blarth/linktr-api)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Use a terminal interface such as bash or zsh, and enter the following:
+```bash
+#download
+gh repo clone blarth/linktr-react
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#access the folder you downloaded it to
+cd linktr-react
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#install dependencies
+npm i
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The app will run locally and you must configure a ```.env``` file with a port of your choosing. The default one is 5000.
+## Running
+```bash
+#you can run the development build with
+npm start
 
-## Learn More
+#or production build it with
+npm build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### :man_technologist: Authors
+<p>Made with care by</p>
+<a href="https://github.com/blarth"><img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/79117658?v=4"  width="100px;"  alt="João Marcos Inocente"/></a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[![Gmail Badge](https://img.shields.io/badge/-jminocente@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white&link=mailto:jminocente@gmail.com)](mailto:jminocente@gmail.com)
 
-### Code Splitting
+[![Linkedin Badge](https://img.shields.io/badge/-João-Inocente?style=flat&logo=Linkedin&logoColor=white&color=blue&link=https://www.linkedin.com/in/joão-marcos-inocente-pavão-899961142/)](https://www.linkedin.com/in/joão-marcos-inocente-pavão-899961142/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<a href="https://github.com/fMagVen"><img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/78576546?v=4"  width="100px;"  alt="Felipe Ventura"/></a>
 
-### Analyzing the Bundle Size
+[![Gmail Badge](https://img.shields.io/badge/-fmagven93@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white&link=mailto:fmagven93@gmail.com)](mailto:fmagven93@gmail.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[![Linkedin Badge](https://img.shields.io/badge/-Felipe-Ventura?style=flat&logo=Linkedin&logoColor=white&color=blue&link=https://www.linkedin.com/in/fmagven/)](https://www.linkedin.com/in/fmagven/)
 
-### Making a Progressive Web App
+<a href="https://github.com/rayyventura"><img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/89822434?v=4"  width="100px;"  alt="Rayane Ventura"/></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[![Gmail Badge](https://img.shields.io/badge/-rayyventura@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white&link=mailto:rayyventura@gmail.com)](mailto:rayyventura@gmail.com)
 
-### Advanced Configuration
+[![Linkedin Badge](https://img.shields.io/badge/-Rayane-Ventura?style=flat&logo=Linkedin&logoColor=white&color=blue&link=http://www.linkedin.com/in/rayane-ventura27)](http://www.linkedin.com/in/rayane-ventura27/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<a href="https://github.com/lucasvz"><img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/49080941?v=4"  width="100px;"  alt="Lucas Tadeu"/></a>
 
-### Deployment
+[![Gmail Badge](https://img.shields.io/badge/-lucastadeuvaz@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white&link=mailto:lucastadeuvaz@gmail.com)](mailto:lucastadeuvaz@gmail.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[![Linkedin Badge](https://img.shields.io/badge/-Lucas-Tadeu?style=flat&logo=Linkedin&logoColor=white&color=blue&link=https://www.linkedin.com/in/lucas-tadeu-vaz-90186b20b/)](https://www.linkedin.com/in/lucas-tadeu-vaz-90186b20b/)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p>Contact us anytime!</p>
