@@ -18,7 +18,7 @@ export default function SignUp() {
     email: "",
     password: "",
     username: "",
-    picture: "",
+    image: "",
   });
 
   function handleChange({ target }) {
@@ -79,8 +79,8 @@ export default function SignUp() {
           type="text"
           placeholder="picture url"
           onChange={(e) => handleChange(e)}
-          name="picture"
-          value={formData.picture}
+          name="image"
+          value={formData.image}
           required
         />
         <Button type="submit"> Sign Up </Button>
