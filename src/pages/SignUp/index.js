@@ -11,7 +11,7 @@ import api from "../../services/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignUp() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
