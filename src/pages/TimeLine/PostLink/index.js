@@ -1,14 +1,28 @@
 import { Container, Form, Img } from "./style";
 import { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
+import api from "../../../services/api";
 
 export default function PostLink() {
     const [isLoading, setIsLoading] = useState(false);
-    function handleSubmit(e) {
-        e.preventDefaut();
+    const [link, setLink] = useState("");
+    const [description, setDescription] = useState("");
+    const { auth } = useAuth();
 
+    function handleSubmit(e) {
+        e.preventDefault();
         setIsLoading(true);
-        
+        try{
+            api.sendPost({link, description } , auth.token);
+            setIsLoading(false);
+            alert("deu bom");
+        }
+        catch{
+            setIsLoading(false);
+            alert("erro");
+        }
     }
+    
     return (
         <Container>
             <div>
@@ -21,13 +35,17 @@ export default function PostLink() {
                     type="text"
                     placeholder="http://..."
                     name="link"
+                    onChange={(e) => setLink(e.target.value)}
+                    value={link}
                     required
                 />
                 <input
                     className="description"
                     type="text"
-                    placeholder="http://..."
+                    placeholder="Awesome article about #javascript"
                     name="description"
+                    onChange={(e) => setDescription(e.target.value)}
+                    value={description}
                 />
                 <div>
                     <button type="submit" disabled={isLoading}>
