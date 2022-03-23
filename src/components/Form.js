@@ -8,6 +8,10 @@ const Container = styled.div`
 
   width: 100%;
   height: 100vh;
+
+  @media (max-width: 1300px) {
+    flex-direction: column;
+  }
 `;
 
 const LeftContainer = styled.div`
@@ -38,6 +42,32 @@ const LeftContainer = styled.div`
       font-family: "Passion One";
     }
   }
+  @media (max-width: 1300px) {
+    height: 200px;
+
+    padding: 20px;
+
+    margin-bottom: 40px;
+
+    width: 100%;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      p {
+        font-size: 23px;
+      }
+      h1 {
+        font-size: 76px;
+      }
+    }
+  }
 `;
 
 const Form = styled.form`
@@ -50,6 +80,10 @@ const Form = styled.form`
 
   margin-bottom: 20px;
   font-family: "Oswald", "sans-serif";
+
+  @media (max-width: 1300px) {
+    width: 60%;
+  }
 `;
 const Input = styled.input`
   all: unset;
@@ -71,6 +105,9 @@ const Input = styled.input`
   background-color: white;
 
   cursor: text;
+  @media (max-width: 1300px) {
+    width: 340px;
+  }
 `;
 const Button = styled.button`
   all: unset;
@@ -95,6 +132,10 @@ const Button = styled.button`
   :hover {
     font-size: 26px;
   }
+
+  @media (max-width: 1300px) {
+    width: 340px;
+  }
 `;
 const StyledLink = styled(Link)`
   all: unset;
@@ -115,6 +156,11 @@ const StyledLink = styled(Link)`
   font-family: "Lato", sans-serif;
 
   text-decoration: underline;
+
+  @media (max-width: 1300px) {
+    font-size: 16px;
+    text-align: center;
+  }
 `;
 
 export { Container, LeftContainer, Form, Input, Button, StyledLink };
