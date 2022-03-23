@@ -25,9 +25,15 @@ async function getPost(token){
   const config = createConfig(token);
   await axios.post(`${BASE_URL}/timeline`, config);
 }
+async function signout(token) {
+  const config = createConfig(token);
+  await axios.delete(`${BASE_URL}/signout`, config);
+}
 const api = {
   createUser,
   signin,
-  getPost
+  getPost,
+  signout,
 };
-export default api;
+
+export default api

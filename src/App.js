@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp";
 import Post from "./components/PostComponent";
 
 import { AuthProvider } from "./context/authContext";
+import useAuth from "./hooks/useAuth";
 
 export default function App() {
   return (
