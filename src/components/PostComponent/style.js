@@ -14,14 +14,15 @@ const Avatar = styled.img`
 height: 50px;
 width: 50px;
 border-radius: 26.5px;
-
+margin-bottom: 180px;
+margin-right: 18px;
 `;
 
 const ContainerPost = styled.div`
 width: 80%;
 height: 90%;
 display: flex;
-flex-direction: columns;
+flex-direction: column;
 justify-content: center;
 `;
 
@@ -34,7 +35,7 @@ font-weight: 400;
 line-height: 23px;
 text-align: left;
 color: #FFFFFF;
-
+margin-bottom: 7px;
 `;
 
 const Description = styled.div`
@@ -46,17 +47,9 @@ font-weight: 400;
 line-height: 20px;
 text-align: left;
 color: #B7B7B7;
-
 `;
 
-const LinkPost = styled.div`
-height: 155px;
-width: 503px;
-border-radius: 11px;
-color: #C4C4C4;
-border: 1px solid #4D4D4D;
-box-sizing: border-box;
-`;
+
 
 export {
     Container,
@@ -64,5 +57,4 @@ export {
     ContainerPost,
     User,
     Description,
-    LinkPost
 }

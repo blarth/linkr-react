@@ -1,31 +1,24 @@
 import React from "react";
-import urlMetadata from "url-metadata";
 import {
   Container,
   Avatar,
   ContainerPost,
   User,
   Description,
-  LinkPost,
 } from "./style";
+import MetaDataPost from "./MetaData";
 
-export default function Post({ image, name, description, link }) {
+export default function Post({ image, name, description, metadataLink }) {
 
-   urlMetadata('https://www.youtube.com/watch?v=zu5Td8bq5ZQ').then(
-    function (metadata) { 
-    console.log(metadata)
-  },
-  function (error) { 
-    console.log(error)
-  })
+   
     
   return (
     <Container>
-      <Avatar></Avatar>
+      <Avatar src={image} alt="avatar img"></Avatar>
       <ContainerPost>
-        <User></User>
-        <Description>Hellos</Description>
-        <LinkPost></LinkPost>
+        <User>{name}</User>
+        <Description>{description}</Description>
+        <MetaDataPost metadataLink={metadataLink}></MetaDataPost>
       </ContainerPost>
     </Container>
   );
