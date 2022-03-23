@@ -23,7 +23,9 @@ async function signin(data) {
 
 async function getPost(token){
   const config = createConfig(token);
-  await axios.post(`${BASE_URL}/timeline`, config);
+  const promisse = await axios.get(`${BASE_URL}/timeline`, config);
+  
+  return promisse
 }
 async function signout(token) {
   const config = createConfig(token);

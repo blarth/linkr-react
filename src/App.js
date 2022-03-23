@@ -5,7 +5,7 @@ import SignUp from "./pages/SignUp";
 import Post from "./components/PostComponent";
 
 import { AuthProvider } from "./context/authContext";
-import useAuth from "./hooks/useAuth";
+
 
 export default function App() {
   return (
@@ -14,7 +14,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Post />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
