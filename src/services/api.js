@@ -18,8 +18,14 @@ async function signin(data) {
   const token = await axios.post(`${BASE_URL}/signin`, data);
   return token;
 }
+
+async function signout(token) {
+  const config = createConfig(token);
+  await axios.delete(`${BASE_URL}/signout`, config);
+}
 const api = {
   createUser,
   signin,
+  signout,
 };
 export default api;
