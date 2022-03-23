@@ -18,27 +18,45 @@ export default function SignUp() {
     email: "",
     password: "",
     username: "",
-    picture: "",
+    image: "",
   });
 
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const user = { ...formData };
 
+    if (
+      user.email == "" ||
+      user.password == "" ||
+      user.username == "" ||
+      user.image == ""
+    ) {
+      Swal.fire({
+        title: "Oops :(",
+        text: "All fields must be filled in",
+        background: "#d66767",
+        confirmButtonColor: "#9f9adb",
+        color: "#fff",
+      });
+      return;
+    }
+
     try {
-      api.createUser(user);
+      await api.createUser(user);
+
       navigate("/");
     } catch (error) {
-      console.log(error);
       Swal.fire({
-        icon: "error",
-        title: "Oops...",
+        title: "Oops :(",
         text: "Something went wrong, Try again!",
+        background: "#d66767",
+        confirmButtonColor: "#9f9adb",
+        color: "#fff",
       });
     }
   }
@@ -79,12 +97,12 @@ export default function SignUp() {
           type="text"
           placeholder="picture url"
           onChange={(e) => handleChange(e)}
-          name="picture"
-          value={formData.picture}
+          name="image"
+          value={formData.image}
           required
         />
         <Button type="submit"> Sign Up </Button>
-        <StyledLink to="/signup">First time? Create an account!</StyledLink>
+        <StyledLink to="/">First time? Create an account!</StyledLink>
       </Form>
     </Container>
   );
