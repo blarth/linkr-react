@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LeftContainer,
   Container,
@@ -14,7 +14,12 @@ import useAuth from "../../hooks/useAuth";
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const { signin } = useAuth();
+  const { auth, signin } = useAuth();
+  useEffect(() => {
+    if (auth) {
+      navigate("/home");
+    }
+  }, [auth]);
 
   const [formData, setFormData] = useState({
     email: "",
