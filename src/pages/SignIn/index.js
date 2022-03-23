@@ -11,10 +11,12 @@ import api from "../../services/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function SignIn() {
   const navigate = useNavigate();
   const { auth, signin } = useAuth();
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (auth) {
       navigate("/home");
@@ -32,7 +34,7 @@ export default function SignIn() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    setLoading(true);
     const user = { ...formData };
 
     try {
@@ -41,6 +43,7 @@ export default function SignIn() {
       navigate("/home");
     } catch (error) {
       console.log(error);
+      setLoading(false);
       Swal.fire({
         title: "Oops :(",
         text: "Something went wrong, Try again!",
@@ -76,7 +79,13 @@ export default function SignIn() {
           required
         />
 
-        <Button type="submit"> Log In</Button>
+        <Button type="submit" disabled={loading}>
+          {loading ? (
+            <ThreeDots color="#FFFFFF" height={13} width={100} />
+          ) : (
+            "Sign Up"
+          )}
+        </Button>
         <StyledLink to="/signup">First time? Create an account!</StyledLink>
       </Form>
     </Container>

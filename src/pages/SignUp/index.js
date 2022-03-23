@@ -10,9 +10,11 @@ import {
 import api from "../../services/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -27,14 +29,15 @@ export default function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
     const user = { ...formData };
 
     if (
-      user.email == "" ||
-      user.password == "" ||
-      user.username == "" ||
-      user.image == ""
+      user.email === "" ||
+      user.password === "" ||
+      user.username === "" ||
+      user.image === ""
     ) {
       Swal.fire({
         title: "Oops :(",
@@ -51,6 +54,7 @@ export default function SignUp() {
 
       navigate("/");
     } catch (error) {
+      setLoading(false);
       Swal.fire({
         title: "Oops :(",
         text: "Something went wrong, Try again!",
@@ -101,7 +105,13 @@ export default function SignUp() {
           value={formData.image}
           required
         />
-        <Button type="submit"> Sign Up </Button>
+        <Button type="submit" disabled={loading}>
+          {loading ? (
+            <ThreeDots color="#FFFFFF" height={13} width={100} />
+          ) : (
+            "Sign Up"
+          )}
+        </Button>
         <StyledLink to="/">First time? Create an account!</StyledLink>
       </Form>
     </Container>
