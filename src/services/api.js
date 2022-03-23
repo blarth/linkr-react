@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://linktr-api.herokuapp.com/";
+const BASE_URL = "https://linktr-api.herokuapp.com";
 
 function createConfig(token) {
   return {
