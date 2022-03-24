@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import TimeLine from "./pages/TimeLine";
+import Post from "./components/PostComponent";
 
 import { AuthProvider } from "./context/authContext";
+
 
 export default function App() {
   return (
