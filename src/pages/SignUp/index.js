@@ -123,7 +123,7 @@ export default function SignUp() {
             "Sign Up"
           )}
         </Button>
-        <StyledLink to="/">First time? Create an account!</StyledLink>
+        <StyledLink to="/">Switch back to log in</StyledLink>
       </Form>
     </Container>
   );
