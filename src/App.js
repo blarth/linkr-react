@@ -4,7 +4,6 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import TimeLine from "./pages/TimeLine";
 import Post from "./components/PostComponent";
-import Header from "./components/Header";
 
 import { AuthProvider } from "./context/authContext";
 import { UserProvider } from "./context/userContext";
