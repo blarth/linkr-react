@@ -1,8 +1,6 @@
 import axios from "axios";
 
-
 const BASE_URL = "http://localhost:4000";
-
 
 function createConfig(token) {
   return {
@@ -21,12 +19,18 @@ async function signin(data) {
   return token;
 }
 
+async function sendPost(body, token) {
+  const config = createConfig(token);
+  await axios.post(`${BASE_URL}/timeline`, body, config)
+}
+
 async function getPost(token){
   const config = createConfig(token);
   const promisse = await axios.get(`${BASE_URL}/timeline`, config);
   
   return promisse
 }
+
 async function signout(token) {
   const config = createConfig(token);
   await axios.delete(`${BASE_URL}/signout`, config);
@@ -34,6 +38,7 @@ async function signout(token) {
 const api = {
   createUser,
   signin,
+  sendPost,
   getPost,
   signout,
 };
