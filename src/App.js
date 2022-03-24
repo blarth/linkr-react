@@ -7,7 +7,6 @@ import Post from "./components/PostComponent";
 
 import { AuthProvider } from "./context/authContext";
 
-
 export default function App() {
   return (
     <AuthProvider>
@@ -21,4 +20,3 @@ export default function App() {
     </AuthProvider>
   );
 }
-
