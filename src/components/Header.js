@@ -15,8 +15,6 @@ export default function Header() {
   const navigate = useNavigate();
   let { user, setUser } = useUser();
 
-  console.log(user);
-
   useEffect(() => {
     getUser();
     setUser(JSON.parse(localStorage.getItem("user")));
