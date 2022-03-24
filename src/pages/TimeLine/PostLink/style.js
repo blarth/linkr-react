@@ -5,6 +5,7 @@ const Container = styled.div`
 
     width: 611px;
     height: 209px;
+    margin-bottom: 10px;
     @media (max-width: 600px){
         width:100%;
         height: 190px;

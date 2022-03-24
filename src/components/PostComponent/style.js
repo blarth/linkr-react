@@ -8,6 +8,12 @@ background : #171717;
 display: flex;
 justify-content: center;
 align-items: center;
+
+@media (max-width: 600px){
+    width:100%;
+    height: 210px;
+    border-radius: 0;
+}
 `;
 
 const Avatar = styled.img`
@@ -16,6 +22,11 @@ width: 50px;
 border-radius: 26.5px;
 margin-bottom: 180px;
 margin-right: 18px;
+@media (max-width: 600px){
+    width:40px;
+    height: 40px;
+    margin-bottom: 100px;
+}
 `;
 
 const ContainerPost = styled.div`
@@ -36,6 +47,11 @@ line-height: 23px;
 text-align: left;
 color: #FFFFFF;
 margin-bottom: 7px;
+@media (max-width: 600px){
+    width:80%;
+    height: 23px;
+    
+} 
 `;
 
 const Description = styled.div`
@@ -47,6 +63,12 @@ font-weight: 400;
 line-height: 20px;
 text-align: left;
 color: #B7B7B7;
+
+@media (max-width: 600px){
+    width:80%;
+    height: 50px;
+    
+}
 `;
 
 

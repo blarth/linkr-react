@@ -16,6 +16,12 @@ display:flex;
 justify-content: center;
 align-items: center;
 
+@media (max-width: 600px){
+    width:80%;
+    height: 230px;
+    
+}
+
 
     h1{
         height: 38px;
