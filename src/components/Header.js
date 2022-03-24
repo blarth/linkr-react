@@ -6,33 +6,33 @@ import useAuth from "../hooks/useAuth";
 import api from "../services/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useUser from "../hooks/useUser";
 
 export default function Header() {
   const [logout, setLogout] = useState();
   const { auth } = useAuth();
   const [userImage, setUserImage] = useState();
   const navigate = useNavigate();
+  let { user, setUser } = useUser();
 
   useEffect(() => {
     getUser();
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
 
-  async function getUser() {
-    try {
-      const { data } = await api.getUser(auth);
-      setUserImage(data.image);
-    } catch (error) {
-      console.log(error.response);
-      if (error.response.status === 401) {
-        navigate("/");
-      }
+  function getUser() {
+    if (!auth) {
+      navigate("/");
+      return;
     }
+    user && setUserImage(user.image);
   }
 
   async function signoutUser() {
     try {
       await api.signout(auth);
       localStorage.removeItem("auth");
+      localStorage.removeItem("user");
       window.location.reload();
     } catch (error) {
       console.log(error);
