@@ -12,10 +12,12 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { ThreeDots } from "react-loader-spinner";
+import useUser from "../../hooks/useUser";
 
 export default function SignIn() {
   const navigate = useNavigate();
   const { auth, signin } = useAuth();
+  const { setUser } = useUser();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (auth) {
@@ -39,18 +41,31 @@ export default function SignIn() {
 
     try {
       const { data } = await api.signin(user);
-      signin(data);
+      signin(data.token);
+      setUser(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/timeline");
     } catch (error) {
       console.log(error);
       setLoading(false);
-      Swal.fire({
-        title: "Oops :(",
-        text: "Something went wrong, Try again!",
-        background: "#c9002c",
-        confirmButtonColor: "#9f9adb",
-        color: "#fff",
-      });
+
+      if (error.response.status === 401) {
+        Swal.fire({
+          title: "Oops :(",
+          text: "Inavid e-mail address or password",
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
+        });
+      } else {
+        Swal.fire({
+          title: "Oops :(",
+          text: "Something went wrong, Try again!",
+          background: "#c9002c",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
+        });
+      }
     }
   }
   return (
