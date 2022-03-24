@@ -5,6 +5,11 @@ const Container = styled.div`
 
     width: 611px;
     height: 209px;
+    @media (max-width: 600px){
+        width:100%;
+        height: 190px;
+        border-radius: 0;
+    }
 
     display: flex;
 
@@ -17,22 +22,34 @@ const Img = styled.img`
     width: 50px;
     height: 50px;
 
+    @media (max-width: 600px){
+        display: none;
+    }
     border-radius: 50%;
     margin: 18px;
 `;
 
 const Form = styled.form`
     width: 100%;
-    margin-right: 22px;
+    margin-right: 25px;
+    @media (max-width: 600px){
+        margin-left: 22px;
+    }
     p{
         font-weight: 300;
         font-size: 20px;
         line-height: 24px;
+        @media (max-width: 600px){
+            font-size: 17px;
+            text-align: center;
+        }
 
         color: #707070;
         margin-top: 21px;
     }
     input{
+        all: unset;
+        box-sizing: border-box;
         background: #EFEFEF;
         border-radius: 5px;
         border: none;
@@ -48,6 +65,9 @@ const Form = styled.form`
     .description{
         height: 66px;
         margin-top: 5px;
+        @media (max-width: 600px){
+            height: 47px;
+        }
     }
     div{
         display: flex;
@@ -58,11 +78,19 @@ const Form = styled.form`
         background: #1877F2;
         border-radius: 5px;
 
+        font-weight: 700;
+        font-size: 14px;
+
         border: none;
 
         width: 112px;
         height: 31px;
         margin-top: 5px;
+
+        @media (max-width: 600px){
+            height: 22px;
+            font-size: 13px;
+        }
     }
 `;
 

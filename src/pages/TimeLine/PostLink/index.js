@@ -2,24 +2,32 @@ import { Container, Form, Img } from "./style";
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import api from "../../../services/api";
+import Swal from "sweetalert2";
 
 export default function PostLink() {
     const [isLoading, setIsLoading] = useState(false);
     const [link, setLink] = useState("");
-    const [description, setDescription] = useState("");
+    const [postText, setPostText] = useState("");
     const { auth } = useAuth();
-
-    function handleSubmit(e) {
+    console.log(auth)
+    async function handleSubmit(e) {
         e.preventDefault();
         setIsLoading(true);
         try{
-            api.sendPost({link, description } , auth.token);
+            await api.sendPost({link, postText } , auth);
             setIsLoading(false);
-            alert("deu bom");
+            setLink("");
+            setPostText("");
         }
         catch{
             setIsLoading(false);
-            alert("erro");
+            Swal.fire({
+                title: "Oops :(",
+                text: "There was an error publishing your link",
+                background: "#d66767",
+                confirmButtonColor: "#9f9adb",
+                color: "#fff",
+              });
         }
     }
     
@@ -38,14 +46,16 @@ export default function PostLink() {
                     onChange={(e) => setLink(e.target.value)}
                     value={link}
                     required
+                    disabled={isLoading}
                 />
                 <input
                     className="description"
                     type="text"
                     placeholder="Awesome article about #javascript"
                     name="description"
-                    onChange={(e) => setDescription(e.target.value)}
-                    value={description}
+                    onChange={(e) => setPostText(e.target.value)}
+                    value={postText}
+                    disabled={isLoading}
                 />
                 <div>
                     <button type="submit" disabled={isLoading}>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:4000";
 
 function createConfig(token) {
   return {
@@ -21,10 +21,11 @@ async function signin(data) {
 
 async function sendPost(body, token) {
   const config = createConfig(token);
-  await axios.post(`${BASE_URL}/postlink`, body, config)
+  await axios.post(`${BASE_URL}/timeline`, body, config)
 }
 const api = {
   createUser,
   signin,
+  sendPost
 };
 export default api;
