@@ -1,5 +1,5 @@
 import { Container, Form, Img } from "./style";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
@@ -9,7 +9,7 @@ export default function PostLink() {
     const [link, setLink] = useState("");
     const [postText, setPostText] = useState("");
     const { auth } = useAuth();
-    console.log(auth)
+ 
     async function handleSubmit(e) {
         e.preventDefault();
         setIsLoading(true);
@@ -18,6 +18,8 @@ export default function PostLink() {
             setIsLoading(false);
             setLink("");
             setPostText("");
+            
+            
         }
         catch{
             setIsLoading(false);
@@ -32,6 +34,7 @@ export default function PostLink() {
     }
     
     return (
+        
         <Container>
             <div>
                 <Img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="user" />
