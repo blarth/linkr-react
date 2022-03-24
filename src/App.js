@@ -15,7 +15,11 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
+<<<<<<< HEAD
           <Route path="/signup" element={<SignUp />} />
+=======
+          <Route path="/signup" element={<SignUp />} />    
+>>>>>>> f2717976e09209ad7d80b1244e05334ce1130308
           <Route path="/timeline" element={<TimeLine />} />
         </Routes>
       </BrowserRouter>
