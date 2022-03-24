@@ -11,7 +11,6 @@ import useUser from "../hooks/useUser";
 export default function Header() {
   const [logout, setLogout] = useState();
   const { auth } = useAuth();
-  const [userImage, setUserImage] = useState();
   const navigate = useNavigate();
   let { user, setUser } = useUser();
 
@@ -25,7 +24,6 @@ export default function Header() {
       navigate("/");
       return;
     }
-    user && setUserImage(user.image);
   }
 
   async function signoutUser() {
@@ -56,9 +54,9 @@ export default function Header() {
             alt={logout ? "Up Arrow" : "Down Arrow"}
             className="arrow"
           />
-          {userImage && (
+          {user && (
             <img
-              src={`${userImage}`}
+              src={`${user.image}`}
               className="profile-image"
               alt="User profile "
             />
