@@ -19,7 +19,7 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (auth) {
-      navigate("/home");
+      navigate("/timeline");
     }
   }, [auth]);
 
@@ -40,7 +40,7 @@ export default function SignIn() {
     try {
       const { data } = await api.signin(user);
       signin(data);
-      navigate("/home");
+      navigate("/timeline");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -83,7 +83,7 @@ export default function SignIn() {
           {loading ? (
             <ThreeDots color="#FFFFFF" height={13} width={100} />
           ) : (
-            "Sign Up"
+            "Sign In"
           )}
         </Button>
         <StyledLink to="/signup">First time? Create an account!</StyledLink>
