@@ -16,6 +16,7 @@ display:flex;
 justify-content: center;
 align-items: center;
 margin-bottom: 20px;
+cursor: pointer;
 
 @media (max-width: 600px){
     height: 115px;

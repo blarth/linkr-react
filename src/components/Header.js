@@ -17,6 +17,7 @@ export default function Header() {
   useEffect(() => {
     getUser();
     setUser(JSON.parse(localStorage.getItem("user")));
+    //eslint-disable-next-line
   }, []);
 
   function getUser() {
