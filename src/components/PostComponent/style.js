@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
 height: 276px;
@@ -72,6 +73,11 @@ color: #B7B7B7;
 }
 `;
 
+const StyledHashtag = styled(Link)`
+	font-weight: 700;
+	color: #fff;
+`
+
 
 
 export {
@@ -80,4 +86,5 @@ export {
     ContainerPost,
     User,
     Description,
+    StyledHashtag
 }
