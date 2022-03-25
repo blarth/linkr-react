@@ -55,13 +55,24 @@ export default function SignUp() {
       navigate("/");
     } catch (error) {
       setLoading(false);
-      Swal.fire({
-        title: "Oops :(",
-        text: "Something went wrong, Try again!",
-        background: "#d66767",
-        confirmButtonColor: "#9f9adb",
-        color: "#fff",
-      });
+
+      if (error.response.status === 409) {
+        Swal.fire({
+          title: "Oops :(",
+          text: "Email is already in use",
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
+        });
+      } else {
+        Swal.fire({
+          title: "Oops :(",
+          text: "Something went wrong, Try again!",
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
+        });
+      }
     }
   }
   return (
@@ -112,7 +123,7 @@ export default function SignUp() {
             "Sign Up"
           )}
         </Button>
-        <StyledLink to="/">First time? Create an account!</StyledLink>
+        <StyledLink to="/">Switch back to log in</StyledLink>
       </Form>
     </Container>
   );

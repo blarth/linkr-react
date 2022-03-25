@@ -1,3 +1,5 @@
+import Header from "../../components/Header";
+
 import PostLink from "./PostLink";
 import Post from "../../components/PostComponent";
 import api from "../../services/api";
@@ -7,6 +9,7 @@ import {Container} from "./style"
 import Header from "../../components/Header";
 
 export default function TimeLine() {
+
     const { auth } = useAuth();
     const [data, setData] = useState(null)
     
@@ -44,3 +47,4 @@ export default function TimeLine() {
         </Container>
     );
 }
+
