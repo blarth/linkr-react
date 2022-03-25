@@ -4,6 +4,7 @@ import api from "../../services/api";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import {Container} from "./style"
+import Header from "../../components/Header";
 
 export default function TimeLine() {
     const { auth } = useAuth();
@@ -15,7 +16,7 @@ export default function TimeLine() {
       
       promise.then((response) => {
         
-        setData(response.data);
+        setData([...response.data]);
         
       });
       promise.catch((error) => {
@@ -30,8 +31,9 @@ export default function TimeLine() {
    
     
     return(
-        <Container> 
-            <h3>timeline</h3>
+        <Container>
+            <Header></Header> 
+            <h4>timeline</h4>
             <PostLink loadPost={loadPost}></PostLink>
             {data === null ? <h3>Loading..</h3> : data?.length === 0 ? <h3>There are no posts yet</h3> : data?.map((post) => (
             <Post

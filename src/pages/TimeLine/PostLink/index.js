@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
 
-export default function PostLink() {
+export default function PostLink({loadPost}) {
     const [isLoading, setIsLoading] = useState(false);
     const [link, setLink] = useState("");
     const [postText, setPostText] = useState("");
@@ -14,11 +14,12 @@ export default function PostLink() {
         e.preventDefault();
         setIsLoading(true);
         try{
-            await api.sendPost({link, postText } , auth);
+            const posts = await api.sendPost({link, postText } , auth);
+            console.log(posts)
             setIsLoading(false);
             setLink("");
             setPostText("");
-            
+            loadPost()
             
         }
         catch{
