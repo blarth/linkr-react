@@ -1,4 +1,3 @@
-import Header from "../../components/Header";
 
 import PostLink from "./PostLink";
 import Post from "../../components/PostComponent";

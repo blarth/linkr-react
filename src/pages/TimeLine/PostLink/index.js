@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
+import useUser from "../../../hooks/useUser";
 
 export default function PostLink({loadPost}) {
     const [isLoading, setIsLoading] = useState(false);
     const [link, setLink] = useState("");
     const [postText, setPostText] = useState("");
     const { auth } = useAuth();
+    const {user} = useUser();
  
     async function handleSubmit(e) {
         e.preventDefault();
@@ -38,7 +40,7 @@ export default function PostLink({loadPost}) {
         
         <Container>
             <div>
-                <Img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="user" />
+                <Img src={user?.image} alt="user" />
             </div>
             <Form onSubmit={(e) => handleSubmit(e)}>
                 <p>What are you going to share today?</p>
