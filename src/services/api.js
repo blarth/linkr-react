@@ -32,11 +32,11 @@ async function getPost(token) {
   return promisse;
 }
 
-async function getPostbyUserId(token, id){
+async function getPostbyUserId(token, id) {
   const config = createConfig(token);
   const promisse = await axios.get(`${BASE_URL}/user/${id}`, config);
-  
-  return promisse
+
+  return promisse;
 }
 
 async function signout(token) {
@@ -57,7 +57,8 @@ async function likePost(token, postId, status) {
 
 async function getPostByHashtag(token, name) {
   const config = createConfig(token);
-  await axios.get(`/posts/hashtag/${name}`);
+  const posts = await axios.get(`${BASE_URL}/posts/hashtags/${name}`, config);
+  return posts;
 }
 const api = {
   createUser,
@@ -68,6 +69,7 @@ const api = {
   getUser,
   getPostbyUserId,
   likePost,
+  getPostByHashtag,
 };
 
 export default api;

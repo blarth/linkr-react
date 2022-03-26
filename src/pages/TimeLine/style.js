@@ -33,9 +33,9 @@ const Container = styled.div`
     color: #ffffff;
     margin-top: 150px;
     margin-bottom: 43px;
-
-    align-self: flex-start;
+    padding-right: 600px;
     @media (max-width: 600px) {
+      align-self: flex-start;
       margin-top: 100px;
     }
   }

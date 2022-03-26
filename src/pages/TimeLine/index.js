@@ -31,10 +31,7 @@ export default function TimeLine() {
       }
     });
   }
-  useEffect(
-    loadPost, // eslint-disable-next-line
-    []
-  );
+  useEffect(loadPost, []);
 
   return (
     <Container>
