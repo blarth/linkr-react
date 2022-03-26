@@ -23,9 +23,16 @@ async function sendPost(body, token) {
   return promisse
 }
 
-async function getPost(token){
+async function getPost(token) {
   const config = createConfig(token);
   const promisse = await axios.get(`${process.env.REACT_APP_BASE_URL}/timeline`, config);
+
+  return promisse;
+}
+
+async function getPostbyUserId(token, id){
+  const config = createConfig(token);
+  const promisse = await axios.get(`${process.env.REACT_APP_BASE_URL}/user/${id}`, config);
   
   return promisse
 }
@@ -45,6 +52,11 @@ async function getHashtags(){
   const promise = await axios.get(`${process.env.REACT_APP_BASE_URL}/hashtags`)
   return promise;
 }
+
+async function likePost(token, postId, status) {
+  const config = createConfig(token);
+  await axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}/${status}`, null, config);
+}
 const api = {
   createUser,
   signin,
@@ -52,7 +64,9 @@ const api = {
   getPost,
   signout,
   getUser,
-  getHashtags
+  getHashtags,
+  getPostbyUserId,
+  likePost
 };
 
-export default api
+export default api;

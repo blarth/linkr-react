@@ -1,5 +1,5 @@
 import { Container, Form, Img } from "./style";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
