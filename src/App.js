@@ -9,8 +9,6 @@ import { AuthProvider } from "./context/authContext";
 import { UserProvider } from "./context/userContext";
 import UserTimeLine from "./pages/UserTimeline";
 
-import Sidebar from "./components/hashtagsSidebar/index.js";
-
 export default function App() {
   const [user, setUser] = useState();
   return (
