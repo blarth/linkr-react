@@ -10,9 +10,8 @@ export default function TimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
 
-  console.log(data);
   function loadPost() {
-    const promise = auth && api.getPost(auth);
+    const promise = auth && api.getPostByHashtag(auth);
     if (!promise) {
       return;
     }
@@ -31,7 +30,7 @@ export default function TimeLine() {
   return (
     <Container>
       <Header></Header>
-      <h4>timeline</h4>
+      <h4>#hashtag</h4>
       <PostLink loadPost={loadPost}></PostLink>
       {data === null ? (
         <h3>Loading..</h3>

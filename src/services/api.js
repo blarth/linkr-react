@@ -47,6 +47,11 @@ async function likePost(token, postId, status) {
   const config = createConfig(token);
   await axios.put(`${BASE_URL}/posts/${postId}/${status}`, null, config);
 }
+
+async function getPostByHashtag(token, name) {
+  const config = createConfig(token);
+  await axios.get(`/posts/hashtag/${name}`);
+}
 const api = {
   createUser,
   signin,
