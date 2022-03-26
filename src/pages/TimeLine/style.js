@@ -11,14 +11,13 @@ overflow: scroll;
 
 
     h3{
-        height: 64px;
-        width: 145px;
+        height: 64px; 
         font-family: Oswald;
         font-size: 43px;
         font-style: normal;
         font-weight: 700;
         line-height: 64px;
-        text-align: left;
+        text-align: center;
         color: #FFFFFF;
     }
 

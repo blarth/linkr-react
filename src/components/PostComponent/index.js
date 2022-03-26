@@ -56,7 +56,7 @@ export default function Post({
         />
       </LeftContainer>
       <RightContainer>
-        <User onClick={() => redirectToUserPage}>{userName}</User>
+        <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
           <Description>
             <ReactHashtag

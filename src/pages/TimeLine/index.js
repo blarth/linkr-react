@@ -5,48 +5,36 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Container } from "./style";
 import Header from "../../components/Header";
+import Swal from "sweetalert2";
 
 export default function TimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
 
-<<<<<<< HEAD
-    const { auth } = useAuth();
-    const [data, setData] = useState(null)
-    
-     function loadPost() {
-    
-      const promise = api.getPost(auth);
-      
-      promise.then((response) => {
-        
-        setData([...response.data]);
-        
-      });
-      promise.catch((error) => {
-        console.log(error.response);
-        alert("An error occured while trying to fetch the posts, please refresh the page")
-      });
-    }
-    useEffect(loadPost, // eslint-disable-next-line 
-    [])
-    
-=======
-  console.log(data);
   function loadPost() {
-    const promise = api.getPost(auth);
+    const promise = auth && api.getPost(auth);
+    if (!promise) {
+      return;
+    }
     promise.then((response) => {
       setData([...response.data]);
     });
     promise.catch((error) => {
       console.log(error.response);
-      alert(
-        "An error occured while trying to fetch the posts, please refresh the page"
-      );
+      if (auth) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Please, reload the page!</a>',
+        });
+      }
     });
   }
-  useEffect(loadPost, []);
->>>>>>> main
+  useEffect(
+    loadPost, // eslint-disable-next-line
+    []
+  );
 
   return (
     <Container>
