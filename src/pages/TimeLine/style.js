@@ -40,5 +40,23 @@ const Container = styled.div`
     }
   }
 `;
+const ContainerInfo = styled.div`
+  width: 600px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-export { Container };
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    font-size: 33px;
+
+    & > h4 {
+      text-overflow: ellipsis;
+    }
+  }
+`;
+
+export { Container, ContainerInfo };
