@@ -21,13 +21,20 @@ async function signin(data) {
 
 async function sendPost(body, token) {
   const config = createConfig(token);
-  const promisse = await axios.post(`${BASE_URL}/timeline`, body, config)
-  return promisse
+  const promisse = await axios.post(`${BASE_URL}/timeline`, body, config);
+  return promisse;
 }
 
-async function getPost(token){
+async function getPost(token) {
   const config = createConfig(token);
   const promisse = await axios.get(`${BASE_URL}/timeline`, config);
+
+  return promisse;
+}
+
+async function getPostbyUserId(token, id){
+  const config = createConfig(token);
+  const promisse = await axios.get(`${BASE_URL}/user/${id}`, config);
   
   return promisse
 }
@@ -42,6 +49,11 @@ async function getUser(token) {
   const user = await axios.get(`${BASE_URL}/users`, config);
   return user;
 }
+
+async function likePost(token, postId, status) {
+  const config = createConfig(token);
+  await axios.put(`${BASE_URL}/posts/${postId}/${status}`, null, config);
+}
 const api = {
   createUser,
   signin,
@@ -49,6 +61,8 @@ const api = {
   getPost,
   signout,
   getUser,
+  getPostbyUserId,
+  likePost,
 };
 
-export default api
+export default api;
