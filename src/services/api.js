@@ -42,6 +42,13 @@ async function getUser(token) {
   const user = await axios.get(`${BASE_URL}/users`, config);
   return user;
 }
+
+async function deletePost(body, token) {
+  const config = createConfig(token);
+  const promisse = await axios.post(`${BASE_URL}/timeline`, body, config)
+  return promisse
+}
+
 const api = {
   createUser,
   signin,
@@ -49,6 +56,7 @@ const api = {
   getPost,
   signout,
   getUser,
+  deletePost,
 };
 
 export default api
