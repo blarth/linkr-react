@@ -30,6 +30,16 @@ const HashtagsContainer = styled.div`
 	border-radius: 0 0 16px 16px;
 	padding: 20px 0 12px 20px;
 	gap: 10px;
+	a{
+		color: #fff;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	> * {
+		&:last-child {
+			margin-bottom: 20px;
+		}
+	}
 `
 
 export { THContainer, TrendingContainer, HashtagsContainer }
