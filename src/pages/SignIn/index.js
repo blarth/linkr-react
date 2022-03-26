@@ -22,7 +22,7 @@ export default function SignIn() {
   useEffect(() => {
     if (auth) {
       navigate("/timeline");
-    }
+    }//eslint-disable-next-line
   }, [auth]);
 
   const [formData, setFormData] = useState({

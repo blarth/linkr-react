@@ -11,12 +11,13 @@ const Container = styled.div`
 
   h3 {
     height: 64px;
-    text-align: center;
+
     font-family: Oswald;
     font-size: 43px;
     font-style: normal;
     font-weight: 700;
     line-height: 64px;
+    text-align: center;
     color: #ffffff;
   }
 
@@ -32,11 +33,10 @@ const Container = styled.div`
     color: #ffffff;
     margin-top: 150px;
     margin-bottom: 43px;
-    padding-right: 600px;
+
+    align-self: flex-start;
     @media (max-width: 600px) {
-      padding-right: 350px;
       margin-top: 100px;
-      align-self: flex-start;
     }
   }
 `;
