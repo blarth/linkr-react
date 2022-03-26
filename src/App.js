@@ -8,6 +8,8 @@ import Post from "./components/PostComponent";
 import { AuthProvider } from "./context/authContext";
 import { UserProvider } from "./context/userContext";
 
+import Sidebar from "./components/hashtagsSidebar/index.js";
+
 export default function App() {
   const [user, setUser] = useState();
   return (
@@ -18,6 +20,7 @@ export default function App() {
             <Route path="/" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/timeline" element={<TimeLine />} />
+            <Route path="/hashtag" element={<Sidebar />}/>
           </Routes>
         </BrowserRouter>
       </UserProvider>
