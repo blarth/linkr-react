@@ -52,8 +52,7 @@ const ContainerPost = styled.div`
 
 const User = styled.div`
   height: 23px;
-  width: 23px;
-
+  width: 100%;
   font-family: "Lato", sans-serif;
   font-size: 19px;
   font-weight: 400;

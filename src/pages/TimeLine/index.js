@@ -3,7 +3,7 @@ import Post from "../../components/PostComponent";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { Container } from "./style";
+import { Container, ContainerInfo } from "./style";
 import Header from "../../components/Header";
 import Swal from "sweetalert2";
 
@@ -39,7 +39,9 @@ export default function TimeLine() {
   return (
     <Container>
       <Header></Header>
-      <h4>timeline</h4>
+      <ContainerInfo>
+        <h4>timeline</h4>
+      </ContainerInfo>
       <PostLink loadPost={loadPost}></PostLink>
       {data === null ? (
         <h3>Loading..</h3>
