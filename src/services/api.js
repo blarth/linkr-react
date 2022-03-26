@@ -32,6 +32,13 @@ async function getPost(token) {
   return promisse;
 }
 
+async function getPostbyUserId(token, id){
+  const config = createConfig(token);
+  const promisse = await axios.get(`${BASE_URL}/user/${id}`, config);
+  
+  return promisse
+}
+
 async function signout(token) {
   const config = createConfig(token);
   await axios.delete(`${BASE_URL}/signout`, config);
@@ -54,6 +61,7 @@ const api = {
   getPost,
   signout,
   getUser,
+  getPostbyUserId,
   likePost,
 };
 
