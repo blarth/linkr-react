@@ -59,7 +59,7 @@ export default function TimeLine() {
         ) : data?.length === 0 ? (
           <h3>There are no posts yet</h3>
         ) : (
-          data?.map((post) => <Post key={post.id} {...post} />)
+          data?.map((post) => <Post key={post.id} {...post} loadPost={loadPost} />)
         )}
       </Container>
       <Sidebar loadHashTag={loadHashTag} hashtags={hashtags} />

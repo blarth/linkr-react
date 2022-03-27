@@ -18,12 +18,15 @@ import useAuth from "../../hooks/useAuth";
 import RedHeart from "../../assets/redheart.svg";
 import WhiteHeart from "../../assets/whiteheart.svg";
 import { useNavigate } from "react-router-dom";
+import DeletePost from "./DeletePost";
+import useUser from "../../hooks/useUser";
 import ReactHashtag from "@mdnm/react-hashtag";
 import { useEffect } from "react";
 import ReactTooltip from 'react-tooltip';
 import useUser from "../../hooks/useUser";
 
 export default function Post({
+  id,
   postText,
   metadata,
   userName,
@@ -31,6 +34,7 @@ export default function Post({
   userId,
   isLike,
   postId,
+  loadPost,
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
@@ -109,6 +113,7 @@ export default function Post({
 
       </LeftContainer>
       <RightContainer>
+        {user.id === userId && <DeletePost loadPost={loadPost} id = {id}/>}
         <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
           <Description>

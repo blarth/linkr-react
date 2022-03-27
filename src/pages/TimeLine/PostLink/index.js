@@ -18,7 +18,6 @@ export default function PostLink({loadPost, loadHashTag}) {
         setIsLoading(true);
         try{
             const posts = await api.sendPost({link, postText } , auth);
-            console.log(posts)
             setIsLoading(false);
             setLink("");
             setPostText("");
