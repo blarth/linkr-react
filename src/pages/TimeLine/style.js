@@ -29,6 +29,8 @@ const Container = styled.div`
 
     color: #ffffff;
     align-self: flex-start;
+
+    overflow-x: visible;
   }
 `;
 const ContainerInfo = styled.div`
@@ -42,6 +44,7 @@ const ContainerInfo = styled.div`
   @media (max-width: 600px) {
     font-size: 33px;
     padding-left: 10px;
+
     & > h4 {
       text-overflow: ellipsis;
     }
