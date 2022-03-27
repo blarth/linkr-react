@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import api from "../../services/api.js";
 import { Link } from "react-router-dom";
 
+import { ThreeDots } from "react-loader-spinner";
+
 export default function Sidebar() {
   const [hashtags, setHashtags] = useState("");
 
@@ -24,7 +26,10 @@ export default function Sidebar() {
     return (
       <THContainer>
         <TrendingContainer>trending</TrendingContainer>
-        <HashtagsContainer>loading...</HashtagsContainer>
+        <HashtagsContainer>
+          {" "}
+          <ThreeDots color="#FFFFFF" height={13} width={100} />
+        </HashtagsContainer>
       </THContainer>
     );
   }

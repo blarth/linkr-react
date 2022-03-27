@@ -124,7 +124,7 @@ const Top = styled.header`
   }
 `;
 const Logout = styled.div`
-  position: absolute;
+  position: fixed;
   width: 150px;
   height: 47px;
   right: 0;

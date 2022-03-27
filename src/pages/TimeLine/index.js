@@ -7,6 +7,7 @@ import { Container, ContainerInfo, MainContainer } from "./style";
 import Header from "../../components/Header";
 import Swal from "sweetalert2";
 import Sidebar from "../../components/hashtagsSidebar";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function TimeLine() {
   const { auth } = useAuth();
@@ -43,7 +44,10 @@ export default function TimeLine() {
         </ContainerInfo>
         <PostLink loadPost={loadPost}></PostLink>
         {data === null ? (
-          <h3>Loading..</h3>
+          <h3>
+            {" "}
+            <ThreeDots color="#FFFFFF" height={13} width={100} />
+          </h3>
         ) : data?.length === 0 ? (
           <h3>There are no posts yet</h3>
         ) : (
