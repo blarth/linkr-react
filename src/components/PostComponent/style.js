@@ -98,6 +98,16 @@ const Description = styled.div`
     width: 288px;
   }
 `;
+const InfoLikes = styled.span`
+  height: 13px;
+  width: 50px;
+  color: #FFFFFF;
+  font-family: Lato;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+
+`;
 
 const StyledHashtag = styled(Link)`
 	font-weight: 700;
@@ -118,6 +128,7 @@ export {
     StyledHashtag,
     LeftContainer,
     LikeButton,
-    RightContainer
+    RightContainer,
+    InfoLikes
 }
 

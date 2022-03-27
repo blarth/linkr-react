@@ -11,6 +11,7 @@ import Sidebar from "../../components/hashtagsSidebar";
 export default function TimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
+  const [hashtags, setHashtags] = useState("");
 
   function loadPost() {
     const promise = auth && api.getPost(auth);
@@ -20,6 +21,7 @@ export default function TimeLine() {
     promise.then((response) => {
       setData([...response.data]);
     });
+    
     promise.catch((error) => {
       console.log(error.response);
       if (auth) {
@@ -32,7 +34,17 @@ export default function TimeLine() {
       }
     });
   }
-  useEffect(loadPost, []);
+  function loadHashTag(){
+    const promise = api.getHashtags();
+    promise
+      .then((res) => setHashtags(res.data))
+      .catch((error) => console.log(error));
+  } 
+  
+  useEffect(() => {
+    loadPost()
+    loadHashTag()
+  }, []);
 
   return (
     <MainContainer>
@@ -41,7 +53,7 @@ export default function TimeLine() {
         <ContainerInfo>
           <h4>timeline</h4>
         </ContainerInfo>
-        <PostLink loadPost={loadPost}></PostLink>
+        <PostLink loadPost={loadPost} loadHashTag={loadHashTag}></PostLink>
         {data === null ? (
           <h3>Loading..</h3>
         ) : data?.length === 0 ? (
@@ -50,7 +62,7 @@ export default function TimeLine() {
           data?.map((post) => <Post key={post.id} {...post} loadPost={loadPost} />)
         )}
       </Container>
-      <Sidebar />
+      <Sidebar loadHashTag={loadHashTag} hashtags={hashtags} />
     </MainContainer>
   );
 }
