@@ -13,28 +13,42 @@ async function createUser(user) {
 }
 
 async function signin(data) {
-  const token = await axios.post(`${process.env.REACT_APP_BASE_URL}/signin`, data);
+  const token = await axios.post(
+    `${process.env.REACT_APP_BASE_URL}/signin`,
+    data
+  );
   return token;
 }
 
 async function sendPost(body, token) {
   const config = createConfig(token);
-  const promisse = await axios.post(`${process.env.REACT_APP_BASE_URL}/timeline`, body, config)
-  return promisse
+  const promisse = await axios.post(
+    `${process.env.REACT_APP_BASE_URL}/timeline`,
+    body,
+    config
+  );
+  return promisse;
 }
 
 async function getPost(token) {
   const config = createConfig(token);
-  const promisse = await axios.get(`${process.env.REACT_APP_BASE_URL}/timeline`, config);
+  const promisse = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/timeline`,
+    config
+  );
 
   return promisse;
 }
 
-async function getPostbyUserId(token, id){
+async function getPostbyUserId(token, id) {
   const config = createConfig(token);
-  const promisse = await axios.get(`${process.env.REACT_APP_BASE_URL}/user/${id}`, config);
-  
-  return promisse
+
+  const promisse = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/user/${id}`,
+    config
+  );
+
+  return promisse;
 }
 
 async function signout(token) {
@@ -44,18 +58,34 @@ async function signout(token) {
 
 async function getUser(token) {
   const config = createConfig(token);
-  const user = await axios.get(`${process.env.REACT_APP_BASE_URL}/users`, config);
+  const user = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/users`,
+    config
+  );
   return user;
 }
 
-async function getHashtags(){
-  const promise = await axios.get(`${process.env.REACT_APP_BASE_URL}/hashtags`)
+async function getHashtags() {
+  const promise = await axios.get(`${process.env.REACT_APP_BASE_URL}/hashtags`);
   return promise;
 }
 
 async function likePost(token, postId, status) {
   const config = createConfig(token);
-  await axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}/${status}`, null, config);
+  await axios.put(
+    `${process.env.REACT_APP_BASE_URL}/posts/${postId}/${status}`,
+    null,
+    config
+  );
+}
+
+async function getPostByHashtag(token, name) {
+  const config = createConfig(token);
+  const posts = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/posts/hashtags/${name}`,
+    config
+  );
+  return posts;
 }
 const api = {
   createUser,
@@ -66,7 +96,8 @@ const api = {
   getUser,
   getHashtags,
   getPostbyUserId,
-  likePost
+  likePost,
+  getPostByHashtag,
 };
 
 export default api;

@@ -1,70 +1,62 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Container = styled.div`
-width: 100%;
-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 16px;
-overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
 
+  h3 {
+    height: 64px;
 
-    h3{
-        height: 64px; 
-        font-family: Oswald;
-        font-size: 43px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 64px;
-        text-align: center;
-        color: #FFFFFF;
+    font-family: Oswald;
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  h4 {
+    font-family: Oswald;
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+    text-align: left;
+    color: #ffffff;
+    align-self: flex-start;
+    @media (max-width: 600px) {
+      align-self: flex-start;
+      width: 100%;
     }
-
-    h4{
-        height: 64px;
-        width: 145px;
-        font-family: Oswald;
-        font-size: 43px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 64px;
-        text-align: left;
-        color: #FFFFFF;
-        margin-top: 150px;
-        margin-bottom: 43px;
-        
-        align-self: flex-start;
-        @media (max-width: 600px){
-            
-            margin-top: 100px
-            
-        }
-    }
+  }
 `;
 const ContainerInfo = styled.div`
-width: 600px;
-height: 300px;
-display: flex;
-align-items: center;
-justify-content: flex-start;
+  margin-top: 110px;
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-   
-    @media (max-width: 600px){
-            width: 100%;
-            height: 200px; 
-            margin-bottom: 15px;
-            font-size: 33px;
-         
-        &> h4  {
-        text-overflow: ellipsis;
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    font-size: 33px;
+
+    & > h4 {
+      text-overflow: ellipsis;
     }
-    
-            
-        }  
+  }
+`;
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 `;
 
-export {
-    Container,
-    ContainerInfo
-}
+export { Container, ContainerInfo, MainContainer };

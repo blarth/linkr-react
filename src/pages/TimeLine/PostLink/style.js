@@ -6,12 +6,12 @@ const Container = styled.div`
   width: 611px;
   height: 209px;
   margin-bottom: 10px;
+
   @media (max-width: 600px) {
     width: 100%;
     height: 190px;
     border-radius: 0;
   }
-
   display: flex;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
