@@ -79,6 +79,11 @@ async function likePost(token, postId, status) {
   );
 }
 
+async function getLikes(id){
+  const promise = await axios.get(`${process.env.REACT_APP_BASE_URL}/likes/${id}`);
+  return promise;
+}
+
 async function getPostByHashtag(token, name) {
   const config = createConfig(token);
   const posts = await axios.get(
@@ -98,6 +103,7 @@ const api = {
   getPostbyUserId,
   likePost,
   getPostByHashtag,
+  getLikes
 };
 
 export default api;

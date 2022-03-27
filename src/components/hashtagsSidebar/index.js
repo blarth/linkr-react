@@ -5,20 +5,16 @@ import {
 } from "../hashtagsSidebar/style.js";
 
 import { useState, useEffect } from "react";
-import api from "../../services/api.js";
+
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
-  const [hashtags, setHashtags] = useState("");
+export default function Sidebar({loadHashTag, hashtags}) {
+  
 
-  useEffect(() => {
-    const promise = api.getHashtags();
-    promise
-      .then((res) => setHashtags(res.data))
-      .catch((error) => console.log(error));
-  }, []);
+  useEffect(loadHashTag, []);
+  
 
-  console.log(hashtags);
+
 
   if (hashtags === "") {
     return (
@@ -33,7 +29,7 @@ export default function Sidebar() {
     <THContainer>
       <TrendingContainer>trending</TrendingContainer>
       <HashtagsContainer>
-        {hashtags.map((item) => (
+        {hashtags?.map((item) => (
           <Link to={`/hashtag/${item.name.slice(1)}`}>{item.name}</Link>
         ))}
       </HashtagsContainer>
