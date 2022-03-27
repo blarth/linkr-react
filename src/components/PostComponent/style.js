@@ -69,6 +69,7 @@ const LeftContainer = styled.div`
   gap: 23px;
 `;
 const RightContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
