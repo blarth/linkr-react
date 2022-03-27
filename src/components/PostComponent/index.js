@@ -20,6 +20,7 @@ import DeletePost from "./DeletePost";
 import useUser from "../../hooks/useUser";
 
 export default function Post({
+  id,
   postText,
   metadata,
   userName,
@@ -27,9 +28,11 @@ export default function Post({
   userId,
   isLike,
   postId,
+  loadPost,
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
+  const {user} = useUser();
   const { auth } = useAuth();
   function redirectToUserPage() {
     navigate(`/user/${userId}`);
@@ -56,6 +59,7 @@ export default function Post({
         />
       </LeftContainer>
       <RightContainer>
+        {user.id === userId && <DeletePost loadPost={loadPost} id = {id}/>}
         <User onClick={() => redirectToUserPage}>{userName}</User>
         <ContainerPost>
           <Description>{postText}</Description>

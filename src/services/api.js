@@ -25,6 +25,12 @@ async function sendPost(body, token) {
   return promisse;
 }
 
+async function deletePost(id, token) {
+  const config = createConfig(token);
+  const promisse = await axios.delete(`${BASE_URL}/deletepost/${id}`, config);
+  return promisse;
+}
+
 async function getPost(token) {
   const config = createConfig(token);
   const promisse = await axios.get(`${BASE_URL}/timeline`, config);
@@ -55,6 +61,7 @@ const api = {
   signout,
   getUser,
   likePost,
+  deletePost,
 };
 
 export default api;

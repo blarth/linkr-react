@@ -1,5 +1,13 @@
 import styled from "styled-components"
 
+const Container = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 0;
+    background: transparent;
+    border: none;
+`;
+
 const ButtonDelete = styled.button`
     all: unset;
     background-color: #1877F2;
@@ -40,11 +48,6 @@ const ButtonNotDelete = styled.button`
 
 const ButtonDeletePost = styled.button`
     all: unset;
-    display: flex;
-    justify-content: end;
-    img{
-        padding-top: 20px;
-    }
 `;
 
 const Form = styled.form`
@@ -81,4 +84,5 @@ export {
     Form,
     TextModal,
     ButtonDeletePost,
+    Container,
 }

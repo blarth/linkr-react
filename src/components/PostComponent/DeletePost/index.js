@@ -10,13 +10,15 @@ import {
     ButtonNotDelete,
     ButtonDeletePost,
     Form,
-    TextModal
+    TextModal,
+    Container,
 } from "./style";
+import { useState } from 'react';
+import { InfinitySpin } from 'react-loader-spinner';
 
-
-
-export default function DeletePost({id, metadata}) {
+export default function DeletePost({id, loadPost}) {
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { auth } = useAuth();
     const customStyles = {
         content: {
@@ -33,34 +35,36 @@ export default function DeletePost({id, metadata}) {
 
     function openModal() {
         setIsOpen(true);
-        console.log(metadata)
     }
 
     function closeModal() {
         setIsOpen(false);
     }
 
-    async function deletingPost(){
+    async function deletingPost(e){
+        e.preventDefault();
+        setIsLoading(true);
         try{
-            const dell = await api.deletePost(id , auth);
-            //setIsLoading(false);
-            return(dell)
+            await api.deletePost(id, auth);
+            loadPost();
+            setIsLoading(false);
+            closeModal();
         }
         catch{
-            //setIsLoading(false);
-            alert("deu bom")
+            setIsLoading(false);
             Swal.fire({
                 title: "Oops :(",
-                text: "There was an error publishing your link",
+                text: "There was an error deleting your link",
                 background: "#d66767",
                 confirmButtonColor: "#9f9adb",
                 color: "#fff",
             });
+            closeModal();
         }
     }
 
     return (
-        <>
+        <Container>
             <ButtonDeletePost onClick={openModal}><img src={imageDelete} alt="delete" /></ButtonDeletePost>
             <Modal
                 isOpen={modalIsOpen}
@@ -69,12 +73,12 @@ export default function DeletePost({id, metadata}) {
                 contentLabel="Example Modal"
                 ariaHideApp={false}
             >
-                <TextModal>Are you sure you want <br/> to delete this post?</TextModal>
+                {isLoading ? <TextModal><InfinitySpin color="grey" /> </TextModal>: <TextModal>Are you sure you want to delete this post?</TextModal>}
                 <Form>
                     <ButtonNotDelete onClick={closeModal}>No, go back</ButtonNotDelete>
-                    <ButtonDelete onClick={deletingPost}>Yes, delete it</ButtonDelete>
+                    <ButtonDelete onClick={(e) => deletingPost(e)}>Yes, delete it</ButtonDelete>
                 </Form>
             </Modal>
-        </>
+        </Container>
     );
 }
