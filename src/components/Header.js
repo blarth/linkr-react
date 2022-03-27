@@ -34,14 +34,10 @@ export default function Header() {
       localStorage.removeItem("user");
       window.location.reload();
     } catch (error) {
+      localStorage.removeItem("auth");
+      localStorage.removeItem("user");
+      window.location.reload();
       console.log(error);
-      Swal.fire({
-        title: "Oops :(",
-        text: "Failed to Logout",
-        background: "#c9002c",
-        confirmButtonColor: "#9f9adb",
-        color: "#fff",
-      });
     }
   }
 

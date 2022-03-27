@@ -11,8 +11,16 @@ import Sidebar from "../../components/hashtagsSidebar";
 export default function HashtagTimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
+  const [hashtags, setHashtags] = useState("");
 
   const { name: hashtagText } = useParams();
+
+  function loadHashTag() {
+    const promise = api.getHashtags();
+    promise
+      .then((res) => setHashtags(res.data))
+      .catch((error) => console.log(error));
+  }
 
   function loadPost() {
     const promise = auth && api.getPostByHashtag(auth, hashtagText);
@@ -26,7 +34,10 @@ export default function HashtagTimeLine() {
       console.log(error.response);
     });
   }
-  useEffect(loadPost, []);
+  useEffect(() => {
+    loadPost();
+    loadHashTag();
+  }, [hashtagText]);
 
   return (
     <MainContainer>
@@ -46,7 +57,7 @@ export default function HashtagTimeLine() {
           data?.map((post) => <Post key={post.id} {...post} />)
         )}
       </Container>
-      <Sidebar />
+      <Sidebar loadHashTag={loadHashTag} hashtags={hashtags} />
     </MainContainer>
   );
 }
