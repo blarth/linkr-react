@@ -23,7 +23,7 @@ import useUser from "../../hooks/useUser";
 import ReactHashtag from "@mdnm/react-hashtag";
 import { useEffect } from "react";
 import ReactTooltip from 'react-tooltip';
-import useUser from "../../hooks/useUser";
+
 
 export default function Post({
   id,
