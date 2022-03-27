@@ -1,48 +1,62 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Container = styled.div`
-width: 100%;
-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 16px;
-overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
 
+  h3 {
+    height: 64px;
 
-    h3{
-        height: 64px;
-        width: 145px;
-        font-family: Oswald;
-        font-size: 43px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 64px;
-        text-align: left;
-        color: #FFFFFF;
+    font-family: Oswald;
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  h4 {
+    font-family: Oswald;
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+    text-align: left;
+    color: #ffffff;
+    align-self: flex-start;
+    @media (max-width: 600px) {
+      align-self: flex-start;
+      width: 100%;
     }
+  }
+`;
+const ContainerInfo = styled.div`
+  margin-top: 110px;
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-    h4{
-        height: 64px;
-        width: 145px;
-        font-family: Oswald;
-        font-size: 43px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 64px;
-        text-align: left;
-        color: #FFFFFF;
-        margin-top: 150px;
-        margin-bottom: 43px;
-        padding-right: 600px;
-        @media (max-width: 600px){
-            padding-right: 350px;
-            margin-top: 100px
-            
-        }
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    font-size: 33px;
+
+    & > h4 {
+      text-overflow: ellipsis;
     }
+  }
+`;
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 `;
 
-export {
-    Container
-}
+export { Container, ContainerInfo, MainContainer };

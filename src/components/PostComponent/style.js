@@ -1,4 +1,7 @@
-import styled from "styled-components";
+
+import styled from "styled-components"
+import { Link } from "react-router-dom";
+
 
 const Container = styled.div`
   height: 276px;
@@ -49,8 +52,7 @@ const ContainerPost = styled.div`
 
 const User = styled.div`
   height: 23px;
-  width: 23px;
-
+  width: 100%;
   font-family: "Lato", sans-serif;
   font-size: 19px;
   font-weight: 400;
@@ -97,18 +99,25 @@ const Description = styled.div`
   }
 `;
 
+const StyledHashtag = styled(Link)`
+	font-weight: 700;
+	color: #fff;
+`
 const LikeButton = styled.img`
   width: 23px;
   cursor: pointer;
 `;
 
+
 export {
-  Container,
-  Avatar,
-  ContainerPost,
-  User,
-  Description,
-  LeftContainer,
-  LikeButton,
-  RightContainer,
-};
+    Container,
+    Avatar,
+    ContainerPost,
+    User,
+    Description,
+    StyledHashtag,
+    LeftContainer,
+    LikeButton,
+    RightContainer
+}
+

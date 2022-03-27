@@ -73,7 +73,7 @@ export default function DeletePost({id, loadPost}) {
                 contentLabel="Example Modal"
                 ariaHideApp={false}
             >
-                {isLoading ? <TextModal><InfinitySpin color="grey" /> </TextModal>: <TextModal>Are you sure you want to delete this post?</TextModal>}
+                {isLoading ? <TextModal><InfinitySpin color="grey" /> </TextModal>: <TextModal>Are you sure you want <br/> to delete this post?</TextModal>}
                 <Form>
                     <ButtonNotDelete onClick={closeModal}>No, go back</ButtonNotDelete>
                     <ButtonDelete onClick={(e) => deletingPost(e)}>Yes, delete it</ButtonDelete>

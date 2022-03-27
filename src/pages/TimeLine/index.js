@@ -3,40 +3,54 @@ import Post from "../../components/PostComponent";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { Container } from "./style";
+import { Container, ContainerInfo, MainContainer } from "./style";
 import Header from "../../components/Header";
+import Swal from "sweetalert2";
+import Sidebar from "../../components/hashtagsSidebar";
 
 export default function TimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
 
-  console.log(data);
   function loadPost() {
-    const promise = api.getPost(auth);
+    const promise = auth && api.getPost(auth);
+    if (!promise) {
+      return;
+    }
     promise.then((response) => {
       setData([...response.data]);
     });
     promise.catch((error) => {
       console.log(error.response);
-      alert(
-        "An error occured while trying to fetch the posts, please refresh the page"
-      );
+      if (auth) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Please, reload the page!</a>',
+        });
+      }
     });
   }
   useEffect(loadPost, []);
 
   return (
-    <Container>
-      <Header></Header>
-      <h4>timeline</h4>
-      <PostLink loadPost={loadPost}></PostLink>
-      {data === null ? (
-        <h3>Loading..</h3>
-      ) : data?.length === 0 ? (
-        <h3>There are no posts yet</h3>
-      ) : (
-        data?.map((post) => <Post key={post.id} {...post} loadPost={loadPost} />)
-      )}
-    </Container>
+    <MainContainer>
+      <Container>
+        <Header></Header>
+        <ContainerInfo>
+          <h4>timeline</h4>
+        </ContainerInfo>
+        <PostLink loadPost={loadPost}></PostLink>
+        {data === null ? (
+          <h3>Loading..</h3>
+        ) : data?.length === 0 ? (
+          <h3>There are no posts yet</h3>
+        ) : (
+          data?.map((post) => <Post key={post.id} {...post} loadPost={loadPost} />)
+        )}
+      </Container>
+      <Sidebar />
+    </MainContainer>
   );
 }

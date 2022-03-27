@@ -5,19 +5,21 @@ import {
   ContainerPost,
   User,
   Description,
+  StyledHashtag,
   LeftContainer,
   RightContainer,
   LikeButton,
 } from "./style";
 import MetaDataPost from "./MetaData";
 import api from "../../services/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import RedHeart from "../../assets/redheart.svg";
 import WhiteHeart from "../../assets/whiteheart.svg";
 import { useNavigate } from "react-router-dom";
 import DeletePost from "./DeletePost";
 import useUser from "../../hooks/useUser";
+import ReactHashtag from "@mdnm/react-hashtag";
 
 export default function Post({
   id,
@@ -60,9 +62,19 @@ export default function Post({
       </LeftContainer>
       <RightContainer>
         {user.id === userId && <DeletePost loadPost={loadPost} id = {id}/>}
-        <User onClick={() => redirectToUserPage}>{userName}</User>
+        <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
-          <Description>{postText}</Description>
+          <Description>
+            <ReactHashtag
+              renderHashtag={(hashtagText) => (
+                <StyledHashtag to={`/hashtag/${hashtagText.slice(1)}`}>
+                  {hashtagText}
+                </StyledHashtag>
+              )}
+            >
+              {postText}
+            </ReactHashtag>
+          </Description>
           <MetaDataPost {...metadata}></MetaDataPost>
         </ContainerPost>
       </RightContainer>
