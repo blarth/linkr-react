@@ -50,6 +50,7 @@ export default function Post({
     like ? setLike(false) : setLike(true);
     try {
       await api.likePost(auth, postId, !like);
+      getLike();
     } catch (error) {
       console.log(error.response);
     }
@@ -90,7 +91,7 @@ export default function Post({
   }
 
   useEffect(getLike,[])
-  console.log(infoLikes)
+  
   return (
     <Container>
       <LeftContainer>
@@ -100,6 +101,7 @@ export default function Post({
           alt="heart"
           onClick={() => {
             handleLikes();
+            
           }}
         />
         <InfoLikes data-tip={infoLikes === null ? <h1>Loading likes</h1> : 
