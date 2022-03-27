@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  overflow: scroll;
+  overflow: hidden;
 
   h3 {
     height: 64px;
@@ -22,8 +20,6 @@ const Container = styled.div`
   }
 
   h4 {
-    height: 64px;
-    width: 145px;
     font-family: Oswald;
     font-size: 43px;
     font-style: normal;
@@ -31,18 +27,17 @@ const Container = styled.div`
     line-height: 64px;
     text-align: left;
     color: #ffffff;
-    margin-top: 150px;
-    margin-bottom: 43px;
-    padding-right: 600px;
+    align-self: flex-start;
     @media (max-width: 600px) {
       align-self: flex-start;
-      margin-top: 100px;
+      width: 100%;
     }
   }
 `;
 const ContainerInfo = styled.div`
-  width: 600px;
-  height: 300px;
+  margin-top: 110px;
+  margin-bottom: 30px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -58,5 +53,10 @@ const ContainerInfo = styled.div`
     }
   }
 `;
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+`;
 
-export { Container, ContainerInfo };
+export { Container, ContainerInfo, MainContainer };

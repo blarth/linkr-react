@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <>
       <Top>
-        <h1>linkr</h1>
+        <h1 onClick={() => navigate("/timeline")}>linkr</h1>
         <div onClick={() => (logout ? setLogout(false) : setLogout(true))}>
           <img
             src={logout ? UpArrow : DownArrow}
@@ -87,10 +87,13 @@ const Top = styled.header`
 
   background-color: #151515;
 
+  z-index: 1;
+
   display: flex;
   justify-content: space-between;
 
   box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+
   div {
     display: flex;
     align-items: center;
@@ -104,6 +107,8 @@ const Top = styled.header`
     color: white;
 
     padding: 9px;
+
+    cursor: pointer;
   }
   .profile-image {
     width: 53px;
