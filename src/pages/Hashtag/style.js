@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  overflow: scroll;
+  overflow: hidden;
 
   h3 {
     height: 64px;
+
     font-family: Oswald;
     font-size: 43px;
     font-style: normal;
@@ -21,8 +20,6 @@ const Container = styled.div`
   }
 
   h4 {
-    height: 64px;
-    width: 145px;
     font-family: Oswald;
     font-size: 43px;
     font-style: normal;
@@ -30,14 +27,36 @@ const Container = styled.div`
     line-height: 64px;
     text-align: left;
     color: #ffffff;
-    margin-top: 150px;
-    margin-bottom: 43px;
-    padding-right: 600px;
+    align-self: flex-start;
     @media (max-width: 600px) {
-      padding-right: 350px;
-      margin-top: 100px;
+      align-self: flex-start;
+      width: 100%;
     }
   }
 `;
+const ContainerInfo = styled.div`
+  margin-top: 110px;
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-export { Container };
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    font-size: 33px;
+
+    & > h4 {
+      text-overflow: ellipsis;
+    }
+  }
+`;
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+`;
+
+export { Container, ContainerInfo, MainContainer };
