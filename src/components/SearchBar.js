@@ -18,7 +18,7 @@ export default function SearchBar() {
             if (!users) {
                 return;
             }
-            console.log(users.data)
+            
             setData([...users.data])
         }
         catch (error) {

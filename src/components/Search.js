@@ -1,13 +1,20 @@
-import react from "react";
+
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 
 export default function Search({
     id,
     name,
     image,
   }) {
+    const navigate = useNavigate()
+
+    function redirectToUser() {
+        navigate(`/user/${id}`);
+      }
     return(
-        <Container>
+        <Container onClick={redirectToUser}>
             <img src={image} alt="user" />
             <p>{name}</p>
         </Container>

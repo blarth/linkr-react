@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import {Container} from "./style"
 import Header from "../../components/Header";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Avatar } from "../../components/PostComponent/style";
 import { ContainerInfo } from "./style";
 
@@ -15,7 +15,7 @@ export default function UserTimeLine() {
     const [data, setData] = useState(null)
     const { id } = useParams();
     const [user, setUser] = useState({})
-    
+    const location = useLocation()
      function loadPost() {
     
       const promise = api.getPostbyUserId(auth, id);
@@ -34,7 +34,7 @@ export default function UserTimeLine() {
     useEffect(() => {
         loadPost()
         // eslint-disable-next-line
-    }, [])
+    }, [location.pathname])
     
 
 
