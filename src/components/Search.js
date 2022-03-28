@@ -37,6 +37,7 @@ const Container = styled.div`
         border-radius: 50%;
     }
     p{
+        font-family: 'Lato';
         font-weight: 400;
         font-size: 19px;
         line-height: 23px;

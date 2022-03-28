@@ -17,6 +17,7 @@ const ButtonDelete = styled.button`
   all: unset;
   background-color: #1877f2;
 
+  font-family: 'Lato';
   width: 134px;
   height: 37px;
   border-radius: 5px;
@@ -37,6 +38,7 @@ const ButtonNotDelete = styled.button`
   all: unset;
   background-color: #ffffff;
 
+  font-family: 'Lato';
   width: 134px;
   height: 37px;
   border-radius: 5px;
@@ -68,8 +70,10 @@ const Form = styled.form`
 `;
 
 const TextModal = styled.p`
+  font-family: 'Lato';
   font-weight: 700;
   font-size: 34px;
+
   line-height: 41px;
   text-align: center;
   min-width: 280px;
