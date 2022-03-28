@@ -33,7 +33,7 @@ const HashtagsContainer = styled.div`
   flex-direction: column;
   font-weight: 700;
   font-size: 19px;
-  font-family: Lato;
+  font-family: "Lato", sans-serif;
   border-radius: 0 0 16px 16px;
   padding: 20px 0 12px 20px;
   gap: 10px;

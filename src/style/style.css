@@ -12,6 +12,7 @@ html {
   font-family: "Raleway", sans-serif;
 
   scroll-behavior: smooth;
+  background: #333333;
 }
 
 .root {

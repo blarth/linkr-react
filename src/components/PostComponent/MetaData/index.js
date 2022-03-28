@@ -6,6 +6,10 @@ export default function MetaDataPost({ url, title, description, image }) {
     window.open(url, "_blank");
   }
 
+  if (image.match(/\.(jpeg|jpg|gif|png)$/) == null) {
+    image = "https://cdn-icons-png.flaticon.com/512/1545/1545567.png";
+  }
+
   return (
     <Container onClick={handleNewWindow}>
       <LeftContainer>

@@ -10,6 +10,7 @@ import {
   RightContainer,
   LikeButton,
   PostManagementContainer,
+  InfoLikes,
 } from "./style";
 import MetaDataPost from "./MetaData";
 import api from "../../services/api";
@@ -24,6 +25,9 @@ import ReactHashtag from "@mdnm/react-hashtag";
 import EditPostButton from "./EditPost/button";
 import  EditPostInput from "./EditPost/input";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import ReactTooltip from 'react-tooltip';
+
 
 export default function Post({
   id,
@@ -44,9 +48,11 @@ export default function Post({
     inputDisabled: false,
   });
 
-  const {user} = useUser();
+  const [infoLikes, setInfoLikes] = useState(null)
   const { auth } = useAuth();
-
+  const {user} = useUser()
+  
+  
   function redirectToUserPage() {
     navigate(`/user/${userId}`);
   }
@@ -54,6 +60,19 @@ export default function Post({
     like ? setLike(false) : setLike(true);
     try {
       await api.likePost(auth, postId, !like);
+      getLike();
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
+  async function getLike(){
+    try {
+      if(postId){
+        const promiseLikes = await api.getLikes(postId)
+        setInfoLikes(promiseLikes.data)
+      
+      }
+      
     } catch (error) {
       console.log(error.response);
     }
@@ -62,6 +81,7 @@ export default function Post({
   function handleChange({ target }) {
     setEditMode({...editMode, inputValue: target.value});
   }
+
   async function handleKey(e){
     if(e.key === 'Escape' || e.key === 'Esc'){
       setEditMode({...editMode, isEditing: false, inputValue: postText});
@@ -85,6 +105,31 @@ export default function Post({
     }
   }
 
+  function returnTooltip(length){
+    switch(length){
+      case 1:
+        return `${infoLikes[length-1].name} liked this post`
+      case 2:
+        return `${infoLikes[length-1].name}, ${infoLikes[length-2].name} liked this post`
+      default:
+        return `${infoLikes[length-1].name}, ${infoLikes[length-2].name} and other ${length -2} people`
+    }
+  }
+  
+  function returnTooltipUser(length){
+    switch(length){
+      
+      case 1:
+        return `You liked this post`
+      case 2:
+        return `You and other person liked this post`
+      default:
+        return `You, ${infoLikes?.find(el => el.name !== user?.name).name} and other ${length -2} people`
+    }
+  }
+
+  useEffect(getLike,[])
+  
   return (
     <Container>
       <LeftContainer>
@@ -94,8 +139,18 @@ export default function Post({
           alt="heart"
           onClick={() => {
             handleLikes();
+            
           }}
         />
+        <InfoLikes data-tip={infoLikes === null ? <h1>Loading likes</h1> : 
+            infoLikes?.length === 0 ? "No one liked this post #sadboys": 
+            infoLikes?.find(el => el.name === user.name) ? returnTooltipUser(infoLikes.length)
+            : returnTooltip(infoLikes?.length)}>{infoLikes?.length} likes</InfoLikes>
+        <ReactTooltip
+        place="bottom"
+        type="light"
+        />
+
       </LeftContainer>
       <RightContainer>
         <PostManagementContainer>
@@ -127,3 +182,6 @@ export default function Post({
     </Container>
   );
 }
+
+
+
