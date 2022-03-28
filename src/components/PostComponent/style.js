@@ -1,7 +1,5 @@
-
-import styled from "styled-components"
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-
 
 const Container = styled.div`
   height: 276px;
@@ -19,6 +17,9 @@ const Container = styled.div`
   padding: 12px;
   @media (max-width: 600px) {
     width: 100%;
+    height: 232px;
+  }
+  @media (max-width: 480px) {
     border-radius: 0;
   }
 `;
@@ -98,15 +99,31 @@ const Description = styled.div`
     width: 288px;
   }
 `;
+const InfoLikes = styled.span`
+  height: 13px;
+  width: 50px;
+  color: #ffffff;
+  font-family: Lato;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+`;
 
 const StyledHashtag = styled(Link)`
-	font-weight: 700;
-	color: #fff;
-`
+  font-weight: 700;
+  color: #fff;
+`;
 const LikeButton = styled.img`
   width: 23px;
   cursor: pointer;
 `;
+
+const PostManagementContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-left: 460px;
+`
 
 
 export {
@@ -118,6 +135,7 @@ export {
     StyledHashtag,
     LeftContainer,
     LikeButton,
-    RightContainer
-}
-
+    RightContainer,
+    PostManagementContainer,
+    InfoLikes,
+};

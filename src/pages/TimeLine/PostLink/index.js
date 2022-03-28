@@ -5,12 +5,13 @@ import api from "../../../services/api";
 import Swal from "sweetalert2";
 import useUser from "../../../hooks/useUser";
 
-export default function PostLink({loadPost}) {
+export default function PostLink({loadPost, loadHashTag}) {
     const [isLoading, setIsLoading] = useState(false);
     const [link, setLink] = useState("");
     const [postText, setPostText] = useState("");
     const { auth } = useAuth();
     const {user} = useUser();
+    
  
     async function handleSubmit(e) {
         e.preventDefault();
@@ -21,7 +22,7 @@ export default function PostLink({loadPost}) {
             setLink("");
             setPostText("");
             loadPost()
-            
+            loadHashTag()
         }
         catch{
             setIsLoading(false);
