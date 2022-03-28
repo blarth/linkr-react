@@ -44,7 +44,7 @@ const ContainerInfo = styled.div`
   @media (max-width: 600px) {
     font-size: 33px;
     padding-left: 10px;
-
+    margin-top: 157px;
     & > h4 {
       text-overflow: ellipsis;
     }

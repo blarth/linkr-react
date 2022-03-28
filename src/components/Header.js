@@ -43,12 +43,11 @@ export default function Header() {
     }
   }
 
-
   return (
     <>
       <Top>
         <h1 onClick={() => navigate("/timeline")}>linkr</h1>
-        <SearchBar className="responsivo"/>
+        <SearchBar className="responsivo" />
         <div onClick={() => (logout ? setLogout(false) : setLogout(true))}>
           <img
             src={logout ? UpArrow : DownArrow}
@@ -130,6 +129,8 @@ const Logout = styled.div`
   height: 47px;
   right: 0;
   top: 75px;
+
+  z-index: 100;
 
   display: flex;
   justify-content: center;

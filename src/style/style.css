@@ -16,12 +16,7 @@ html {
 }
 
 .root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: #333333;
-
-  min-height: 100vh;
 }
 a {
   text-decoration: none;
