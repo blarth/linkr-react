@@ -7,13 +7,15 @@ import api from "../services/api";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   const [logout, setLogout] = useState();
   const { auth } = useAuth();
+  const [searchText, setSearchText] = useState("");
+  const [data, setData] = useState(null);
   const navigate = useNavigate();
   let { user, setUser } = useUser();
-
   useEffect(() => {
     getUser();
     setUser(JSON.parse(localStorage.getItem("user")));
@@ -45,10 +47,12 @@ export default function Header() {
     }
   }
 
+
   return (
     <>
       <Top>
         <h1 onClick={() => navigate("/timeline")}>linkr</h1>
+        <SearchBar className="responsivo"/>
         <div onClick={() => (logout ? setLogout(false) : setLogout(true))}>
           <img
             src={logout ? UpArrow : DownArrow}
@@ -91,6 +95,7 @@ const Top = styled.header`
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
 
