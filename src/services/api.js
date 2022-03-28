@@ -93,6 +93,15 @@ async function getPostByHashtag(token, name) {
   );
   return posts;
 }
+
+async function editPost(token, postId, post){
+  const config = createConfig(token);
+  const promise = await axios.patch(
+    `${process.env.REACT_APP_BASE_URL}/posts/edit/${postId}`,
+  post,
+  config);
+  return promise;
+}
 const api = {
   createUser,
   signin,
@@ -105,6 +114,7 @@ const api = {
   likePost,
   deletePost,
   getPostByHashtag,
+  editPost,
 };
 
 export default api;
