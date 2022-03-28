@@ -118,15 +118,24 @@ const LikeButton = styled.img`
   cursor: pointer;
 `;
 
+const PostManagementContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-left: 460px;
+`
+
+
 export {
-  Container,
-  Avatar,
-  ContainerPost,
-  User,
-  Description,
-  StyledHashtag,
-  LeftContainer,
-  LikeButton,
-  RightContainer,
-  InfoLikes,
+    Container,
+    Avatar,
+    ContainerPost,
+    User,
+    Description,
+    StyledHashtag,
+    LeftContainer,
+    LikeButton,
+    RightContainer,
+    PostManagementContainer,
+    InfoLikes,
 };

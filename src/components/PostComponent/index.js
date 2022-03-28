@@ -9,6 +9,7 @@ import {
   LeftContainer,
   RightContainer,
   LikeButton,
+  PostManagementContainer,
   InfoLikes,
 } from "./style";
 import MetaDataPost from "./MetaData";
@@ -21,6 +22,9 @@ import { useNavigate } from "react-router-dom";
 import DeletePost from "./DeletePost";
 import useUser from "../../hooks/useUser";
 import ReactHashtag from "@mdnm/react-hashtag";
+import EditPostButton from "./EditPost/button";
+import  EditPostInput from "./EditPost/input";
+import Swal from "sweetalert2";
 import { useEffect } from "react";
 import ReactTooltip from 'react-tooltip';
 
@@ -38,6 +42,12 @@ export default function Post({
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
+  const [editMode, setEditMode] = useState({
+    isEditing: false,
+    inputValue: postText,
+    inputDisabled: false,
+  });
+
   const [infoLikes, setInfoLikes] = useState(null)
   const { auth } = useAuth();
   const {user} = useUser()
@@ -68,6 +78,33 @@ export default function Post({
     }
   }
 
+  function handleChange({ target }) {
+    setEditMode({...editMode, inputValue: target.value});
+  }
+
+  async function handleKey(e){
+    if(e.key === 'Escape' || e.key === 'Esc'){
+      setEditMode({...editMode, isEditing: false, inputValue: postText});
+    }
+    if(e.key === 'Enter'){
+      setEditMode({...editMode, inputDisabled: true});
+      try{
+        await api.editPost(auth, postId, {link: metadata.url, postText: editMode.inputValue});
+        loadPost();
+        setEditMode({...editMode, isEditing: false});
+      }catch(error){
+        setEditMode({...editMode, inputDisabled: false});
+        Swal.fire({
+          title: "Oops :(",
+          text: "There was an error editing your post",
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
+        });
+      }
+    }
+  }
+
   function returnTooltip(length){
     switch(length){
       case 1:
@@ -78,6 +115,7 @@ export default function Post({
         return `${infoLikes[length-1].name}, ${infoLikes[length-2].name} and other ${length -2} people`
     }
   }
+  
   function returnTooltipUser(length){
     switch(length){
       
@@ -115,19 +153,28 @@ export default function Post({
 
       </LeftContainer>
       <RightContainer>
-        {user.id === userId && <DeletePost loadPost={loadPost} id = {id}/>}
+        <PostManagementContainer>
+          {user.id === userId && <><EditPostButton editMode={editMode} setEditMode={setEditMode} postText={postText}/><DeletePost loadPost={loadPost} id = {id}/></>}
+        </PostManagementContainer>
         <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
           <Description>
-            <ReactHashtag
-              renderHashtag={(hashtagText) => (
-                <StyledHashtag to={`/hashtag/${hashtagText.slice(1)}`}>
-                  {hashtagText}
-                </StyledHashtag>
-              )}
-            >
-              {postText}
-            </ReactHashtag>
+            {editMode.isEditing ?
+              <EditPostInput
+                handleChange={handleChange}
+                handleKey={handleKey}
+                editMode={editMode}
+              />
+              :
+              <ReactHashtag
+                renderHashtag={(hashtagText) => (
+                  <StyledHashtag to={`/hashtag/${hashtagText.slice(1)}`}>
+                    {hashtagText}
+                  </StyledHashtag>
+                )}>
+                {postText}
+              </ReactHashtag>
+            }
           </Description>
           <MetaDataPost {...metadata}></MetaDataPost>
         </ContainerPost>
