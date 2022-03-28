@@ -117,6 +117,8 @@ const Top = styled.header`
     border-radius: 50%;
 
     margin: 12px;
+
+    object-fit: cover;
   }
   .arrow {
     width: 30px;

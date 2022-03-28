@@ -23,11 +23,10 @@ import DeletePost from "./DeletePost";
 import useUser from "../../hooks/useUser";
 import ReactHashtag from "@mdnm/react-hashtag";
 import EditPostButton from "./EditPost/button";
-import  EditPostInput from "./EditPost/input";
+import EditPostInput from "./EditPost/input";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import ReactTooltip from 'react-tooltip';
-
+import ReactTooltip from "react-tooltip";
 
 export default function Post({
   id,
@@ -48,11 +47,10 @@ export default function Post({
     inputDisabled: false,
   });
 
-  const [infoLikes, setInfoLikes] = useState(null)
+  const [infoLikes, setInfoLikes] = useState(null);
   const { auth } = useAuth();
-  const {user} = useUser()
-  
-  
+  const { user } = useUser();
+
   function redirectToUserPage() {
     navigate(`/user/${userId}`);
   }
@@ -65,35 +63,36 @@ export default function Post({
       console.log(error.response);
     }
   }
-  async function getLike(){
+  async function getLike() {
     try {
-      if(postId){
-        const promiseLikes = await api.getLikes(postId)
-        setInfoLikes(promiseLikes.data)
-      
+      if (postId) {
+        const promiseLikes = await api.getLikes(postId);
+        setInfoLikes(promiseLikes.data);
       }
-      
     } catch (error) {
       console.log(error.response);
     }
   }
 
   function handleChange({ target }) {
-    setEditMode({...editMode, inputValue: target.value});
+    setEditMode({ ...editMode, inputValue: target.value });
   }
 
-  async function handleKey(e){
-    if(e.key === 'Escape' || e.key === 'Esc'){
-      setEditMode({...editMode, isEditing: false, inputValue: postText});
+  async function handleKey(e) {
+    if (e.key === "Escape" || e.key === "Esc") {
+      setEditMode({ ...editMode, isEditing: false, inputValue: postText });
     }
-    if(e.key === 'Enter'){
-      setEditMode({...editMode, inputDisabled: true});
-      try{
-        await api.editPost(auth, postId, {link: metadata.url, postText: editMode.inputValue});
+    if (e.key === "Enter") {
+      setEditMode({ ...editMode, inputDisabled: true });
+      try {
+        await api.editPost(auth, postId, {
+          link: metadata.url,
+          postText: editMode.inputValue,
+        });
         loadPost();
-        setEditMode({...editMode, isEditing: false});
-      }catch(error){
-        setEditMode({...editMode, inputDisabled: false});
+        setEditMode({ ...editMode, isEditing: false });
+      } catch (error) {
+        setEditMode({ ...editMode, inputDisabled: true });
         Swal.fire({
           title: "Oops :(",
           text: "There was an error editing your post",
@@ -105,31 +104,36 @@ export default function Post({
     }
   }
 
-  function returnTooltip(length){
-    switch(length){
+  function returnTooltip(length) {
+    switch (length) {
       case 1:
-        return `${infoLikes[length-1].name} liked this post`
+        return `${infoLikes[length - 1].name} liked this post`;
       case 2:
-        return `${infoLikes[length-1].name}, ${infoLikes[length-2].name} liked this post`
+        return `${infoLikes[length - 1].name}, ${
+          infoLikes[length - 2].name
+        } liked this post`;
       default:
-        return `${infoLikes[length-1].name}, ${infoLikes[length-2].name} and other ${length -2} people`
-    }
-  }
-  
-  function returnTooltipUser(length){
-    switch(length){
-      
-      case 1:
-        return `You liked this post`
-      case 2:
-        return `You and other person liked this post`
-      default:
-        return `You, ${infoLikes?.find(el => el.name !== user?.name).name} and other ${length -2} people`
+        return `${infoLikes[length - 1].name}, ${
+          infoLikes[length - 2].name
+        } and other ${length - 2} people`;
     }
   }
 
-  useEffect(getLike,[])
-  
+  function returnTooltipUser(length) {
+    switch (length) {
+      case 1:
+        return `You liked this post`;
+      case 2:
+        return `You and other person liked this post`;
+      default:
+        return `You, ${
+          infoLikes?.find((el) => el.name !== user?.name).name
+        } and other ${length - 2} people`;
+    }
+  }
+
+  useEffect(getLike, []);
+
   return (
     <Container>
       <LeftContainer>
@@ -139,42 +143,58 @@ export default function Post({
           alt="heart"
           onClick={() => {
             handleLikes();
-            
           }}
         />
-        <InfoLikes data-tip={infoLikes === null ? <h1>Loading likes</h1> : 
-            infoLikes?.length === 0 ? "No one liked this post #sadboys": 
-            infoLikes?.find(el => el.name === user.name) ? returnTooltipUser(infoLikes.length)
-            : returnTooltip(infoLikes?.length)}>{infoLikes?.length} likes</InfoLikes>
-        <ReactTooltip
-        place="bottom"
-        type="light"
-        />
-
+        <InfoLikes
+          data-tip={
+            infoLikes === null ? (
+              <h1>Loading likes</h1>
+            ) : infoLikes?.length === 0 ? (
+              "No one liked this post #sadboys"
+            ) : infoLikes?.find((el) => el.name === user.name) ? (
+              returnTooltipUser(infoLikes.length)
+            ) : (
+              returnTooltip(infoLikes?.length)
+            )
+          }
+        >
+          {infoLikes?.length} likes
+        </InfoLikes>
+        <ReactTooltip place="bottom" type="light" />
       </LeftContainer>
       <RightContainer>
         <PostManagementContainer>
-          {user.id === userId && <><EditPostButton editMode={editMode} setEditMode={setEditMode} postText={postText}/><DeletePost loadPost={loadPost} id = {id}/></>}
+          {user.id === userId && (
+            <>
+              <EditPostButton
+                editMode={editMode}
+                setEditMode={setEditMode}
+                postText={postText}
+              />
+              <DeletePost loadPost={loadPost} id={id} />
+            </>
+          )}
         </PostManagementContainer>
         <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
           <Description>
-            {editMode.isEditing ?
+            {editMode.isEditing ? (
               <EditPostInput
                 handleChange={handleChange}
                 handleKey={handleKey}
                 editMode={editMode}
               />
-              :
+            ) : (
               <ReactHashtag
                 renderHashtag={(hashtagText) => (
                   <StyledHashtag to={`/hashtag/${hashtagText.slice(1)}`}>
                     {hashtagText}
                   </StyledHashtag>
-                )}>
+                )}
+              >
                 {postText}
               </ReactHashtag>
-            }
+            )}
           </Description>
           <MetaDataPost {...metadata}></MetaDataPost>
         </ContainerPost>
@@ -182,6 +202,3 @@ export default function Post({
     </Container>
   );
 }
-
-
-
