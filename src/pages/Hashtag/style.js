@@ -7,10 +7,14 @@ const Container = styled.div`
   gap: 16px;
   overflow: hidden;
 
+  @media (max-width: 900px) {
+    justify-content: flex-start;
+  }
+
   h3 {
     height: 64px;
 
-    font-family: Oswald;
+    font-family: "Oswald", sans-serif;
     font-size: 43px;
     font-style: normal;
     font-weight: 700;
@@ -20,7 +24,7 @@ const Container = styled.div`
   }
 
   h4 {
-    font-family: Oswald;
+    font-family: "Oswald", sans-serif;
     font-size: 43px;
     font-style: normal;
     font-weight: 700;
@@ -39,13 +43,13 @@ const ContainerInfo = styled.div`
   margin-bottom: 30px;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 
   @media (max-width: 600px) {
     width: 100%;
-    height: 200px;
-    margin-bottom: 15px;
+    margin-top: 158px;
+
     font-size: 33px;
 
     & > h4 {

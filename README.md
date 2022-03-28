@@ -22,18 +22,24 @@ A link sharing platform where users can share content they like and hashtag them
 
 ### ```Login, Signup & Logout```
 
-work in progress
+A login & signup screen, your session is remembered when you login so you don't have to type your credentials everytime. Press the Logout button on the upper bar, right corner, drop down arrow to logout.
 
 ### ```Posting, Liking, Hashtagging```
 
-work in progress
+Share any link on the internet, with some text, including hashtags! After your post is published, you'll be able to see your text with the highlighted hashtags and thumbnail.
+
+You can also check the most popular hashtags on the right sidebar, popularity is ranked, most popular comes first. 
+
+You can only add one hashtag to the ranking per post. So if you add two identical hashtags or more to it, they'll only count as one towards the trending ranking.
 
 ### ```Updating & Deleting```
 
-work in progress
+If you're the post's publisher, you can edit it or delete it. To edit, click on the pencil icon on the post's top right corner, to manipulate the text as you please. To cancel, press Esc or click on the pencil icon again. To submit your edited post, press enter. Any removed hashtags will lose a score in the ranking, any added ones will earn one and ulnaltered ones will have their position remained the same.
+
+You cannot edit the posted link.
 ### ```Filtering by user, hashtags```
 
-work in progress
+You can filter posts by user or hashtags used by clicking on them, on the posts themselves or on the trending sidebar. 
 
 ## Installation 🛠️
 ### Make sure you have the following tools installed before you begin:

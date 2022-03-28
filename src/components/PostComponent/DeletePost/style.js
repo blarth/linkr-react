@@ -8,6 +8,9 @@ const Container = styled.button`
   border: none;
 
   cursor: pointer;
+
+  @media (max-width: 600px) {
+  }
 `;
 
 const ButtonDelete = styled.button`
