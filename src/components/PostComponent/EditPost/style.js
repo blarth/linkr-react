@@ -17,6 +17,10 @@ const EditInput = styled.textarea`
   font-family: Lato;
   font-weight: 400;
   font-size: 14px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export { EditButton, EditInput };
