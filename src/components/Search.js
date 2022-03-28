@@ -7,11 +7,13 @@ export default function Search({
     id,
     name,
     image,
+    setSearchText
   }) {
     const navigate = useNavigate()
 
     function redirectToUser() {
         navigate(`/user/${id}`);
+        setSearchText("")
       }
     return(
         <Container onClick={redirectToUser}>

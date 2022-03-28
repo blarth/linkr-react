@@ -43,7 +43,7 @@ export default function SearchBar() {
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
         {data?.map((search) => (
-          <Search key={search.id} {...search} />
+            <Search setSearchText={setSearchText} key={search.id} {...search} />
         ))}
       </SearchBarResults>
     </Container>
