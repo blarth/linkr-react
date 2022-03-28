@@ -91,9 +91,8 @@ export default function Post({
       setEditMode({...editMode, inputDisabled: true});
       try{
         await api.editPost(auth, postId, {link: metadata.url, postText: editMode.inputValue});
-        loadPost();
-        loadHashTag()
         setEditMode({...editMode, isEditing: false});
+        
       }catch(error){
         setEditMode({...editMode, inputDisabled: false});
         Swal.fire({
@@ -104,7 +103,13 @@ export default function Post({
           color: "#fff",
         });
       }
+      renderPlease()
     }
+  }
+
+  function renderPlease(){
+    loadPost();
+    loadHashTag()
   }
 
   function returnTooltip(length){
