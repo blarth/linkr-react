@@ -8,15 +8,15 @@ function createConfig(token) {
   };
 }
 
-const API_URL = 'https://linktr-api.herokuapp.com'
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL
 
 async function createUser(user) {
-  await axios.post(`${API_URL}/signup`, user);
+  await axios.post(`${REACT_APP_BASE_URL}/signup`, user);
 }
 
 async function signin(data) {
   const token = await axios.post(
-    `${API_URL}/signin`,
+    `${REACT_APP_BASE_URL}/signin`,
     data
   );
   return token;
@@ -25,7 +25,7 @@ async function signin(data) {
 async function sendPost(body, token) {
   const config = createConfig(token);
   const promisse = await axios.post(
-    `${API_URL}/timeline`,
+    `${REACT_APP_BASE_URL}/timeline`,
     body,
     config
   );
@@ -34,14 +34,14 @@ async function sendPost(body, token) {
 
 async function deletePost(id, token) {
   const config = createConfig(token);
-  const promisse = await axios.delete(`${API_URL}/deletepost/${id}`, config);
+  const promisse = await axios.delete(`${REACT_APP_BASE_URL}/deletepost/${id}`, config);
   return promisse;
 }
 
 async function getPost(token) {
   const config = createConfig(token);
   const promisse = await axios.get(
-    `${API_URL}/timeline`,
+    `${REACT_APP_BASE_URL}/timeline`,
     config
   );
 
@@ -52,7 +52,7 @@ async function getPostbyUserId(token, id) {
   const config = createConfig(token);
 
   const promisse = await axios.get(
-    `${API_URL}/user/${id}`,
+    `${REACT_APP_BASE_URL}/user/${id}`,
     config
   );
 
@@ -61,41 +61,41 @@ async function getPostbyUserId(token, id) {
 
 async function signout(token) {
   const config = createConfig(token);
-  await axios.delete(`${API_URL}/signout`, config);
+  await axios.delete(`${REACT_APP_BASE_URL}/signout`, config);
 }
 
 async function getUser(token) {
   const config = createConfig(token);
   const user = await axios.get(
-    `${API_URL}/users`,
+    `${REACT_APP_BASE_URL}/users`,
     config
   );
   return user;
 }
 
 async function getHashtags() {
-  const promise = await axios.get(`${API_URL}/hashtags`);
+  const promise = await axios.get(`${REACT_APP_BASE_URL}/hashtags`);
   return promise;
 }
 
 async function likePost(token, postId, status) {
   const config = createConfig(token);
   await axios.put(
-    `${API_URL}/posts/${postId}/${status}`,
+    `${REACT_APP_BASE_URL}/posts/${postId}/${status}`,
     null,
     config
   );
 }
 
 async function getLikes(id){
-  const promise = await axios.get(`${API_URL}/likes/${id}`);
+  const promise = await axios.get(`${REACT_APP_BASE_URL}/likes/${id}`);
   return promise;
 }
 
 async function getPostByHashtag(token, name) {
   const config = createConfig(token);
   const posts = await axios.get(
-    `${API_URL}/posts/hashtags/${name}`,
+    `${REACT_APP_BASE_URL}/posts/hashtags/${name}`,
     config
   );
   return posts;
