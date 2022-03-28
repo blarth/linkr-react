@@ -92,6 +92,14 @@ const Container = styled.div`
       width: 95%;
     }
   }
+  input::placeholder{
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+
+    color: #C6C6C6;
+  }
   .show-result {
     display: flex;
   }

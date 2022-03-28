@@ -67,8 +67,8 @@ export default function PostLink({loadPost, loadHashTag}) {
                     <button type="submit" disabled={isLoading}>
                         {
                             isLoading
-                                ? "publishing..."
-                                : "publish"
+                                ? "Publishing..."
+                                : "Publish"
                         }
                     </button>
                 </div>
