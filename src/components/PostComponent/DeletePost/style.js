@@ -10,6 +10,16 @@ const Container = styled.button`
   cursor: pointer;
 
   @media (max-width: 600px) {
+    right: 10px;
+  }
+  @media (max-width: 420px) {
+    right: 55px;
+  }
+  @media (max-width: 350px) {
+    right: 80px;
+  }
+  @media (max-width: 300px) {
+    right: 120px;
   }
 `;
 

@@ -68,6 +68,16 @@ const LeftContainer = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 23px;
+
+  @media (max-width: 420px) {
+    margin-left: 45px;
+  }
+  @media (max-width: 350px) {
+    margin-left: 80px;
+  }
+  @media (max-width: 300px) {
+    margin-left: 105px;
+  }
 `;
 const RightContainer = styled.div`
   position: relative;

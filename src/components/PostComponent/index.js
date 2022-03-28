@@ -83,15 +83,16 @@ export default function Post({
     if (e.key === "Escape" || e.key === "Esc") {
       setEditMode({ ...editMode, isEditing: false, inputValue: postText });
     }
-
-    if(e.key === 'Enter'){
-      setEditMode({...editMode, inputDisabled: true});
-      try{
-        await api.editPost(auth, postId, {link: metadata.url, postText: editMode.inputValue});
-        setEditMode({...editMode, isEditing: false});
-        
-      }catch(error){
-        setEditMode({...editMode, inputDisabled: false});
+    if (e.key === "Enter") {
+      setEditMode({ ...editMode, inputDisabled: true });
+      try {
+        await api.editPost(auth, postId, {
+          link: metadata.url,
+          postText: editMode.inputValue,
+        });
+        setEditMode({ ...editMode, isEditing: false });
+      } catch (error) {
+        setEditMode({ ...editMode, inputDisabled: false });
         Swal.fire({
           title: "Oops :(",
           text: "There was an error editing your post",
@@ -100,22 +101,17 @@ export default function Post({
           color: "#fff",
         });
       }
-      renderPlease()
+      renderPlease();
     }
   }
 
-<<<<<<< HEAD
-  function returnTooltip(length) {
-    switch (length) {
-=======
-  function renderPlease(){
+  function renderPlease() {
     loadPost();
-    loadHashTag()
+    loadHashTag();
   }
 
-  function returnTooltip(length){
-    switch(length){
->>>>>>> 6a5360fdc7cdc21c804c916e4c659a44238c3625
+  function returnTooltip(length) {
+    switch (length) {
       case 1:
         return `${infoLikes[length - 1].name} liked this post`;
       case 2:
@@ -155,7 +151,6 @@ export default function Post({
             handleLikes();
           }}
         />
-<<<<<<< HEAD
         <InfoLikes
           data-tip={
             infoLikes === null ? (
@@ -182,25 +177,13 @@ export default function Post({
                 setEditMode={setEditMode}
                 postText={postText}
               />
-              <DeletePost loadPost={loadPost} id={id} />
+              <DeletePost
+                loadPost={loadPost}
+                loadHashTag={loadHashTag}
+                id={id}
+              />
             </>
           )}
-=======
-        <InfoLikes data-tip={infoLikes === null ? <h1>Loading likes</h1> : 
-            infoLikes?.length === 0 ? "No one liked this post #sadboys": 
-            infoLikes?.find(el => el.name === user.name) ? returnTooltipUser(infoLikes.length)
-            : returnTooltip(infoLikes?.length)}>{infoLikes?.length} likes
-        </InfoLikes>
-        <ReactTooltip
-        place="bottom"
-        type="light"
-        />
-
-      </LeftContainer>
-      <RightContainer>
-        <PostManagementContainer>
-          {user.id === userId && <><EditPostButton editMode={editMode} setEditMode={setEditMode} postText={postText}/><DeletePost loadPost={loadPost} loadHashTag={loadHashTag} id = {id}/></>}
->>>>>>> 6a5360fdc7cdc21c804c916e4c659a44238c3625
         </PostManagementContainer>
         <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
