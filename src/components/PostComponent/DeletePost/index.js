@@ -16,7 +16,7 @@ import {
 import { useState } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 
-export default function DeletePost({id, loadPost}) {
+export default function DeletePost({id, loadPost, loadHashTag}) {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { auth } = useAuth();
@@ -46,9 +46,10 @@ export default function DeletePost({id, loadPost}) {
         setIsLoading(true);
         try{
             await api.deletePost(id, auth);
-            loadPost();
             setIsLoading(false);
             closeModal();
+            loadPost();
+            loadHashTag()
         }
         catch{
             setIsLoading(false);

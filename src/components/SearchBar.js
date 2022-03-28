@@ -12,19 +12,21 @@ export default function SearchBar() {
   const [data, setData] = useState(null);
   const { auth } = useAuth();
 
-  async function getSearchBar() {
-    try {
-      const users = await api.getSearchBarResults(auth, searchText);
-      if (!users) {
-        return;
-      }
-      console.log(users.data);
-      setData([...users.data]);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(getSearchBar, [searchText]);
+
+    async function getSearchBar() {
+        try {
+            const users = await api.getSearchBarResults(auth, searchText)
+            if (!users) {
+                return;
+            }
+            
+            setData([...users.data])
+        }
+        catch (error) {
+            console.log(error);
+        }
+    } useEffect(getSearchBar, [searchText]);
+
 
   return (
     <Container>

@@ -39,6 +39,7 @@ export default function Post({
   isLike,
   postId,
   loadPost,
+  loadHashTag,
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
@@ -91,6 +92,7 @@ export default function Post({
       try{
         await api.editPost(auth, postId, {link: metadata.url, postText: editMode.inputValue});
         loadPost();
+        loadHashTag()
         setEditMode({...editMode, isEditing: false});
       }catch(error){
         setEditMode({...editMode, inputDisabled: false});
@@ -145,7 +147,8 @@ export default function Post({
         <InfoLikes data-tip={infoLikes === null ? <h1>Loading likes</h1> : 
             infoLikes?.length === 0 ? "No one liked this post #sadboys": 
             infoLikes?.find(el => el.name === user.name) ? returnTooltipUser(infoLikes.length)
-            : returnTooltip(infoLikes?.length)}>{infoLikes?.length} likes</InfoLikes>
+            : returnTooltip(infoLikes?.length)}>{infoLikes?.length} likes
+        </InfoLikes>
         <ReactTooltip
         place="bottom"
         type="light"
@@ -154,7 +157,7 @@ export default function Post({
       </LeftContainer>
       <RightContainer>
         <PostManagementContainer>
-          {user.id === userId && <><EditPostButton editMode={editMode} setEditMode={setEditMode} postText={postText}/><DeletePost loadPost={loadPost} id = {id}/></>}
+          {user.id === userId && <><EditPostButton editMode={editMode} setEditMode={setEditMode} postText={postText}/><DeletePost loadPost={loadPost} loadHashTag={loadHashTag} id = {id}/></>}
         </PostManagementContainer>
         <User onClick={redirectToUserPage}>{userName}</User>
         <ContainerPost>
