@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  height: 276px;
+  height: 290px;
   width: 611px;
 
   border-radius: 16px;
@@ -17,7 +17,7 @@ const Container = styled.div`
   padding: 12px;
   @media (max-width: 600px) {
     width: 100%;
-    height: 232px;
+    height: 250px;
   }
   @media (max-width: 480px) {
     border-radius: 0;
@@ -123,19 +123,18 @@ const PostManagementContainer = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   padding-left: 460px;
-`
-
+`;
 
 export {
-    Container,
-    Avatar,
-    ContainerPost,
-    User,
-    Description,
-    StyledHashtag,
-    LeftContainer,
-    LikeButton,
-    RightContainer,
-    PostManagementContainer,
-    InfoLikes,
+  Container,
+  Avatar,
+  ContainerPost,
+  User,
+  Description,
+  StyledHashtag,
+  LeftContainer,
+  LikeButton,
+  RightContainer,
+  PostManagementContainer,
+  InfoLikes,
 };

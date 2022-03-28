@@ -1,41 +1,39 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-height: 155px;
-width: 503px;
-border-radius: 11px;
-color: #C4C4C4;
-border: 1px solid #4D4D4D;
-box-sizing: border-box;
-font-family: Lato;
-font-size: 11px;
-font-weight: 400;
-line-height: 13px;
-text-align: left;
-display:flex;
-justify-content: center;
-align-items: center;
-margin-bottom: 20px;
-cursor: pointer;
+  height: 155px;
+  width: 503px;
+  border-radius: 11px;
+  color: #c4c4c4;
+  border: 1px solid #4d4d4d;
+  box-sizing: border-box;
+  font-family: Lato;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  cursor: pointer;
 
-@media (max-width: 600px){
+  @media (max-width: 600px) {
     height: 115px;
-    width: 278px;    
-}
+    width: 278px;
+  }
 
-
-    h1{
-        height: 38px;
-        width: 249px;
-        margin-bottom: 5px;
-        @media (max-width: 600px){
-            height: 26px;
-            width: 138.15px;
-            overflow: hidden;
-            margin-left: 11px;
-        }
-        
+  h1 {
+    height: 38px;
+    width: 249px;
+    margin-bottom: 5px;
+    @media (max-width: 600px) {
+      height: 26px;
+      width: 138.15px;
+      overflow: hidden;
+      margin-left: 11px;
     }
+  }
 
   border-radius: 11px;
   border: 1px solid #4d4d4d;
