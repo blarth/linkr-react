@@ -22,7 +22,7 @@ export default function TimeLine() {
     promise.then((response) => {
       setData([...response.data]);
     });
-    
+
     promise.catch((error) => {
       console.log(error.response);
       if (auth) {
@@ -35,16 +35,16 @@ export default function TimeLine() {
       }
     });
   }
-  function loadHashTag(){
+  function loadHashTag() {
     const promise = api.getHashtags();
     promise
       .then((res) => setHashtags(res.data))
       .catch((error) => console.log(error));
-  } 
-  
+  }
+
   useEffect(() => {
-    loadPost()
-    loadHashTag()
+    loadPost();
+    loadHashTag();
   }, []);
 
   return (
@@ -63,7 +63,14 @@ export default function TimeLine() {
         ) : data?.length === 0 ? (
           <h3>There are no posts yet</h3>
         ) : (
-          data?.map((post) => <Post key={post.id} {...post} loadPost={loadPost} loadHashTag={loadHashTag} />)
+          data?.map((post) => (
+            <Post
+              key={post.id}
+              {...post}
+              loadPost={loadPost}
+              loadHashTag={loadHashTag}
+            />
+          ))
         )}
       </Container>
       <Sidebar loadHashTag={loadHashTag} hashtags={hashtags} />

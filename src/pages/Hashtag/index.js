@@ -54,7 +54,14 @@ export default function HashtagTimeLine() {
         ) : data?.length === 0 ? (
           <h3>There are no posts yet</h3>
         ) : (
-          data?.map((post) => <Post loadPost={loadPost} loadHashTag={loadHashTag} key={post.id} {...post} />)
+          data?.map((post) => (
+            <Post
+              loadPost={loadPost}
+              loadHashTag={loadHashTag}
+              key={post.id}
+              {...post}
+            />
+          ))
         )}
       </Container>
       <Sidebar loadHashTag={loadHashTag} hashtags={hashtags} />

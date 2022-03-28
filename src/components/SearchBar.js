@@ -12,21 +12,19 @@ export default function SearchBar() {
   const [data, setData] = useState(null);
   const { auth } = useAuth();
 
+  async function getSearchBar() {
+    try {
+      const users = await api.getSearchBarResults(auth, searchText);
+      if (!users) {
+        return;
+      }
 
-    async function getSearchBar() {
-        try {
-            const users = await api.getSearchBarResults(auth, searchText)
-            if (!users) {
-                return;
-            }
-            
-            setData([...users.data])
-        }
-        catch (error) {
-            console.log(error);
-        }
-    } useEffect(getSearchBar, [searchText]);
-
+      setData([...users.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(getSearchBar, [searchText]);
 
   return (
     <Container>
@@ -43,7 +41,7 @@ export default function SearchBar() {
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
         {data?.map((search) => (
-            <Search setSearchText={setSearchText} key={search.id} {...search} />
+          <Search setSearchText={setSearchText} key={search.id} {...search} />
         ))}
       </SearchBarResults>
     </Container>
@@ -92,13 +90,13 @@ const Container = styled.div`
       width: 95%;
     }
   }
-  input::placeholder{
-    font-family: 'Lato';
+  input::placeholder {
+    font-family: "Lato";
     font-weight: 400;
     font-size: 19px;
     line-height: 23px;
 
-    color: #C6C6C6;
+    color: #c6c6c6;
   }
   .show-result {
     display: flex;
