@@ -81,7 +81,6 @@ const Container = styled.div`
       overflow: hidden;
 
       font-size: 9px;
-      line-height: 10.8px;
     }
   }
 
@@ -121,7 +120,6 @@ const LeftContainer = styled.div`
   padding-right: 27px;
   @media (max-width: 600px) {
     padding-left: 5px;
-    padding-right: 5px;
   }
 `;
 
