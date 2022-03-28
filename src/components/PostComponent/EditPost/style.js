@@ -7,6 +7,19 @@ const EditButton = styled.button`
   position: absolute;
   top: 10px;
   right: 30px;
+
+  @media (max-width: 600px) {
+    right: 40px;
+  }
+  @media (max-width: 420px) {
+    right: 80px;
+  }
+  @media (max-width: 350px) {
+    right: 105px;
+  }
+  @media (max-width: 300px) {
+    right: 150px;
+  }
 `;
 const EditInput = styled.textarea`
   all: unset;
