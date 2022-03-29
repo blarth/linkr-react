@@ -42,6 +42,7 @@ async function getPost(token, page) {
   const config = createConfig(token);
   const promisse = await axios.get(`${REACT_APP_BASE_URL}/timeline/${page ? page*10 : 0}`, config);
 
+
   return promisse;
 }
 
@@ -110,6 +111,23 @@ async function editPost(token, postId, post) {
   );
   return promise;
 }
+
+async function followUser(token, followedUserId) {
+  const config = createConfig(token);
+  await axios.post(
+    `${process.env.REACT_APP_BASE_URL}/users/follow`,
+    followedUserId,
+    config
+  );
+}
+async function getFollowers(token, followedUserId) {
+  const config = createConfig(token);
+  const promise = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/users/follow/${followedUserId}`,
+    config
+  );
+  return promise;
+}
 const api = {
   createUser,
   signin,
@@ -125,6 +143,8 @@ const api = {
   getSearchBarResults,
   editPost,
   getLikes,
+  followUser,
+  getFollowers,
 };
 
 export default api;

@@ -48,12 +48,20 @@ const ContainerInfo = styled.div`
 
   @media (max-width: 600px) {
     font-size: 33px;
-    padding-left: 10px;
+
     margin-top: 157px;
     & > h4 {
       text-overflow: ellipsis;
     }
   }
+`;
+const RightContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  position: sticky;
+  top: ${(props) => (props.allowFollow ? "110px" : "220px")};
 `;
 const MainContainer = styled.div`
   display: flex;
@@ -82,4 +90,38 @@ const ContainerNewPosts = styled.div`
   }
   `;
 
-export { Container, ContainerInfo, MainContainer, ContainerNewPosts };
+const FollowButton = styled.button`
+  all: unset;
+
+  margin-bottom: 45px;
+
+  border-radius: 5px;
+
+  background-color: ${(props) =>
+    props.followType === "follow" ? "#1877f2" : "white"};
+
+  width: 112px;
+  height: 31px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Lato";
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+
+  color: ${(props) => (props.followType === "follow" ? "white" : "#1877f2")};
+
+  cursor: pointer;
+`;
+
+export {
+  Container,
+  ContainerInfo,
+  MainContainer,
+  RightContainer,
+  FollowButton,
+  ContainerNewPosts
+};
