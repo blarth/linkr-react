@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 20px;
+  margin-bottom: 20px;
 
   padding: 12px;
   @media (max-width: 600px) {
