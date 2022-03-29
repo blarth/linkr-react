@@ -60,6 +60,8 @@ const User = styled.div`
   line-height: 23px;
   text-align: left;
   color: #ffffff;
+
+  cursor: pointer;
 `;
 
 const LeftContainer = styled.div`
