@@ -38,9 +38,10 @@ async function deletePost(id, token) {
   return promisse;
 }
 
-async function getPost(token) {
+async function getPost(token, page) {
   const config = createConfig(token);
-  const promisse = await axios.get(`${REACT_APP_BASE_URL}/timeline`, config);
+  const promisse = await axios.get(`${REACT_APP_BASE_URL}/timeline/${page ? page*10 : 0}`, config);
+
 
   return promisse;
 }

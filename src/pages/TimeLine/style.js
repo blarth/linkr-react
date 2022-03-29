@@ -59,5 +59,8 @@ const MainContainer = styled.div`
     width: 100%;
   }
 `;
+const InfiniteScroll = styled.div`
+margin-bottom: 16px;
+`;
 
-export { Container, ContainerInfo, MainContainer };
+export { Container, ContainerInfo, MainContainer, InfiniteScroll };
