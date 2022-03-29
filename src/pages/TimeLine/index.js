@@ -25,6 +25,7 @@ export default function TimeLine() {
   function verifyNewPosts(){
     loadNewPost()
     if(dataComparision.length === 0) return
+    if(dataComparision[0]?.id === data[0]?.id) return
     dataComparision[0]?.id !== data[0]?.id && setHasNewPosts(true) 
   }
   function loadNewPost(){
@@ -77,6 +78,7 @@ export default function TimeLine() {
   } 
   function reloadPost(){
     loadPost()
+    loadHashTag()
     setHasNewPosts(false)
   }
   
