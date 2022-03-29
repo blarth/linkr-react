@@ -10,7 +10,7 @@ import { ContainerInfo, RightContainer, FollowButton } from "./style";
 import Sidebar from "../../components/hashtagsSidebar";
 import { MainContainer } from "../TimeLine/style";
 import Swal from "sweetalert2";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroller"
 import { ThreeDots } from "react-loader-spinner";
 import useUser from "../../hooks/useUser";
 

@@ -72,6 +72,24 @@ const MainContainer = styled.div`
     width: 100%;
   }
 `;
+const ContainerNewPosts = styled.div`
+  height: 61px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #1877F2;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p{
+    
+    height: 19px;
+    width: 176px;
+    color: #FFFFFF;
+    line-height: 20px;
+  }
+  `;
+
 const FollowButton = styled.button`
   all: unset;
 
@@ -105,4 +123,5 @@ export {
   MainContainer,
   RightContainer,
   FollowButton,
+  ContainerNewPosts
 };
