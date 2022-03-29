@@ -10,7 +10,7 @@ import { ContainerInfo } from "./style";
 import Sidebar from "../../components/hashtagsSidebar";
 import { MainContainer } from "../TimeLine/style";
 import Swal from "sweetalert2";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroller"
 import { ThreeDots } from "react-loader-spinner";
 
 export default function UserTimeLine() {
