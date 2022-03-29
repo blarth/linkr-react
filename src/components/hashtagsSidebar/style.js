@@ -20,7 +20,7 @@ const TrendingContainer = styled.div`
   color: #fff;
   font-weight: 700;
   font-size: 27px;
-  font-family: Oswald;
+  font-family: "Oswald", sans-serif;
   border-radius: 16px 16px 0 0;
   padding: 20px 0 12px 20px;
 `;
