@@ -10,13 +10,15 @@ import Sidebar from "../../components/hashtagsSidebar";
 import { ThreeDots } from "react-loader-spinner";
 import useInterval from "react-useinterval"
 import spinningwheel from "../../assets/VectorspinningWheel.svg"
+import InfiniteScroll from "react-infinite-scroller"
+
 export default function TimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
   const [hashtags, setHashtags] = useState("");
   const [dataComparision, setDataComparision] = useState("")
   const [hasNewPosts, setHasNewPosts] = useState(false)
-
+  const [page, setPage] = useState(1);
 
 
   useInterval(verifyNewPosts, 15000);
@@ -72,6 +74,31 @@ export default function TimeLine() {
       }
     });
   }
+  function loadMorePosts(){
+    const promise = auth && api.getPost(auth, page);
+    if (!promise) {
+      return;
+    }
+    promise.then((response) => {
+      setData(data.concat([...response.data]));
+      if (data === null) return;
+      setPage(page + 1);
+      
+    });
+
+    promise.catch((error) => {
+      console.log(error.response);
+      if (auth) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Please, reload the page!</a>',
+        });
+      }
+    });
+  }
+
   function loadHashTag(){
     const promise = api.getHashtags();
     promise
@@ -105,9 +132,27 @@ export default function TimeLine() {
           </h3>
         ) : data?.length === 0 ? (
           <h3>There are no posts yet</h3>
-        ) : (
-          data?.map((post) => <Post key={post.id} {...post} loadPost={loadPost} loadHashTag={loadHashTag} />)
-        )}
+        ) :<InfiniteScroll
+        pageStart={page}
+        loadMore={loadMorePosts}
+        hasMore={data?.length < page*10 ? false : true}
+        
+        loader={
+          <h3>
+            {" "}
+            <ThreeDots color="#FFFFFF" height={13} width={100} />
+          </h3>
+        }
+      >
+        {data?.map((post, i) => (
+          <Post
+            key={i}
+            {...post}
+            loadPost={loadPost}
+            loadHashTag={loadHashTag}
+          />
+        ))}
+      </InfiniteScroll>}
       </Container>
       <Sidebar loadHashTag={loadHashTag} hashtags={hashtags} />
     </MainContainer>
