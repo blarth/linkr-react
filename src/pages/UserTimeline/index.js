@@ -10,10 +10,9 @@ import { ContainerInfo, RightContainer, FollowButton } from "./style";
 import Sidebar from "../../components/hashtagsSidebar";
 import { MainContainer } from "../TimeLine/style";
 import Swal from "sweetalert2";
-import InfiniteScroll from "react-infinite-scroller"
+import InfiniteScroll from "react-infinite-scroller";
 import { ThreeDots } from "react-loader-spinner";
 import useUser from "../../hooks/useUser";
-
 
 export default function UserTimeLine() {
   const { auth } = useAuth();
@@ -52,7 +51,7 @@ export default function UserTimeLine() {
       console.log(error.response);
     });
   }
-  function loadMorePosts(){
+  function loadMorePosts() {
     const promise = auth && api.getPost(auth, page);
     if (!promise) {
       return;
@@ -61,7 +60,6 @@ export default function UserTimeLine() {
       setData(data.concat([...response.data]));
       if (data === null) return;
       setPage(page + 1);
-      
     });
 
     promise.catch((error) => {
@@ -101,7 +99,6 @@ export default function UserTimeLine() {
           <Avatar src={user?.userImage} alt="user Avatar"></Avatar>
           <h4>{`${user?.userName}'s posts`}</h4>
         </ContainerInfo>
-
         {data === null ? (
           <h3>
             <ThreeDots color="#FFFFFF" height={13} width={100} />
@@ -112,8 +109,7 @@ export default function UserTimeLine() {
           <InfiniteScroll
             pageStart={page}
             loadMore={loadMorePosts}
-            hasMore={data?.length < page*10 ? false : true}
-            
+            hasMore={data?.length < page * 10 ? false : true}
             loader={
               <h3>
                 {" "}
