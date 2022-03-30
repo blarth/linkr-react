@@ -40,8 +40,10 @@ async function deletePost(id, token) {
 
 async function getPost(token, page) {
   const config = createConfig(token);
-  const promisse = await axios.get(`${REACT_APP_BASE_URL}/timeline/${page ? page*10 : 0}`, config);
-
+  const promisse = await axios.get(
+    `${REACT_APP_BASE_URL}/timeline/${page ? page * 10 : 0}`,
+    config
+  );
 
   return promisse;
 }
@@ -128,6 +130,15 @@ async function getFollowers(token, followedUserId) {
   );
   return promise;
 }
+
+async function checkFollowings(token) {
+  const config = createConfig(token);
+  const promise = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/users/following`,
+    config
+  );
+  return promise;
+}
 const api = {
   createUser,
   signin,
@@ -145,6 +156,7 @@ const api = {
   getLikes,
   followUser,
   getFollowers,
+  checkFollowings,
 };
 
 export default api;

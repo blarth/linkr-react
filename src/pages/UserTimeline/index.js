@@ -37,7 +37,7 @@ export default function UserTimeLine() {
   function loadPost() {
     const promise = api.getPostbyUserId(auth, id);
 
-    promise.then(async (response) => {
+    promise.then((response) => {
       setData([...response.data]);
       setUser({
         userName: response.data[0].userName,
