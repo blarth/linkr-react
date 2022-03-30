@@ -48,6 +48,7 @@ const ContainerInfo = styled.div`
 
   @media (max-width: 600px) {
     font-size: 33px;
+    padding-left: 12px;
 
     margin-top: 157px;
     & > h4 {
@@ -69,7 +70,7 @@ const RightContainer = styled.div`
 
     position: absolute;
     top: 140px;
-    right: 30px;
+    right: 0;
 
     display: block;
   }
@@ -116,6 +117,9 @@ const FollowButton = styled.button`
   @media (max-width: 600px) {
     width: 70px;
     height: 25px;
+    position: absolute;
+    top: 5px;
+    right: 12px;
   }
 `;
 
