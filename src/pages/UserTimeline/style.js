@@ -53,6 +53,7 @@ const ContainerInfo = styled.div`
     & > h4 {
       text-overflow: ellipsis;
     }
+    position: relative;
   }
 `;
 const RightContainer = styled.div`
@@ -62,6 +63,19 @@ const RightContainer = styled.div`
   justify-content: flex-start;
   position: sticky;
   top: ${(props) => (props.allowFollow ? "110px" : "220px")};
+
+  @media (max-width: 1000px) {
+    height: 31px;
+
+    position: absolute;
+    top: 140px;
+    right: 30px;
+
+    display: block;
+  }
+  @media (max-width: 600px) {
+    top: 135px;
+  }
 `;
 const MainContainer = styled.div`
   display: flex;
@@ -72,24 +86,6 @@ const MainContainer = styled.div`
     width: 100%;
   }
 `;
-const ContainerNewPosts = styled.div`
-  height: 61px;
-  width: 100%;
-  border-radius: 16px;
-  background-color: #1877F2;
-  box-shadow: 0px 4px 4px 0px #00000040;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  p{
-    
-    height: 19px;
-    width: 176px;
-    color: #FFFFFF;
-    line-height: 20px;
-  }
-  `;
-
 const FollowButton = styled.button`
   all: unset;
 
@@ -115,6 +111,11 @@ const FollowButton = styled.button`
   color: ${(props) => (props.followType === "follow" ? "white" : "#1877f2")};
 
   cursor: pointer;
+
+  @media (max-width: 600px) {
+    width: 70px;
+    height: 25px;
+  }
 `;
 
 export {
@@ -123,5 +124,4 @@ export {
   MainContainer,
   RightContainer,
   FollowButton,
-  ContainerNewPosts
 };
