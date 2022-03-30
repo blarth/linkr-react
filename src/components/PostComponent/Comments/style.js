@@ -82,6 +82,12 @@ const CommenterTextContainer = styled.div`
 	font-weight: 400;
 `
 
+const WhiteLine = styled.div`
+	background-color: #353535;
+	height: 1px;
+	width: 100%;
+`
+
 export { IconTextContainer,
 		Img,
 		Span,
@@ -93,4 +99,5 @@ export { IconTextContainer,
 		CommenterName,
 		CommenterTextContainer,
 		CommenterRelation,
+		WhiteLine
 	}

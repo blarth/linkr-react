@@ -6,6 +6,7 @@ import { Avatar,
 		NameTextContainer,
 		NameContainer,
 		CommenterRelation,
+		WhiteLine
 	} from "./style"
 
 export default function SingleComment({authorId, commenterId, doIfollow, image, name, text}){
@@ -32,6 +33,7 @@ export default function SingleComment({authorId, commenterId, doIfollow, image, 
 				</CommenterTextContainer>
 			</NameTextContainer>
 		</CommentContainer>
+				<WhiteLine></WhiteLine>
 		</>
 	)
 }
