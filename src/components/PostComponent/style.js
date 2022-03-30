@@ -18,6 +18,7 @@ const Container = styled.div`
   @media (max-width: 600px) {
     width: 100%;
     height: 250px;
+    padding: 0 12px 12px 12px;
   }
   @media (max-width: 480px) {
     border-radius: 0;
@@ -57,7 +58,6 @@ const User = styled.div`
   font-family: "Lato", sans-serif;
   font-size: 19px;
   font-weight: 400;
-  line-height: 23px;
   text-align: left;
   color: #ffffff;
 
@@ -70,21 +70,23 @@ const LeftContainer = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 23px;
-
+  @media (max-width: 600px) {
+    padding-top: 12px;
+  }
   @media (max-width: 420px) {
-    margin-left: 45px;
+    margin-left: 35px;
   }
   @media (max-width: 350px) {
-    margin-left: 80px;
+    margin-left: 55px;
   }
-  @media (max-width: 300px) {
-    margin-left: 105px;
+  @media (max-width: 326px) {
+    margin-left: 65px;
   }
 `;
 const RightContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
   gap: 15px;
@@ -93,6 +95,7 @@ const RightContainer = styled.div`
 
   @media (max-width: 600px) {
     width: 340px;
+    padding-top: 9px;
   }
 `;
 
