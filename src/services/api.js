@@ -64,10 +64,16 @@ async function signout(token) {
   await axios.delete(`${REACT_APP_BASE_URL}/signout`, config);
 }
 
-async function getSearchBarResults(token, searchText){
+async function getSearchBarFollowers(token, searchText){
   const config = createConfig(token);
-  const users = await axios.get(`${process.env.REACT_APP_BASE_URL}/searchbar/${searchText}`, config)
+  const users = await axios.get(`${process.env.REACT_APP_BASE_URL}/searchfollowers/${searchText}`, config)
   return users;
+}
+
+async function getSearchBarNotFollowers(token, searchText){
+  const config = createConfig(token);
+  const followers = await axios.get(`${process.env.REACT_APP_BASE_URL}/searchnotfollowers/${searchText}`, config)
+  return followers;
 }
 
 async function getUser(token) {
@@ -127,9 +133,10 @@ const api = {
   likePost,
   deletePost,
   getPostByHashtag,
-  getSearchBarResults,
+  getSearchBarNotFollowers,
   editPost,
   getLikes,
+  getSearchBarFollowers,
 };
 
 export default api;

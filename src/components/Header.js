@@ -12,8 +12,6 @@ import SearchBar from "./SearchBar";
 export default function Header() {
   const [logout, setLogout] = useState();
   const { auth } = useAuth();
-  const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState(null);
   const navigate = useNavigate();
   let { user, setUser } = useUser();
   useEffect(() => {

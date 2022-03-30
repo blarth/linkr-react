@@ -1,16 +1,16 @@
 
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
-
 
 export default function Search({
     id,
     name,
     image,
-    setSearchText
+    setSearchText,
+    isFollower
   }) {
     const navigate = useNavigate()
-
     function redirectToUser() {
         navigate(`/user/${id}`);
         setSearchText("")
@@ -18,7 +18,7 @@ export default function Search({
     return(
         <Container onClick={redirectToUser}>
             <img src={image} alt="user" />
-            <p>{name}</p>
+            <p>{name} {isFollower && <span>• following</span>}</p>
         </Container>
     );
 }
@@ -46,5 +46,15 @@ const Container = styled.div`
 
         color: #515151;
         margin-left: 12px;
+    }
+    span{
+        list-style: circle;
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 23px;
+
+        color: #C5C5C5;
+
     }
 `;

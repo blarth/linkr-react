@@ -5,28 +5,47 @@ import { DebounceInput } from "react-debounce-input";
 import Search from "./Search";
 import useAuth from "../hooks/useAuth";
 import vector from "../assets/Vector2.svg";
-import { Img } from "../pages/TimeLine/PostLink/style";
 
 export default function SearchBar() {
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState(null);
+  const [followerData, setFollowerData] = useState(null);
+  const [notFollowerData, setNotFollowerData] = useState(null);
   const { auth } = useAuth();
-
-
-    async function getSearchBar() {
+    async function getFollowers() {
         try {
-            const users = await api.getSearchBarResults(auth, searchText)
+            const users = await api.getSearchBarFollowers(auth, searchText);
             if (!users) {
                 return;
             }
-            
-            setData([...users.data])
+            setFollowerData(users.data.map( (follower) => ({...follower, isFollower : true})))
+            if(data === null){
+              return;
+            }
         }
         catch (error) {
             console.log(error);
         }
-    } useEffect(getSearchBar, [searchText]);
+    } useEffect(getFollowers, [searchText]);
 
+    async function getNotFollowers() {
+      try {
+          const users = await api.getSearchBarNotFollowers(auth, searchText);
+          if (!users) {
+              return;
+          }
+          setNotFollowerData(users.data.map( (follower) => ({...follower, isFollower : false})))
+          if(data === null){
+            return;
+          }
+      }
+      catch (error) {
+          console.log(error);
+      }
+  } useEffect(getNotFollowers, [searchText]);
+
+  console.log(followerData)
+  console.log(notFollowerData)
 
   return (
     <Container>
@@ -42,8 +61,8 @@ export default function SearchBar() {
       <SearchBarResults
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
-        {data?.map((search) => (
-            <Search setSearchText={setSearchText} key={search.id} {...search} />
+        {notFollowerData?.map((search) => (
+            <Search setSearchText={setSearchText} key={search.id}  {...search}/>
         ))}
       </SearchBarResults>
     </Container>
