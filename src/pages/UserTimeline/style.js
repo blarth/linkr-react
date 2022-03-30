@@ -9,10 +9,12 @@ const Container = styled.div`
   overflow: hidden;
 
   h3 {
-    height: 64px;
+    width: 100%;
+    height: 300px;
 
     font-family: "Oswald", sans-serif;
-    font-size: 43px;
+
+    font-size: 35px;
     font-style: normal;
     font-weight: 700;
     line-height: 64px;
@@ -114,12 +116,14 @@ const FollowButton = styled.button`
 
   cursor: pointer;
 
-  @media (max-width: 600px) {
-    width: 70px;
-    height: 25px;
+  @media (max-width: 815px) {
     position: absolute;
     top: 5px;
     right: 12px;
+  }
+  @media (max-width: 600) {
+    width: 70px;
+    height: 25px;
   }
 `;
 
