@@ -65,6 +65,7 @@ const CommenterRelation = styled.span`
 	display: flex;
 	flex-direction: row;
 	margin-left: 5px;
+	gap: 3px;
 `
 
 const CommenterName = styled(Link)`

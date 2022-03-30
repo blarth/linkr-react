@@ -240,7 +240,14 @@ export default function Post({
       </Container>
       { comments.commentBoxOpen &&
         <CommentsContainer>
-          {comments.commentsList.map(each => <SingleComment authorId={userId} commenterId={each.userId} image={each.image} name={each.name} text={each.comment}/>)}
+          {comments.commentsList.map(
+            each => <SingleComment 
+          authorId={userId} 
+          commenterId={each.userId}
+          doIfollow={each.following}
+          image={each.image} 
+          name={each.name} 
+          text={each.comment}/>)}
       </CommentsContainer>
       }
     </GeneralContainer>

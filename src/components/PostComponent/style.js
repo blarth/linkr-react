@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 const GeneralContainer = styled.div`
   position: relative;
+  :last-child{
+    margin-bottom: 20px;
+  }
 `
 
 const Container = styled.div`
@@ -53,7 +56,6 @@ const CommentsContainer = styled.div`
 
   @media (max-width: 600px) {
     width: 100%;
-    height: 250px;
   }
   @media (max-width: 480px) {
     border-radius: 0 0 20px 20px;

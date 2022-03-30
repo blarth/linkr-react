@@ -8,7 +8,7 @@ import { Avatar,
 		CommenterRelation,
 	} from "./style"
 
-export default function SingleComment({authorId, commenterId, image, name, text}){
+export default function SingleComment({authorId, commenterId, doIfollow, image, name, text}){
 	return(
 		<>
 		<CommentContainer>
@@ -23,6 +23,8 @@ export default function SingleComment({authorId, commenterId, image, name, text}
 					<CommenterRelation>
 						{authorId === commenterId &&
 						<span>• post's author</span>}
+						{doIfollow &&
+						<span>• following</span>}
 					</CommenterRelation>
 				</NameContainer>
 				<CommenterTextContainer>
