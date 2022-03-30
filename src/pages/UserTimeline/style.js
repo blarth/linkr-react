@@ -75,6 +75,7 @@ const RightContainer = styled.div`
   }
   @media (max-width: 600px) {
     top: 135px;
+    left: 10px;
   }
 `;
 const MainContainer = styled.div`
