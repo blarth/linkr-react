@@ -11,6 +11,7 @@ const Container = styled.button`
 
   @media (max-width: 600px) {
     right: 10px;
+    top: 18px;
   }
   @media (max-width: 420px) {
     right: 55px;

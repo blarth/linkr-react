@@ -10,6 +10,7 @@ const EditButton = styled.button`
 
   @media (max-width: 600px) {
     right: 40px;
+    top: 18px;
   }
   @media (max-width: 420px) {
     right: 80px;
