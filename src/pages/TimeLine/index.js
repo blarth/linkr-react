@@ -26,6 +26,8 @@ export default function TimeLine() {
     loadNewPost()
     if(dataComparision.length === 0) return
     if(dataComparision[0]?.id === data[0]?.id) return
+    console.log(dataComparision[0].id)
+    console.log(data[0].id)
     dataComparision[0]?.id !== data[0]?.id && setHasNewPosts(true) 
   }
   function loadNewPost(){
@@ -95,7 +97,7 @@ export default function TimeLine() {
           <h4>timeline</h4>
         </ContainerInfo>
         <PostLink loadPost={loadPost} loadHashTag={loadHashTag}></PostLink>
-        {hasNewPosts && <ContainerNewPosts onClick={reloadPost}><p>{((dataComparision[0]?.id)-data[0]?.id)} new posts, load more!</p><img src={spinningwheel} alt="vector img"></img></ContainerNewPosts>}
+        { hasNewPosts && <ContainerNewPosts onClick={reloadPost}><p>{((dataComparision[0]?.id)-data[0]?.id) === 0 ? setHasNewPosts(false) : ((dataComparision[0]?.id)-data[0]?.id) } new posts, load more!</p><img src={spinningwheel} alt="vector img"></img></ContainerNewPosts>}
         {data === null ? (
           <h3>
             {" "}
