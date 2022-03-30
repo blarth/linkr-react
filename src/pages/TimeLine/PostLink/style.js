@@ -40,7 +40,7 @@ const Form = styled.form`
     margin-left: 22px;
   }
   p {
-    font-family: 'Lato';
+    font-family: "Lato";
     font-weight: 300;
     font-size: 20px;
     line-height: 24px;
@@ -63,8 +63,8 @@ const Form = styled.form`
 
     width: 100%;
   }
-  input::placeholder{
-    font-family: 'Lato';
+  input::placeholder {
+    font-family: "Lato";
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
@@ -92,8 +92,7 @@ const Form = styled.form`
     background: #1877f2;
     border-radius: 5px;
 
-
-    font-family: 'Lato';
+    font-family: "Lato";
     font-weight: 700;
     font-size: 14px;
 

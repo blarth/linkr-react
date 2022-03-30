@@ -61,8 +61,13 @@ export default function SearchBar() {
       <SearchBarResults
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
+<<<<<<< HEAD
         {notFollowerData?.map((search) => (
             <Search setSearchText={setSearchText} key={search.id}  {...search}/>
+=======
+        {data?.map((search) => (
+          <Search setSearchText={setSearchText} key={search.id} {...search} />
+>>>>>>> 3f1fbcc57c76caa0ecc337a574de0ba8b36d5b50
         ))}
       </SearchBarResults>
     </Container>
@@ -111,13 +116,13 @@ const Container = styled.div`
       width: 95%;
     }
   }
-  input::placeholder{
-    font-family: 'Lato';
+  input::placeholder {
+    font-family: "Lato";
     font-weight: 400;
     font-size: 19px;
     line-height: 23px;
 
-    color: #C6C6C6;
+    color: #c6c6c6;
   }
   .show-result {
     display: flex;

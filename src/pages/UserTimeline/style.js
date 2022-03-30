@@ -48,11 +48,35 @@ const ContainerInfo = styled.div`
 
   @media (max-width: 600px) {
     font-size: 33px;
-    padding-left: 10px;
+    padding-left: 12px;
+
     margin-top: 157px;
     & > h4 {
       text-overflow: ellipsis;
     }
+    position: relative;
+  }
+`;
+const RightContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  position: sticky;
+  top: ${(props) => (props.allowFollow ? "110px" : "220px")};
+
+  @media (max-width: 1000px) {
+    height: 31px;
+
+    position: absolute;
+    top: 140px;
+    right: 0;
+
+    display: block;
+  }
+  @media (max-width: 600px) {
+    top: 135px;
+    left: 10px;
   }
 `;
 const MainContainer = styled.div`
@@ -64,5 +88,45 @@ const MainContainer = styled.div`
     width: 100%;
   }
 `;
+const FollowButton = styled.button`
+  all: unset;
 
-export { Container, ContainerInfo, MainContainer };
+  margin-bottom: 45px;
+
+  border-radius: 5px;
+
+  background-color: ${(props) =>
+    props.followType === "follow" ? "#1877f2" : "white"};
+
+  width: 112px;
+  height: 31px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Lato";
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+
+  color: ${(props) => (props.followType === "follow" ? "white" : "#1877f2")};
+
+  cursor: pointer;
+
+  @media (max-width: 600px) {
+    width: 70px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    right: 12px;
+  }
+`;
+
+export {
+  Container,
+  ContainerInfo,
+  MainContainer,
+  RightContainer,
+  FollowButton,
+};

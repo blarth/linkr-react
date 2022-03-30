@@ -16,6 +16,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 25px;
+
+  word-wrap: break-word;
   cursor: pointer;
 
   @media (max-width: 600px) {

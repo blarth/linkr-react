@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
@@ -24,26 +23,27 @@ export default function Search({
 }
 
 const Container = styled.div`
-    background-color: #E7E7E7;
-    width: 100%;
-    padding: 18px 18px 0 18px;
-    :last-child{
-        padding-bottom: 20px;
-        border-end-end-radius: 8px;
-        border-end-start-radius: 8px;
-    }
-    img{
-        object-fit: cover;
-        width: 39px;
-        height: 39px;
-        border-radius: 50%;
-    }
-    p{
-        font-family: 'Lato';
-        font-weight: 400;
-        font-size: 19px;
-        line-height: 23px;
+  background-color: #e7e7e7;
+  width: 100%;
+  padding: 18px 18px 0 18px;
+  :last-child {
+    padding-bottom: 20px;
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
+  }
+  img {
+    object-fit: cover;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+  }
+  p {
+    font-family: "Lato";
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
 
+<<<<<<< HEAD
         color: #515151;
         margin-left: 12px;
     }
@@ -58,3 +58,9 @@ const Container = styled.div`
 
     }
 `;
+=======
+    color: #515151;
+    margin-left: 12px;
+  }
+`;
+>>>>>>> 3f1fbcc57c76caa0ecc337a574de0ba8b36d5b50

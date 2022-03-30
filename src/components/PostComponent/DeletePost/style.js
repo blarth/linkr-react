@@ -11,6 +11,7 @@ const Container = styled.button`
 
   @media (max-width: 600px) {
     right: 10px;
+    top: 18px;
   }
   @media (max-width: 420px) {
     right: 55px;
@@ -27,7 +28,7 @@ const ButtonDelete = styled.button`
   all: unset;
   background-color: #1877f2;
 
-  font-family: 'Lato';
+  font-family: "Lato";
   width: 134px;
   height: 37px;
   border-radius: 5px;
@@ -48,7 +49,7 @@ const ButtonNotDelete = styled.button`
   all: unset;
   background-color: #ffffff;
 
-  font-family: 'Lato';
+  font-family: "Lato";
   width: 134px;
   height: 37px;
   border-radius: 5px;
@@ -80,7 +81,7 @@ const Form = styled.form`
 `;
 
 const TextModal = styled.p`
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 700;
   font-size: 34px;
 
