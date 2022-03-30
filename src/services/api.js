@@ -8,17 +8,14 @@ function createConfig(token) {
   };
 }
 
-const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 
 async function createUser(user) {
   await axios.post(`${REACT_APP_BASE_URL}/signup`, user);
 }
 
 async function signin(data) {
-  const token = await axios.post(
-    `${REACT_APP_BASE_URL}/signin`,
-    data
-  );
+  const token = await axios.post(`${REACT_APP_BASE_URL}/signin`, data);
   return token;
 }
 
@@ -34,14 +31,17 @@ async function sendPost(body, token) {
 
 async function deletePost(id, token) {
   const config = createConfig(token);
-  const promisse = await axios.delete(`${REACT_APP_BASE_URL}/deletepost/${id}`, config);
+  const promisse = await axios.delete(
+    `${REACT_APP_BASE_URL}/deletepost/${id}`,
+    config
+  );
   return promisse;
 }
 
-async function getPost(token) {
+async function getPost(token, page) {
   const config = createConfig(token);
   const promisse = await axios.get(
-    `${REACT_APP_BASE_URL}/timeline`,
+    `${REACT_APP_BASE_URL}/timeline/${page ? page * 10 : 0}`,
     config
   );
 
@@ -51,10 +51,7 @@ async function getPost(token) {
 async function getPostbyUserId(token, id) {
   const config = createConfig(token);
 
-  const promisse = await axios.get(
-    `${REACT_APP_BASE_URL}/user/${id}`,
-    config
-  );
+  const promisse = await axios.get(`${REACT_APP_BASE_URL}/user/${id}`, config);
 
   return promisse;
 }
@@ -64,18 +61,18 @@ async function signout(token) {
   await axios.delete(`${REACT_APP_BASE_URL}/signout`, config);
 }
 
-async function getSearchBarResults(token, searchText){
+async function getSearchBarResults(token, searchText) {
   const config = createConfig(token);
-  const users = await axios.get(`${process.env.REACT_APP_BASE_URL}/searchbar/${searchText}`, config)
+  const users = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/searchbar/${searchText}`,
+    config
+  );
   return users;
 }
 
 async function getUser(token) {
   const config = createConfig(token);
-  const user = await axios.get(
-    `${REACT_APP_BASE_URL}/users`,
-    config
-  );
+  const user = await axios.get(`${REACT_APP_BASE_URL}/users`, config);
   return user;
 }
 
@@ -93,7 +90,7 @@ async function likePost(token, postId, status) {
   );
 }
 
-async function getLikes(id){
+async function getLikes(id) {
   const promise = await axios.get(`${REACT_APP_BASE_URL}/likes/${id}`);
   return promise;
 }
@@ -115,12 +112,39 @@ async function getPostByHashtag(token, name) {
   return posts;
 }
 
-async function editPost(token, postId, post){
+async function editPost(token, postId, post) {
   const config = createConfig(token);
   const promise = await axios.patch(
     `${process.env.REACT_APP_BASE_URL}/posts/edit/${postId}`,
-  post,
-  config);
+    post,
+    config
+  );
+  return promise;
+}
+
+async function followUser(token, followedUserId) {
+  const config = createConfig(token);
+  await axios.post(
+    `${process.env.REACT_APP_BASE_URL}/users/follow`,
+    followedUserId,
+    config
+  );
+}
+async function getFollowers(token, followedUserId) {
+  const config = createConfig(token);
+  const promise = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/users/follow/${followedUserId}`,
+    config
+  );
+  return promise;
+}
+
+async function checkFollowings(token) {
+  const config = createConfig(token);
+  const promise = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/users/following`,
+    config
+  );
   return promise;
 }
 const api = {
@@ -139,6 +163,9 @@ const api = {
   editPost,
   getLikes,
   getComments,
+  followUser,
+  getFollowers,
+  checkFollowings,
 };
 
 export default api;

@@ -9,15 +9,18 @@ const Container = styled.div`
   overflow: hidden;
 
   h3 {
-    height: 64px;
+    width: 100%;
+    height: 300px;
 
     font-family: "Oswald", sans-serif;
-    font-size: 43px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 700;
     line-height: 64px;
     text-align: center;
     color: #ffffff;
+
+    word-wrap: break-word;
   }
 
   h4 {
@@ -59,5 +62,31 @@ const MainContainer = styled.div`
     width: 100%;
   }
 `;
+const InfiniteScroll = styled.div`
+  margin-bottom: 16px;
+`;
 
-export { Container, ContainerInfo, MainContainer };
+const ContainerNewPosts = styled.div`
+  height: 61px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #1877f2;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    height: 19px;
+    width: 176px;
+    color: #ffffff;
+    line-height: 20px;
+  }
+`;
+
+export {
+  Container,
+  ContainerInfo,
+  MainContainer,
+  InfiniteScroll,
+  ContainerNewPosts,
+};
