@@ -75,6 +75,7 @@ const ContainerNewPosts = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   p {
     height: 19px;
     width: 176px;

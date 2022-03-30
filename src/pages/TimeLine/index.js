@@ -23,8 +23,8 @@ export default function TimeLine() {
   const [hashtags, setHashtags] = useState("");
   const [dataComparision, setDataComparision] = useState("");
   const [hasNewPosts, setHasNewPosts] = useState(false);
-  const [text, setText] = useState(false);
   const [page, setPage] = useState(1);
+  const [text, setText] = useState(false);
 
   useInterval(verifyNewPosts, 15000);
 
@@ -123,7 +123,7 @@ export default function TimeLine() {
     loadHashTag();
     checkFollowings();
   }, []);
-
+ 
   return (
     <MainContainer>
       <Container>
