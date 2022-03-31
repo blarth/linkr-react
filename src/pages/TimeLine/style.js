@@ -78,9 +78,10 @@ const ContainerNewPosts = styled.div`
   cursor: pointer;
   p {
     height: 19px;
-    width: 176px;
+    width: fit-content;
     color: #ffffff;
     line-height: 20px;
+    padding-right: 5px;
   }
 `;
 

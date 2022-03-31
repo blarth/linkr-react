@@ -123,6 +123,17 @@ export default function TimeLine() {
     loadHashTag();
     checkFollowings();
   }, []);
+
+  function getDiff(array1, array2){
+    let diff = 0
+    for (let i = 0; i< array1.length; i++){
+      if(array1[i].id === array2[0].id){
+        diff = i
+        return diff
+      }
+    }
+    return 10
+  }
  
   return (
     <MainContainer>
@@ -137,7 +148,8 @@ export default function TimeLine() {
             <p>
               {dataComparision[0]?.id - data[0]?.id === 0
                 ? setHasNewPosts(false)
-                : dataComparision[0]?.id - data[0]?.id}{" "}
+                : getDiff(dataComparision, data) === 10 ? "10+"
+              : getDiff(dataComparision, data)}{" "}
               new posts, load more!
             </p>
             <img src={spinningwheel} alt="vector img"></img>
