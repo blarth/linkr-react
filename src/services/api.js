@@ -95,6 +95,14 @@ async function getLikes(id) {
   return promise;
 }
 
+async function getComments(token, id, offset){
+  const config = createConfig(token);
+  const promise = await axios.get(
+    `${REACT_APP_BASE_URL}/comments/${id}/${offset}`,
+    config);
+  return promise;
+}
+
 async function getPostByHashtag(token, name) {
   const config = createConfig(token);
   const posts = await axios.get(
@@ -154,6 +162,7 @@ const api = {
   getSearchBarResults,
   editPost,
   getLikes,
+  getComments,
   followUser,
   getFollowers,
   checkFollowings,
