@@ -61,14 +61,20 @@ export default function Header() {
         </div>
       </Top>
       {logout && (
-        <Logout
-          onClick={() => {
-            signoutUser();
-          }}
-        >
-          {" "}
-          Logout{" "}
-        </Logout>
+        <>
+          <Logout
+            onClick={() => {
+              signoutUser();
+            }}
+          >
+            {" "}
+            Logout{" "}
+          </Logout>
+          <UserPage onClick={() => navigate(`/user/${user.id}`)}>
+            {" "}
+            My Profile
+          </UserPage>
+        </>
       )}
       <SearchBar />
     </>
@@ -128,7 +134,7 @@ const Logout = styled.div`
   width: 150px;
   height: 47px;
   right: 0;
-  top: 75px;
+  top: 119px;
 
   z-index: 100;
 
@@ -136,7 +142,31 @@ const Logout = styled.div`
   justify-content: center;
   align-items: center;
 
+  background-color: #171717;
+
   border-radius: 0px 0px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+`;
+const UserPage = styled.div`
+  position: fixed;
+  width: 150px;
+  height: 44px;
+  right: 0;
+  top: 75px;
+
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: #171717;
 
