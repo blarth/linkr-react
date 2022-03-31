@@ -148,7 +148,7 @@ export default function Post({
 
   useEffect(() => {
     getLike();
-    const comments = api.getComments(auth, id, 0);
+    const comments = api.getComments(auth, id);
 		comments.then(
       (res) => {
         setComments({...comments, commentsList:res.data});
