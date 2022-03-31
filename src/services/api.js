@@ -61,12 +61,9 @@ async function signout(token) {
   await axios.delete(`${REACT_APP_BASE_URL}/signout`, config);
 }
 
-async function getSearchBarResults(token, searchText) {
+async function getSearchBar(token, searchText){
   const config = createConfig(token);
-  const users = await axios.get(
-    `${process.env.REACT_APP_BASE_URL}/searchbar/${searchText}`,
-    config
-  );
+  const users = await axios.get(`${process.env.REACT_APP_BASE_URL}/searchbar/${searchText}`, config)
   return users;
 }
 
@@ -179,12 +176,12 @@ const api = {
   likePost,
   deletePost,
   getPostByHashtag,
-  getSearchBarResults,
   editPost,
   getLikes,
   getComments,
   followUser,
   getFollowers,
+  getSearchBar,
   checkFollowings,
   createRepost,
   verifyRepost

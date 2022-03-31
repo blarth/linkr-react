@@ -5,26 +5,27 @@ import { DebounceInput } from "react-debounce-input";
 import Search from "./Search";
 import useAuth from "../hooks/useAuth";
 import vector from "../assets/Vector2.svg";
-import { Img } from "../pages/TimeLine/PostLink/style";
 
-export default function SearchBar() {
+export default function SearchBar( ) {
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState(null);
   const { auth } = useAuth();
-
-  async function getSearchBar() {
-    try {
-      const users = await api.getSearchBarResults(auth, searchText);
-      if (!users) {
-        return;
+  
+    async function getNotFollowers() {
+      try {
+          const users = await api.getSearchBar(auth, searchText);
+          if (!users) {
+              return;
+          }
+          setData(users.data.map( (follower) => ({...follower, isFollower : follower.followed ? true : false})))
+          if(data === null){
+            return;
+          }
       }
-
-      setData([...users.data]);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(getSearchBar, [searchText]);
+      catch (error) {
+          console.log(error);
+      }
+  } useEffect(getNotFollowers, [searchText]);
 
   return (
     <Container>
@@ -41,7 +42,7 @@ export default function SearchBar() {
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
         {data?.map((search) => (
-          <Search setSearchText={setSearchText} key={search.id} {...search} />
+            <Search setSearchText={setSearchText} key={search.id}  {...search}/>
         ))}
       </SearchBarResults>
     </Container>
@@ -49,27 +50,38 @@ export default function SearchBar() {
 }
 
 const Container = styled.div`
-  display: flex;
   width: 563px;
   height: 45px;
 
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  position: fixed;
+  z-index: 1;
+
+  top: 37px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 800px) {
+    width: 360px;
+  }
   @media (max-width: 600px) {
-    top: 85px;
+    top: 110px;
     width: 100%;
     position: absolute;
+    z-index: 0;
   }
-  position: relative;
   .input-search-bar {
     width: 100%;
     height: 100%;
     img {
       position: absolute;
+      top: 12px;
       right: 10px;
       @media (max-width: 600px) {
-        right: 30px;
+        right: 22px;
       }
     }
     @media (max-width: 600px) {

@@ -12,8 +12,6 @@ import SearchBar from "./SearchBar";
 export default function Header() {
   const [logout, setLogout] = useState();
   const { auth } = useAuth();
-  const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState(null);
   const navigate = useNavigate();
   let { user, setUser } = useUser();
   useEffect(() => {
@@ -47,7 +45,6 @@ export default function Header() {
     <>
       <Top>
         <h1 onClick={() => navigate("/timeline")}>linkr</h1>
-        <SearchBar className="responsivo" />
         <div onClick={() => (logout ? setLogout(false) : setLogout(true))}>
           <img
             src={logout ? UpArrow : DownArrow}
@@ -63,6 +60,7 @@ export default function Header() {
           )}
         </div>
       </Top>
+      <SearchBar className="responsivo" />
       {logout && (
         <Logout
           onClick={() => {
