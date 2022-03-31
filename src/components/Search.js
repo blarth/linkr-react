@@ -43,7 +43,6 @@ const Container = styled.div`
     font-size: 19px;
     line-height: 23px;
 
-<<<<<<< HEAD
         color: #515151;
         margin-left: 12px;
     }
@@ -58,9 +57,3 @@ const Container = styled.div`
 
     }
 `;
-=======
-    color: #515151;
-    margin-left: 12px;
-  }
-`;
->>>>>>> 3f1fbcc57c76caa0ecc337a574de0ba8b36d5b50

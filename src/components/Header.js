@@ -45,7 +45,6 @@ export default function Header() {
     <>
       <Top>
         <h1 onClick={() => navigate("/timeline")}>linkr</h1>
-        <SearchBar className="responsivo" />
         <div onClick={() => (logout ? setLogout(false) : setLogout(true))}>
           <img
             src={logout ? UpArrow : DownArrow}
@@ -61,6 +60,7 @@ export default function Header() {
           )}
         </div>
       </Top>
+      <SearchBar className="responsivo" />
       {logout && (
         <Logout
           onClick={() => {

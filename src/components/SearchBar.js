@@ -6,35 +6,18 @@ import Search from "./Search";
 import useAuth from "../hooks/useAuth";
 import vector from "../assets/Vector2.svg";
 
-export default function SearchBar() {
+export default function SearchBar( ) {
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState(null);
-  const [followerData, setFollowerData] = useState(null);
-  const [notFollowerData, setNotFollowerData] = useState(null);
   const { auth } = useAuth();
-    async function getFollowers() {
-        try {
-            const users = await api.getSearchBarFollowers(auth, searchText);
-            if (!users) {
-                return;
-            }
-            setFollowerData(users.data.map( (follower) => ({...follower, isFollower : true})))
-            if(data === null){
-              return;
-            }
-        }
-        catch (error) {
-            console.log(error);
-        }
-    } useEffect(getFollowers, [searchText]);
-
+  
     async function getNotFollowers() {
       try {
-          const users = await api.getSearchBarNotFollowers(auth, searchText);
+          const users = await api.getSearchBar(auth, searchText);
           if (!users) {
               return;
           }
-          setNotFollowerData(users.data.map( (follower) => ({...follower, isFollower : false})))
+          setData(users.data.map( (follower) => ({...follower, isFollower : follower.followed ? true : false})))
           if(data === null){
             return;
           }
@@ -43,9 +26,6 @@ export default function SearchBar() {
           console.log(error);
       }
   } useEffect(getNotFollowers, [searchText]);
-
-  console.log(followerData)
-  console.log(notFollowerData)
 
   return (
     <Container>
@@ -61,13 +41,8 @@ export default function SearchBar() {
       <SearchBarResults
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
-<<<<<<< HEAD
-        {notFollowerData?.map((search) => (
-            <Search setSearchText={setSearchText} key={search.id}  {...search}/>
-=======
         {data?.map((search) => (
-          <Search setSearchText={setSearchText} key={search.id} {...search} />
->>>>>>> 3f1fbcc57c76caa0ecc337a574de0ba8b36d5b50
+            <Search setSearchText={setSearchText} key={search.id}  {...search}/>
         ))}
       </SearchBarResults>
     </Container>
@@ -75,27 +50,38 @@ export default function SearchBar() {
 }
 
 const Container = styled.div`
-  display: flex;
   width: 563px;
   height: 45px;
 
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  position: fixed;
+  z-index: 1;
+
+  top: 37px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 800px) {
+    width: 360px;
+  }
   @media (max-width: 600px) {
-    top: 85px;
+    top: 110px;
     width: 100%;
     position: absolute;
+    z-index: 0;
   }
-  position: relative;
   .input-search-bar {
     width: 100%;
     height: 100%;
     img {
       position: absolute;
+      top: 12px;
       right: 10px;
       @media (max-width: 600px) {
-        right: 30px;
+        right: 22px;
       }
     }
     @media (max-width: 600px) {
