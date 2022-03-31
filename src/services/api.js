@@ -147,6 +147,26 @@ async function checkFollowings(token) {
   );
   return promise;
 }
+
+async function createRepost(id, token) {
+  const config = createConfig(token);
+  const promisse = await axios.post(
+    `${REACT_APP_BASE_URL}/repost/${id}`, null,
+    config
+  );
+  return promisse;
+}
+
+async function verifyRepost(id, token) {
+  const config = createConfig(token);
+  const promisse = await axios.get(
+    `${REACT_APP_BASE_URL}/repost/${id}`, 
+    config
+  );
+  return promisse;
+}
+
+
 const api = {
   createUser,
   signin,
@@ -166,6 +186,8 @@ const api = {
   followUser,
   getFollowers,
   checkFollowings,
+  createRepost,
+  verifyRepost
 };
 
 export default api;
