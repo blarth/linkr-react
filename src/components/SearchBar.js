@@ -4,7 +4,7 @@ import api from "../services/api";
 import { DebounceInput } from "react-debounce-input";
 import Search from "./Search";
 import useAuth from "../hooks/useAuth";
-import vector from "../assets/Vector2.svg";
+import vector from "../assets/Vector2.png";
 
 export default function SearchBar( ) {
   const [searchText, setSearchText] = useState("");
@@ -36,7 +36,7 @@ export default function SearchBar( ) {
           placeholder="Search for people and friends"
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <img src={vector} alt="vector" />
+        <img className="color" src={vector} alt="vector" />
       </div>
       <SearchBarResults
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
@@ -77,6 +77,7 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     img {
+      color: blue !important;
       position: absolute;
       top: 12px;
       right: 10px;
@@ -123,9 +124,10 @@ const SearchBarResults = styled.div`
   top: 38px;
   flex-direction: column;
   width: 100%;
-  border-radius: 8px;
+  border-end-end-radius: 8px;
+  border-end-start-radius: 8px;
   display: none;
-  border-radius: 80px;
+  background-color: #e7e7e7;
   @media (max-width: 600px) {
     width: 95%;
   }
