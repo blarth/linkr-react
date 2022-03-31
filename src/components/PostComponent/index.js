@@ -1,6 +1,8 @@
 import React from "react";
 import {
+  GeneralContainer,
   Container,
+  CommentsContainer,
   Avatar,
   ContainerPost,
   User,
@@ -11,6 +13,7 @@ import {
   LikeButton,
   PostManagementContainer,
   InfoLikes,
+  ContainerRepost,
 } from "./style";
 import MetaDataPost from "./MetaData";
 import api from "../../services/api";
@@ -27,6 +30,10 @@ import EditPostInput from "./EditPost/input";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
+import CommentButton from "./Comments/button";
+import SingleComment from "./Comments/commentData"
+import vectorRepost from "../../assets/VectorRepost.svg"
+import Repost from "./Shares";
 
 export default function Post({
   id,
@@ -37,11 +44,16 @@ export default function Post({
   userId,
   isLike,
   postId,
+  numberReposts,
   loadPost,
   loadHashTag,
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
+  const [comments, setComments] = useState({
+    commentsList: '',
+    commentBoxOpen: false
+  })
   const [editMode, setEditMode] = useState({
     isEditing: false,
     inputValue: postText,
@@ -137,78 +149,118 @@ export default function Post({
         } and other ${length - 2} people`;
     }
   }
+  console.log(numberReposts)
 
-  useEffect(getLike, []);
+  useEffect(() => {
+    getLike();
+    const comments = api.getComments(auth, id);
+		comments.then(
+      (res) => {
+        setComments({...comments, commentsList:res.data});
+      }).catch((e) => {
+        console.log(e);
+        /*
+        Swal.fire({
+          title: "Oops :(",
+          text: "There was an error loading the comments",
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
+        });
+        */
+      });
+  }, []);
 
   return (
-    <Container>
-      <LeftContainer>
-        <Avatar src={userImage} alt="avatar img"></Avatar>
-        <LikeButton
-          src={like ? RedHeart : WhiteHeart}
-          alt="heart"
-          onClick={() => {
-            handleLikes();
-          }}
-        />
-        <InfoLikes
-          data-tip={
-            infoLikes === null ? (
-              <h1>Loading likes</h1>
-            ) : infoLikes?.length === 0 ? (
-              "No one liked this post #sadboys"
-            ) : infoLikes?.find((el) => el.name === user.name) ? (
-              returnTooltipUser(infoLikes.length)
-            ) : (
-              returnTooltip(infoLikes?.length)
-            )
-          }
-        >
-          {infoLikes?.length} likes
-        </InfoLikes>
-        <ReactTooltip place="bottom" type="light" />
-      </LeftContainer>
-      <RightContainer>
-        <PostManagementContainer>
-          {user.id === userId && (
-            <>
-              <EditPostButton
-                editMode={editMode}
-                setEditMode={setEditMode}
-                postText={postText}
-              />
-              <DeletePost
-                loadPost={loadPost}
-                loadHashTag={loadHashTag}
-                id={id}
-              />
-            </>
-          )}
-        </PostManagementContainer>
-        <User onClick={redirectToUserPage}>{userName}</User>
-        <ContainerPost>
-          <Description>
-            {editMode.isEditing ? (
-              <EditPostInput
-                handleChange={handleChange}
-                handleKey={handleKey}
-                editMode={editMode}
-              />
-            ) : (
-              <ReactHashtag
-                renderHashtag={(hashtagText) => (
-                  <StyledHashtag to={`/hashtag/${hashtagText.slice(1)}`}>
-                    {hashtagText}
-                  </StyledHashtag>
-                )}
-              >
-                {postText}
-              </ReactHashtag>
+    <GeneralContainer>
+      <Container commentBoxOpen={comments.commentBoxOpen}>
+        <LeftContainer>
+          <Avatar src={userImage} alt="avatar img"></Avatar>
+          <LikeButton
+            src={like ? RedHeart : WhiteHeart}
+            alt="heart"
+            onClick={() => {
+              handleLikes();
+            }}
+          />
+          <InfoLikes
+            data-tip={
+              infoLikes === null ? (
+                <h1>Loading likes</h1>
+              ) : infoLikes?.length === 0 ? (
+                "No one liked this post #sadboys"
+              ) : infoLikes?.find((el) => el.name === user.name) ? (
+                returnTooltipUser(infoLikes.length)
+              ) : (
+                returnTooltip(infoLikes?.length)
+              )
+            }
+          >
+            {infoLikes?.length} likes
+          </InfoLikes>
+          <ReactTooltip place="bottom" type="light" />
+          <CommentButton comments={comments} setComments={setComments}/>
+          <Repost
+          loadPost={loadPost}
+          loadHashTag={loadHashTag}
+          id={id} 
+          numberReposts={numberReposts}
+          />
+        </LeftContainer>
+        <RightContainer>
+          <PostManagementContainer>
+            {user.id === userId && (
+              <>
+                <EditPostButton
+                  editMode={editMode}
+                  setEditMode={setEditMode}
+                  postText={postText}
+                />
+                <DeletePost
+                  loadPost={loadPost}
+                  loadHashTag={loadHashTag}
+                  id={id}
+                />
+              </>
             )}
-          </Description>
-          <MetaDataPost {...metadata}></MetaDataPost>
-        </ContainerPost>
-      </RightContainer>
-    </Container>
+          </PostManagementContainer>
+          <User onClick={redirectToUserPage}>{userName}</User>
+          <ContainerPost>
+            <Description>
+              {editMode.isEditing ? (
+                <EditPostInput
+                  handleChange={handleChange}
+                  handleKey={handleKey}
+                  editMode={editMode}
+                />
+              ) : (
+                <ReactHashtag
+                  renderHashtag={(hashtagText) => (
+                    <StyledHashtag to={`/hashtag/${hashtagText.slice(1)}`}>
+                      {hashtagText}
+                    </StyledHashtag>
+                  )}
+                >
+                  {postText}
+                </ReactHashtag>
+              )}
+            </Description>
+            <MetaDataPost {...metadata}></MetaDataPost>
+          </ContainerPost>
+        </RightContainer>
+      </Container>
+      { comments.commentBoxOpen &&
+        <CommentsContainer>
+          {comments.commentsList.map(
+            each => <SingleComment 
+          authorId={userId} 
+          commenterId={each.userId}
+          doIfollow={each.following}
+          image={each.image} 
+          name={each.name} 
+          text={each.comment}/>)}
+      </CommentsContainer>
+      }
+    </GeneralContainer>
   );
 }

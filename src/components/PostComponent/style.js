@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const GeneralContainer = styled.div`
+  position: relative;
+  :last-child{
+    margin-bottom: 20px;
+  }
+`
+
 const Container = styled.div`
   height: 290px;
   width: 611px;
@@ -22,6 +29,37 @@ const Container = styled.div`
   }
   @media (max-width: 480px) {
     border-radius: 0;
+  }
+`;
+
+const CommentsContainer = styled.div`
+  width: 611px;
+
+  border-radius: 0 0 16px 16px;
+
+  background: #1E1E1E;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 0 12px 12px 12px;
+  margin-top: -15px;
+
+  /*
+  position: absolute;
+  top: -200px;
+  animation: slide 1s downwards;
+  @keyframes CommentContainer{
+    100% { top: 0px; }
+  }
+  */
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  @media (max-width: 480px) {
+    border-radius: 0 0 20px 20px;
   }
 `;
 
@@ -72,6 +110,7 @@ const LeftContainer = styled.div`
   gap: 23px;
   @media (max-width: 600px) {
     padding-top: 12px;
+    gap: 10px;
   }
   @media (max-width: 420px) {
     margin-left: 35px;
@@ -140,8 +179,12 @@ const PostManagementContainer = styled.div`
   padding-left: 460px;
 `;
 
+
+
 export {
+  GeneralContainer,
   Container,
+  CommentsContainer,
   Avatar,
   ContainerPost,
   User,
@@ -152,4 +195,5 @@ export {
   RightContainer,
   PostManagementContainer,
   InfoLikes,
+  
 };
