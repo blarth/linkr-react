@@ -95,10 +95,10 @@ async function getLikes(id) {
   return promise;
 }
 
-async function getComments(token, id, offset){
+async function getComments(token, id){
   const config = createConfig(token);
   const promise = await axios.get(
-    `${REACT_APP_BASE_URL}/comments/${id}/${offset}`,
+    `${REACT_APP_BASE_URL}/comments/${id}`,
     config);
   return promise;
 }
