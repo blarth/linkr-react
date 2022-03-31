@@ -13,6 +13,7 @@ import {
   LikeButton,
   PostManagementContainer,
   InfoLikes,
+  ContainerRepost,
 } from "./style";
 import MetaDataPost from "./MetaData";
 import api from "../../services/api";
@@ -31,6 +32,8 @@ import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import CommentButton from "./Comments/button";
 import SingleComment from "./Comments/commentData"
+import vectorRepost from "../../assets/VectorRepost.svg"
+import Repost from "./Shares";
 
 export default function Post({
   id,
@@ -41,6 +44,7 @@ export default function Post({
   userId,
   isLike,
   postId,
+  numberReposts,
   loadPost,
   loadHashTag,
 }) {
@@ -145,6 +149,7 @@ export default function Post({
         } and other ${length - 2} people`;
     }
   }
+  console.log(numberReposts)
 
   useEffect(() => {
     getLike();
@@ -195,6 +200,12 @@ export default function Post({
           </InfoLikes>
           <ReactTooltip place="bottom" type="light" />
           <CommentButton comments={comments} setComments={setComments}/>
+          <Repost
+          loadPost={loadPost}
+          loadHashTag={loadHashTag}
+          id={id} 
+          numberReposts={numberReposts}
+          />
         </LeftContainer>
         <RightContainer>
           <PostManagementContainer>
