@@ -38,14 +38,16 @@ export default function UserTimeLine() {
     const promise = api.getPostbyUserId(auth, id);
 
     promise.then((response) => {
-      setData([...response.data]);
+      console.log(response.data.userData);
+
+      setData([...response.data.answer]);
       setUser({
-        userName: response.data[0].userName,
-        userImage: response.data[0].userImage,
-        userId: response.data[0].userId,
+        userName: response.data.userData.userName,
+        userImage: response.data.userData.userImage,
+        userId: response.data.userData.id,
       });
-      setFollowedUserId({ followedUserId: response.data[0].userId });
-      setAllowFollow(userData.id !== response.data[0].userId);
+      setFollowedUserId({ followedUserId: response.data.userData.id });
+      setAllowFollow(userData.id !== response.data.userData.id);
     });
     promise.catch((error) => {
       console.log(error.response);
