@@ -60,7 +60,6 @@ export default function Header() {
           )}
         </div>
       </Top>
-      <SearchBar className="responsivo" />
       {logout && (
         <Logout
           onClick={() => {
@@ -71,6 +70,7 @@ export default function Header() {
           Logout{" "}
         </Logout>
       )}
+      <SearchBar />
     </>
   );
 }

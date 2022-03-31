@@ -23,16 +23,17 @@ export default function Search({
 }
 
 const Container = styled.div`
-  background-color: #e7e7e7;
+  display: flex;
+  align-items: center;
+
   width: 100%;
   padding: 18px 18px 0 18px;
   :last-child {
     padding-bottom: 20px;
-    border-end-end-radius: 8px;
-    border-end-start-radius: 8px;
   }
   img {
     object-fit: cover;
+    color: #C6C6C6;
     width: 39px;
     height: 39px;
     border-radius: 50%;
