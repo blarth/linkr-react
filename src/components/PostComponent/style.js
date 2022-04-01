@@ -6,6 +6,9 @@ const GeneralContainer = styled.div`
   :last-child{
     margin-bottom: 20px;
   }
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `
 
 const Container = styled.div`
@@ -20,7 +23,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   align-items: flex-start;
   margin-bottom: 20px;
-
+  position: relative;
   padding: 12px;
   @media (max-width: 600px) {
     width: 100%;
@@ -41,11 +44,12 @@ const CommentsContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
 
   padding: 0 12px 12px 12px;
-  margin-top: -15px;
+  margin-top: -30px;
+  margin-bottom: 44px;
 
+  
   /*
   position: absolute;
   top: -200px;
@@ -61,9 +65,19 @@ const CommentsContainer = styled.div`
   @media (max-width: 480px) {
     border-radius: 0 0 20px 20px;
   }
+  @media (max-width: 410px) {
+    padding-left: 30px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 360px) {
+    padding-left: 55px;
+    padding-right: 65px;
+  }
 `;
 
 const Avatar = styled.img`
+  object-fit: cover;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -88,6 +102,13 @@ const ContainerPost = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin: 0;
+  img{
+    object-fit: cover;
+  }
+  h2, p{
+   padding-left: 10px;
+  }
 `;
 
 const User = styled.div`
@@ -134,8 +155,9 @@ const RightContainer = styled.div`
 
   @media (max-width: 600px) {
     width: 340px;
-    padding-top: 9px;
+    padding-top: 7px;
   }
+
 `;
 
 const Description = styled.div`
@@ -147,7 +169,6 @@ const Description = styled.div`
   line-height: 20px;
   text-align: left;
   color: #b7b7b7;
-
   @media (max-width: 600px) {
     min-height: 52px;
     width: 288px;

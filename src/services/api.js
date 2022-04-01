@@ -163,6 +163,15 @@ async function verifyRepost(id, token) {
   return promisse;
 }
 
+async function sendComment(body, postId, token) {
+  const config = createConfig(token);
+  await axios.post(
+    `${REACT_APP_BASE_URL}/comments/${postId}`,
+    body,
+    config
+  );
+}
+
 
 const api = {
   createUser,
@@ -184,7 +193,8 @@ const api = {
   getSearchBar,
   checkFollowings,
   createRepost,
-  verifyRepost
+  verifyRepost,
+  sendComment,
 };
 
 export default api;

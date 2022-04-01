@@ -25,6 +25,7 @@ export default function Search({
 const Container = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   width: 100%;
   padding: 18px 18px 0 18px;

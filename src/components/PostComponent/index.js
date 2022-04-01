@@ -32,6 +32,7 @@ import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import CommentButton from "./Comments/button";
 import SingleComment from "./Comments/commentData"
+import PostComment from "./Comments/postComment";
 import vectorRepost from "../../assets/VectorRepost.svg"
 import Repost from "./Shares";
 
@@ -50,6 +51,7 @@ export default function Post({
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
+  const [renderComment, setRenderComment] = useState(null)
   const [comments, setComments] = useState({
     commentsList: '',
     commentBoxOpen: false
@@ -153,6 +155,7 @@ export default function Post({
 
   useEffect(() => {
     getLike();
+    setRenderComment(false);
     const comments = api.getComments(auth, id);
 		comments.then(
       (res) => {
@@ -169,7 +172,7 @@ export default function Post({
         });
         */
       });
-  }, []);
+  }, [renderComment]);
 
   return (
     <GeneralContainer>
@@ -259,6 +262,7 @@ export default function Post({
           image={each.image} 
           name={each.name} 
           text={each.comment}/>)}
+          <PostComment setRenderComment = {setRenderComment} postId = {postId}></PostComment>
       </CommentsContainer>
       }
     </GeneralContainer>
