@@ -175,8 +175,7 @@ export default function Post({
         */
       });
   }, [renderComment]);
-  //console.log(reposterName);
-  console.log(comments.commentBoxOpen)
+  console.log(reposterName);
   return (
     <GeneralContainer>
       {reposterName && (
@@ -278,7 +277,7 @@ export default function Post({
           </ContainerPost>
         </RightContainer>
       </Container>
-      {(comments.commentBoxOpen || comments.commentBoxOpen === undefined) && (
+      {comments.commentBoxOpen && (
         <CommentsContainer>
           {comments.commentsList.map((each) => (
             <SingleComment
