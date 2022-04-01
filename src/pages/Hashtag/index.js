@@ -10,7 +10,6 @@ import Sidebar from "../../components/hashtagsSidebar";
 import Swal from "sweetalert2";
 import InfiniteScroll from "react-infinite-scroller";
 
-
 export default function HashtagTimeLine() {
   const { auth } = useAuth();
   const [data, setData] = useState(null);
@@ -43,7 +42,7 @@ export default function HashtagTimeLine() {
     loadHashTag();
   }, [hashtagText]);
 
-  function loadMorePosts(){
+  function loadMorePosts() {
     const promise = auth && api.getPost(auth, page);
     if (!promise) {
       return;
@@ -52,10 +51,8 @@ export default function HashtagTimeLine() {
       setData(data.concat([...response.data]));
       if (data === null) return;
       setPage(page + 1);
-      
-    })}
-
-
+    });
+  }
 
   return (
     <MainContainer>
@@ -75,8 +72,7 @@ export default function HashtagTimeLine() {
           <InfiniteScroll
             pageStart={page}
             loadMore={loadMorePosts}
-            hasMore={data?.length < page*10 ? false : true}
-            
+            hasMore={data?.length < page * 10 ? false : true}
             loader={
               <h3>
                 {" "}
@@ -84,9 +80,9 @@ export default function HashtagTimeLine() {
               </h3>
             }
           >
-            {data?.map((post, i) => (
+            {data?.map((post) => (
               <Post
-                key={i}
+                key={post.id}
                 {...post}
                 loadPost={loadPost}
                 loadHashTag={loadHashTag}
