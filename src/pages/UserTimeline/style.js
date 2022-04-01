@@ -116,7 +116,7 @@ const FollowButton = styled.button`
 
   cursor: pointer;
 
-  @media (max-width: 815px) {
+  @media (max-width: 825px) {
     position: absolute;
     top: 15px;
     right: 12px;
