@@ -130,6 +130,7 @@ const LeftContainer = styled.div`
   @media (max-width: 600px) {
     padding-top: 12px;
     gap: 10px;
+    margin-right: 6px;
   }
   @media (max-width: 420px) {
     margin-left: 35px;
