@@ -49,10 +49,12 @@ export default function TimeLine() {
       console.log(error.response);
       if (auth) {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
+          title: "Oops :(",
+          text: "Something went wrong, Try again!",
           footer: '<a href="">Please, reload the page!</a>',
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
         });
       }
     });
@@ -70,10 +72,12 @@ export default function TimeLine() {
       console.log(error.response);
       if (auth) {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
+          title: "Oops :(",
+          text: "Something went wrong, Try again!",
           footer: '<a href="">Please, reload the page!</a>',
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
         });
       }
     });
@@ -93,10 +97,12 @@ export default function TimeLine() {
       console.log(error.response);
       if (auth) {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Please, reload the page!</a>',
+          title: "Oops :(",
+          text: "Something went wrong, Try again!",
+          footer: '<a href="" style="color:white">Please, reload the page!</a>',
+          background: "#d66767",
+          confirmButtonColor: "#9f9adb",
+          color: "#fff",
         });
       }
     });
@@ -124,17 +130,17 @@ export default function TimeLine() {
     checkFollowings();
   }, []);
 
-  function getDiff(array1, array2){
-    let diff = 0
-    for (let i = 0; i< array1.length; i++){
-      if(array1[i].id === array2[0].id){
-        diff = i
-        return diff
+  function getDiff(array1, array2) {
+    let diff = 0;
+    for (let i = 0; i < array1.length; i++) {
+      if (array1[i].id === array2[0].id) {
+        diff = i;
+        return diff;
       }
     }
-    return 10
+    return 10;
   }
- 
+
   return (
     <MainContainer>
       <Container>
@@ -148,8 +154,9 @@ export default function TimeLine() {
             <p>
               {dataComparision[0]?.id - data[0]?.id === 0
                 ? setHasNewPosts(false)
-                : getDiff(dataComparision, data) === 10 ? "10+"
-              : getDiff(dataComparision, data)}{" "}
+                : getDiff(dataComparision, data) === 10
+                ? "10+"
+                : getDiff(dataComparision, data)}{" "}
               new posts, load more!
             </p>
             <img src={spinningwheel} alt="vector img"></img>
