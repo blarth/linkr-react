@@ -122,6 +122,7 @@ const LeftContainer = styled.div`
   padding-right: 27px;
   @media (max-width: 600px) {
     padding-left: 5px;
+    max-width: 160px;
   }
 `;
 
