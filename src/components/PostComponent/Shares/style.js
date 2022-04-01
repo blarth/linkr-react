@@ -11,7 +11,7 @@ const ContainerRepost = styled.div`
   font-size: 13px;
   text-align: center;
   cursor: pointer;
-  svg {
+  img {
     width: 23px;
     height: 23px;
   }
