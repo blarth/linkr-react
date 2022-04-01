@@ -81,8 +81,6 @@ const Avatar = styled.img`
   width: 50px;
   border-radius: 50%;
 
-  background: #171717;
-
   display: flex;
   justify-content: center;
   align-items: center;
