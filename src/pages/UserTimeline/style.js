@@ -52,7 +52,7 @@ const ContainerInfo = styled.div`
     font-size: 33px;
     padding-left: 12px;
 
-    margin-top: 157px;
+    margin-top: 180px;
     & > h4 {
       text-overflow: ellipsis;
     }
@@ -118,10 +118,10 @@ const FollowButton = styled.button`
 
   @media (max-width: 815px) {
     position: absolute;
-    top: 5px;
+    top: 15px;
     right: 12px;
   }
-  @media (max-width: 600) {
+  @media (max-width: 630px) {
     width: 70px;
     height: 25px;
   }
