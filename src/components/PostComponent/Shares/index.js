@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import VectorRepost from "../../../assets/repost.png";
 import VectorReposted from "../../../assets/reposted.png";
 
-export default function Repost({ id, loadPost, loadHashTag, numberReposts }) {
+export default function   Repost({ id, loadPost, loadHashTag, numberReposts }) {
   const [alreadyReposted, setAlreadyReposted] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
