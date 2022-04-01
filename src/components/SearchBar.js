@@ -64,13 +64,14 @@ const Container = styled.div`
   align-items: center;
 
   position: fixed;
-  z-index:1;
+  z-index:3;
 
   top: 37px;
   left: 50%;
   transform: translate(-50%, -50%);
   @media (max-width: 800px) {
     width: 360px;
+
   }
   @media (max-width: 600px) {
     top: 110px;
@@ -93,6 +94,7 @@ const Container = styled.div`
       display: flex;
       align-content: center;
       justify-content: center;
+      
     }
   }
   input {
