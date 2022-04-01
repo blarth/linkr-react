@@ -157,8 +157,8 @@ export default function Post({
   useEffect(() => {
     getLike();
     setRenderComment(false);
-    const comments = api.getComments(auth, id);
-    comments
+    const incomingComments = api.getComments(auth, id);
+    incomingComments
       .then((res) => {
         setComments({ ...comments, commentsList: res.data });
       })
