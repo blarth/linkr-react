@@ -220,6 +220,12 @@ const ContainerShare = styled.div`
   strong {
     cursor: pointer;
   }
+  @media (max-width: 475px) {
+    padding-left: 13%;
+  }
+  @media (max-width: 350px) {
+    padding-left: 80px;
+  }
 `;
 
 export {
