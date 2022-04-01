@@ -16,7 +16,7 @@
 </p>
 
 ## Overview
-A link sharing platform where users can share content they like and hashtag them
+A link sharing platform where users can share content they like and hashtag them! Follow users, discuss posts and see what's trending among the people you follow!
 
 ## Features
 
@@ -32,6 +32,8 @@ You can also check the most popular hashtags on the right sidebar, popularity is
 
 You can only add one hashtag to the ranking per post. So if you add two identical hashtags or more to it, they'll only count as one towards the trending ranking.
 
+You can eee how popular a post is by it's repost count, scroll indefinetly to see posts as they come and reload new ones without refreshing the page.
+
 ### ```Updating & Deleting```
 
 If you're the post's publisher, you can edit it or delete it. To edit, click on the pencil icon on the post's top right corner, to manipulate the text as you please. To cancel, press Esc or click on the pencil icon again. To submit your edited post, press enter. Any removed hashtags will lose a score in the ranking, any added ones will earn one and ulnaltered ones will have their position remained the same.
@@ -40,6 +42,14 @@ You cannot edit the posted link.
 ### ```Filtering by user, hashtags```
 
 You can filter posts by user or hashtags used by clicking on them, on the posts themselves or on the trending sidebar. 
+
+### ```Search users and follow them```
+
+Use the searchbar to find people, follow them, see their posts and the posts they share.
+
+### ```Commenting```
+
+Start a discussion on an post you found interesting by commenting on it. See the opinions of your followers on it and the post's author.
 
 ## Installation 🛠️
 ### Make sure you have the following tools installed before you begin:
