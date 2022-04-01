@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 
 const GeneralContainer = styled.div`
   position: relative;
-  :last-child{
+  :last-child {
     margin-bottom: 20px;
   }
   @media (max-width: 600px) {
     width: 100%;
   }
-`
+`;
 
 const Container = styled.div`
   height: 290px;
   width: 611px;
 
-  border-radius: 16px;
+  border-radius: ${(props) => (props.reposterId ? " 0 0 16px 16px" : "16px")};
 
   background: #171717;
 
@@ -40,7 +40,7 @@ const CommentsContainer = styled.div`
 
   border-radius: 0 0 16px 16px;
 
-  background: #1E1E1E;
+  background: #1e1e1e;
 
   display: flex;
   flex-direction: column;
@@ -49,7 +49,6 @@ const CommentsContainer = styled.div`
   margin-top: -30px;
   margin-bottom: 44px;
 
-  
   /*
   position: absolute;
   top: -200px;
@@ -103,11 +102,12 @@ const ContainerPost = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin: 0;
-  img{
+  img {
     object-fit: cover;
   }
-  h2, p{
-   padding-left: 10px;
+  h2,
+  p {
+    padding-left: 10px;
   }
 `;
 
@@ -157,7 +157,6 @@ const RightContainer = styled.div`
     width: 340px;
     padding-top: 7px;
   }
-
 `;
 
 const Description = styled.div`
@@ -199,8 +198,29 @@ const PostManagementContainer = styled.div`
   justify-content: flex-end;
   padding-left: 460px;
 `;
+const ContainerShare = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
 
+  height: 35px;
 
+  font-size: 11px;
+
+  border-radius: 12px 12px 0 0;
+
+  background-color: #1e1e1e;
+
+  color: white;
+
+  font-family: "Lato";
+
+  padding: 13px;
+  strong {
+    cursor: pointer;
+  }
+`;
 
 export {
   GeneralContainer,
@@ -216,5 +236,5 @@ export {
   RightContainer,
   PostManagementContainer,
   InfoLikes,
-  
+  ContainerShare,
 };
