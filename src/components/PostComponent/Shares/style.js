@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
 const ContainerRepost = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 40px;
-width: 90%;
-color: #FFFFFF;
-font-size: 13px;
-text-align: center;
-cursor: pointer;
-@media (max-width: 600px) {
-    
-    height: 40px;
-    width: 90%;
-    font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 90%;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  svg {
+    width: 23px;
+    height: 23px;
   }
-
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
 const ButtonDelete = styled.button`
@@ -62,8 +62,6 @@ const ButtonNotDelete = styled.button`
   color: #1877f2;
 `;
 
-
-
 const Form = styled.form`
   display: flex;
   justify-content: space-around;
@@ -93,10 +91,4 @@ const TextModal = styled.p`
   }
 `;
 
-export {
-  ButtonDelete,
-  ButtonNotDelete,
-  Form,
-  TextModal,
-  ContainerRepost
-};
+export { ButtonDelete, ButtonNotDelete, Form, TextModal, ContainerRepost };
