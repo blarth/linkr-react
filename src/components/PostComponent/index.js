@@ -45,7 +45,6 @@ export default function Post({
   userImage,
   userId,
   isLike,
-  postId,
   numberReposts,
   loadPost,
   loadHashTag,
@@ -75,7 +74,7 @@ export default function Post({
   async function handleLikes() {
     like ? setLike(false) : setLike(true);
     try {
-      await api.likePost(auth, postId, !like);
+      await api.likePost(auth, id, !like);
       getLike();
     } catch (error) {
       console.log(error.response);
@@ -83,8 +82,8 @@ export default function Post({
   }
   async function getLike() {
     try {
-      if (postId) {
-        const promiseLikes = await api.getLikes(postId);
+      if (id) {
+        const promiseLikes = await api.getLikes(id);
         setInfoLikes(promiseLikes.data);
       }
     } catch (error) {
@@ -103,7 +102,7 @@ export default function Post({
     if (e.key === "Enter") {
       setEditMode({ ...editMode, inputDisabled: true });
       try {
-        await api.editPost(auth, postId, {
+        await api.editPost(auth, id, {
           link: metadata.url,
           postText: editMode.inputValue,
         });
@@ -292,7 +291,7 @@ export default function Post({
           ))}
           <PostComment
             setRenderComment={setRenderComment}
-            postId={postId}
+            postId={id}
           ></PostComment>
         </CommentsContainer>
       )}

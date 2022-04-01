@@ -1,4 +1,3 @@
-
 import Modal from "react-modal";
 import api from "../../../services/api";
 import useAuth from "../../../hooks/useAuth";
@@ -12,10 +11,11 @@ import {
 } from "./style";
 import { InfinitySpin } from "react-loader-spinner";
 import { useEffect, useState } from "react";
-import { BiRepost as VectorRepost } from "react-icons/bi";
+import VectorRepost from "../../../assets/repost.png";
+import VectorReposted from "../../../assets/reposted.png";
 
 export default function Repost({ id, loadPost, loadHashTag, numberReposts }) {
-  const [alreadyReposted, setAlreadyReposted] = useState(false)
+  const [alreadyReposted, setAlreadyReposted] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { auth } = useAuth();
@@ -32,16 +32,14 @@ export default function Repost({ id, loadPost, loadHashTag, numberReposts }) {
     },
   };
 
-
-  async function verifyAlreadyRepost(){
+  async function verifyAlreadyRepost() {
     try {
-        const verify = await api.verifyRepost(id, auth)
-        if(verify.data){
-            
-            setAlreadyReposted(true)   
-        }
+      const verify = await api.verifyRepost(id, auth);
+      if (verify.data) {
+        setAlreadyReposted(true);
+      }
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
   }
 
@@ -62,8 +60,8 @@ export default function Repost({ id, loadPost, loadHashTag, numberReposts }) {
       closeModal();
       loadPost();
       loadHashTag();
-      setAlreadyReposted(!alreadyReposted)
-    } catch (error){
+      setAlreadyReposted(!alreadyReposted);
+    } catch (error) {
       setIsLoading(false);
       Swal.fire({
         title: "Oops :(",
@@ -76,18 +74,23 @@ export default function Repost({ id, loadPost, loadHashTag, numberReposts }) {
     }
   }
 
-  useEffect(verifyAlreadyRepost, [])
+  useEffect(verifyAlreadyRepost, []);
 
   return (
-      
     <>
-      <ContainerRepost onClick={(e)  => {
-          if(alreadyReposted) return Repost(e)
-          openModal()
-      }}>
-        {alreadyReposted ? <VectorRepost color="orange" size="1x"/> : <VectorRepost size="1x"/>}
+      <ContainerRepost
+        onClick={(e) => {
+          if (alreadyReposted) return Repost(e);
+          openModal();
+        }}
+      >
+        {alreadyReposted ? (
+          <img src={VectorReposted} alt="reposted" />
+        ) : (
+          <img src={VectorRepost} alt="repost" />
+        )}
         {numberReposts} re-posts
-        </ContainerRepost>
+      </ContainerRepost>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -106,13 +109,9 @@ export default function Repost({ id, loadPost, loadHashTag, numberReposts }) {
         )}
         <Form>
           <ButtonNotDelete onClick={closeModal}>No, cancel</ButtonNotDelete>
-          <ButtonDelete onClick={(e) => Repost(e)}>
-            Yes, share!
-          </ButtonDelete>
+          <ButtonDelete onClick={(e) => Repost(e)}>Yes, share!</ButtonDelete>
         </Form>
       </Modal>
     </>
   );
 }
-
-
