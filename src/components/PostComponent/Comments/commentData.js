@@ -33,7 +33,7 @@ export default function SingleComment({authorId, commenterId, doIfollow, image, 
 				</CommenterTextContainer>
 			</NameTextContainer>
 		</CommentContainer>
-				<WhiteLine></WhiteLine>
+		<WhiteLine></WhiteLine>
 		</>
 	)
 }

@@ -82,7 +82,6 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     img {
-      color: blue !important;
       position: absolute;
       top: 12px;
       right: 10px;
