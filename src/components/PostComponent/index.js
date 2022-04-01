@@ -48,6 +48,7 @@ export default function Post({
   numberReposts,
   loadPost,
   loadHashTag,
+  reposterName
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
@@ -151,7 +152,7 @@ export default function Post({
         } and other ${length - 2} people`;
     }
   }
-  console.log(numberReposts)
+  
 
   useEffect(() => {
     getLike();
@@ -173,9 +174,14 @@ export default function Post({
         */
       });
   }, [renderComment]);
-
+  console.log(reposterName)
   return (
     <GeneralContainer>
+      {/* {reposterName && 
+      <ContainerShare>
+        
+      </ContainerShare>
+      } */}
       <Container commentBoxOpen={comments.commentBoxOpen}>
         <LeftContainer>
           <Avatar src={userImage} alt="avatar img"></Avatar>
