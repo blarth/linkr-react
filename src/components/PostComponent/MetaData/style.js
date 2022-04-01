@@ -23,6 +23,7 @@ const Container = styled.div`
   @media (max-width: 600px) {
     height: 115px;
     width: 278px;
+    gap: 40px;
   }
 
   h1 {
