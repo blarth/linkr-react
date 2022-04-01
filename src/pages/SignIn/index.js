@@ -61,7 +61,7 @@ export default function SignIn() {
         Swal.fire({
           title: "Oops :(",
           text: "Something went wrong, Try again!",
-          background: "#c9002c",
+          background: "#d66767",
           confirmButtonColor: "#9f9adb",
           color: "#fff",
         });

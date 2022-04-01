@@ -56,6 +56,9 @@ export default function TimeLine() {
           confirmButtonColor: "#9f9adb",
           color: "#fff",
         });
+        if (error.response.status === 401) {
+          localStorage.removeItem("auth");
+        }
       }
     });
   }
@@ -79,6 +82,9 @@ export default function TimeLine() {
           confirmButtonColor: "#9f9adb",
           color: "#fff",
         });
+        if (error.response.status === 401) {
+          localStorage.removeItem("auth");
+        }
       }
     });
   }
@@ -104,6 +110,9 @@ export default function TimeLine() {
           confirmButtonColor: "#9f9adb",
           color: "#fff",
         });
+        if (error.response.status === 401) {
+          localStorage.removeItem("auth");
+        }
       }
     });
   }
