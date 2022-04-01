@@ -115,11 +115,11 @@ export default function Post({
           color: "#fff",
         });
       }
-      renderPlease();
+      renderAfterUpdate();
     }
   }
 
-  function renderPlease() {
+  function renderAfterUpdate() {
     loadPost();
     loadHashTag();
   }
