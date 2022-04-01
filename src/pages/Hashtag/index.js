@@ -7,7 +7,6 @@ import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import Sidebar from "../../components/hashtagsSidebar";
-import Swal from "sweetalert2";
 import InfiniteScroll from "react-infinite-scroller";
 
 export default function HashtagTimeLine() {
@@ -15,6 +14,7 @@ export default function HashtagTimeLine() {
   const [data, setData] = useState(null);
   const [hashtags, setHashtags] = useState("");
   const [page, setPage] = useState(1);
+
 
   const { name: hashtagText } = useParams();
 
