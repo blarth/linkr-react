@@ -57,7 +57,6 @@ const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: baseline;
-
   @media (max-width: 600) {
     width: 100%;
   }

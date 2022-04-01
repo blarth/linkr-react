@@ -64,7 +64,7 @@ const Container = styled.div`
   align-items: center;
 
   position: fixed;
-  z-index: 1;
+  z-index:1;
 
   top: 37px;
   left: 50%;
@@ -76,7 +76,7 @@ const Container = styled.div`
     top: 110px;
     width: 100%;
     position: absolute;
-    z-index: 0;
+    z-index:1;
   }
   .input-search-bar {
     width: 100%;
