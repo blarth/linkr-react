@@ -33,6 +33,9 @@ const Span = styled.span`
 const CommentContainer = styled.div`
 	display: flex;
 	flex-direction: row;
+	@media(max-width: 600px){
+		width: 100%;
+	}
 `
 
 const AvatarContainer = styled.div`

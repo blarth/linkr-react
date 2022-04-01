@@ -157,8 +157,8 @@ export default function Post({
   useEffect(() => {
     getLike();
     setRenderComment(false);
-    const comments = api.getComments(auth, id);
-    comments
+    const incomingComments = api.getComments(auth, id);
+    incomingComments
       .then((res) => {
         setComments({ ...comments, commentsList: res.data });
       })
@@ -175,7 +175,8 @@ export default function Post({
         */
       });
   }, [renderComment]);
-  console.log(reposterName);
+  //console.log(reposterName);
+  console.log(comments.commentBoxOpen)
   return (
     <GeneralContainer>
       {reposterName && (
@@ -277,7 +278,7 @@ export default function Post({
           </ContainerPost>
         </RightContainer>
       </Container>
-      {comments.commentBoxOpen && (
+      {(comments.commentBoxOpen || comments.commentBoxOpen === undefined) && (
         <CommentsContainer>
           {comments.commentsList.map((each) => (
             <SingleComment
