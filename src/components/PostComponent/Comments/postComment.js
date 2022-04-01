@@ -64,6 +64,7 @@ const Container = styled.div`
     padding-left: 10px;
     width: 100%;
     height: 39px;
+    color: #ffffff;
   }
 `;
 
@@ -88,4 +89,5 @@ const Form = styled.form`
     right: 14px;
     top: 14px;
   }
+  
 `;

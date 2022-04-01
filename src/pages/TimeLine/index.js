@@ -25,7 +25,7 @@ export default function TimeLine() {
   const [hasNewPosts, setHasNewPosts] = useState(false);
   const [page, setPage] = useState(1);
   const [text, setText] = useState(false);
-
+  
   useInterval(verifyNewPosts, 15000);
 
   function verifyNewPosts() {
