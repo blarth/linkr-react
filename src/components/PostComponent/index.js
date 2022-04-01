@@ -233,6 +233,7 @@ export default function Post({
             loadHashTag={loadHashTag}
             id={id}
             numberReposts={numberReposts}
+            reposterId={reposterId}
           />
         </LeftContainer>
         <RightContainer>

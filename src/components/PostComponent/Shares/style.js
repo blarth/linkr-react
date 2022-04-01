@@ -10,7 +10,7 @@ const ContainerRepost = styled.div`
   color: #ffffff;
   font-size: 13px;
   text-align: center;
-  cursor: pointer;
+  cursor: ${(props) => (props.reposterId ? "auto" : "pointer")};
   img {
     width: 23px;
     height: 23px;

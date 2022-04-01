@@ -14,7 +14,15 @@ import { useEffect, useState } from "react";
 import VectorRepost from "../../../assets/repost.png";
 import VectorReposted from "../../../assets/reposted.png";
 
-export default function   Repost({ id, loadPost, loadHashTag, numberReposts }) {
+
+export default function Repost({
+  id,
+  loadPost,
+  loadHashTag,
+  numberReposts,
+  reposterId,
+}) {
+
   const [alreadyReposted, setAlreadyReposted] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -79,9 +87,12 @@ export default function   Repost({ id, loadPost, loadHashTag, numberReposts }) {
   return (
     <>
       <ContainerRepost
+        reposterId={reposterId}
         onClick={(e) => {
-          if (alreadyReposted) return Repost(e);
-          openModal();
+          if (!reposterId) {
+            if (alreadyReposted) return Repost(e);
+            openModal();
+          }
         }}
       >
         {alreadyReposted ? (
