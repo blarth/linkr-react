@@ -6,26 +6,31 @@ import Search from "./Search";
 import useAuth from "../hooks/useAuth";
 import vector from "../assets/Vector2.png";
 
-export default function SearchBar( ) {
+export default function SearchBar() {
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState(null);
   const { auth } = useAuth();
-  
-    async function getNotFollowers() {
-      try {
-          const users = await api.getSearchBar(auth, searchText);
-          if (!users) {
-              return;
-          }
-          setData(users.data.map( (follower) => ({...follower, isFollower : follower.followed ? true : false})))
-          if(data === null){
-            return;
-          }
+
+  async function getNotFollowers() {
+    try {
+      const users = await api.getSearchBar(auth, searchText);
+      if (!users) {
+        return;
       }
-      catch (error) {
-          console.log(error);
+      setData(
+        users.data.map((follower) => ({
+          ...follower,
+          isFollower: follower.followed ? true : false,
+        }))
+      );
+      if (data === null) {
+        return;
       }
-  } useEffect(getNotFollowers, [searchText]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(getNotFollowers, [searchText]);
 
   return (
     <Container>
@@ -42,7 +47,7 @@ export default function SearchBar( ) {
         className={searchText.length >= 3 ? "show-result" : "hide-result"}
       >
         {data?.map((search) => (
-            <Search setSearchText={setSearchText} key={search.id}  {...search}/>
+          <Search setSearchText={setSearchText} key={search.id} {...search} />
         ))}
       </SearchBarResults>
     </Container>
@@ -127,6 +132,7 @@ const SearchBarResults = styled.div`
   border-end-start-radius: 8px;
   display: none;
   background-color: #e7e7e7;
+  cursor: pointer;
   @media (max-width: 600px) {
     width: 95%;
   }
