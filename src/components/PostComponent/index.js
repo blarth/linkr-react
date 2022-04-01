@@ -14,6 +14,7 @@ import {
   PostManagementContainer,
   InfoLikes,
   ContainerRepost,
+  ContainerShare,
 } from "./style";
 import MetaDataPost from "./MetaData";
 import api from "../../services/api";
@@ -31,9 +32,9 @@ import Swal from "sweetalert2";
 import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import CommentButton from "./Comments/button";
-import SingleComment from "./Comments/commentData"
+import SingleComment from "./Comments/commentData";
 import PostComment from "./Comments/postComment";
-import vectorRepost from "../../assets/VectorRepost.svg"
+import vectorRepost from "../../assets/VectorRepost.svg";
 import Repost from "./Shares";
 
 export default function Post({
@@ -48,15 +49,16 @@ export default function Post({
   numberReposts,
   loadPost,
   loadHashTag,
-  reposterName
+  reposterName,
+  reposterId,
 }) {
   const navigate = useNavigate();
   const [like, setLike] = useState(isLike);
-  const [renderComment, setRenderComment] = useState(null)
+  const [renderComment, setRenderComment] = useState(null);
   const [comments, setComments] = useState({
-    commentsList: '',
-    commentBoxOpen: false
-  })
+    commentsList: "",
+    commentBoxOpen: false,
+  });
   const [editMode, setEditMode] = useState({
     isEditing: false,
     inputValue: postText,
@@ -152,16 +154,16 @@ export default function Post({
         } and other ${length - 2} people`;
     }
   }
-  
 
   useEffect(() => {
     getLike();
     setRenderComment(false);
     const comments = api.getComments(auth, id);
-		comments.then(
-      (res) => {
-        setComments({...comments, commentsList:res.data});
-      }).catch((e) => {
+    comments
+      .then((res) => {
+        setComments({ ...comments, commentsList: res.data });
+      })
+      .catch((e) => {
         console.log(e);
         /*
         Swal.fire({
@@ -174,15 +176,33 @@ export default function Post({
         */
       });
   }, [renderComment]);
-  console.log(reposterName)
+  console.log(reposterName);
   return (
     <GeneralContainer>
-      {/* {reposterName && 
-      <ContainerShare>
-        
-      </ContainerShare>
-      } */}
-      <Container commentBoxOpen={comments.commentBoxOpen}>
+      {reposterName && (
+        <ContainerShare>
+          <img src={vectorRepost} alt="repost icon" />
+          {reposterId === user.id ? (
+            <p>
+              Re-posted by{" "}
+              <strong onClick={() => navigate(`/user/${reposterId}`)}>
+                you
+              </strong>
+            </p>
+          ) : (
+            <p>
+              Re-posted by{" "}
+              <strong onClick={() => navigate(`/user/${reposterId}`)}>
+                {reposterName}
+              </strong>
+            </p>
+          )}
+        </ContainerShare>
+      )}
+      <Container
+        commentBoxOpen={comments.commentBoxOpen}
+        reposterId={reposterId}
+      >
         <LeftContainer>
           <Avatar src={userImage} alt="avatar img"></Avatar>
           <LikeButton
@@ -208,12 +228,12 @@ export default function Post({
             {infoLikes?.length} likes
           </InfoLikes>
           <ReactTooltip place="bottom" type="light" />
-          <CommentButton comments={comments} setComments={setComments}/>
+          <CommentButton comments={comments} setComments={setComments} />
           <Repost
-          loadPost={loadPost}
-          loadHashTag={loadHashTag}
-          id={id} 
-          numberReposts={numberReposts}
+            loadPost={loadPost}
+            loadHashTag={loadHashTag}
+            id={id}
+            numberReposts={numberReposts}
           />
         </LeftContainer>
         <RightContainer>
@@ -258,19 +278,24 @@ export default function Post({
           </ContainerPost>
         </RightContainer>
       </Container>
-      { comments.commentBoxOpen &&
+      {comments.commentBoxOpen && (
         <CommentsContainer>
-          {comments.commentsList.map(
-            each => <SingleComment 
-          authorId={userId} 
-          commenterId={each.userId}
-          doIfollow={each.following}
-          image={each.image} 
-          name={each.name} 
-          text={each.comment}/>)}
-          <PostComment setRenderComment = {setRenderComment} postId = {postId}></PostComment>
-      </CommentsContainer>
-      }
+          {comments.commentsList.map((each) => (
+            <SingleComment
+              authorId={userId}
+              commenterId={each.userId}
+              doIfollow={each.following}
+              image={each.image}
+              name={each.name}
+              text={each.comment}
+            />
+          ))}
+          <PostComment
+            setRenderComment={setRenderComment}
+            postId={postId}
+          ></PostComment>
+        </CommentsContainer>
+      )}
     </GeneralContainer>
   );
 }
